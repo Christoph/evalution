@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalayer", "src\Datalayer\Datalayer.csproj", "{2883FE9C-D6F3-43BC-BD10-E9903B74D43C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Datalayer", "src\Test.Datalayer\Test.Datalayer.csproj", "{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{2883FE9C-D6F3-43BC-BD10-E9903B74D43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2883FE9C-D6F3-43BC-BD10-E9903B74D43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2883FE9C-D6F3-43BC-BD10-E9903B74D43C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
