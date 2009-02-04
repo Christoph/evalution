@@ -1,0 +1,15 @@
+_ReSharper.*
+*.suo
+*/bin
+*/bin/*
+/bin
+obj
+obj/*
+*.resharper
+*.resharper.user
+*.sln.cache
+*.csproj.user
+*.Cache
+NDependOut
+/build/test-report*
+/Reports

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Db" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="BinaryAnswer">
+    <Type Name="BinaryAnswer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Answer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FormId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Form_BinaryAnswer" Member="Form" ThisKey="FormId" OtherKey="Id" Type="Form" IsForeignKey="true" DeleteOnNull="true" />
+      <Association Name="Question_BinaryAnswer" Member="Question" ThisKey="QuestionId" OtherKey="Id" Type="Question" IsForeignKey="true" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Form">
+    <Type Name="Form">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="School" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Grade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Instrument" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Form_BinaryAnswer" Member="BinaryAnswer" ThisKey="Id" OtherKey="FormId" Type="BinaryAnswer" />
+      <Association Name="Form_GradeAnswer" Member="GradeAnswer" ThisKey="Id" OtherKey="FormId" Type="GradeAnswer" />
+      <Association Name="Form_TextAnswer" Member="TextAnswer" ThisKey="Id" OtherKey="FormId" Type="TextAnswer" />
+    </Type>
+  </Table>
+  <Table Name="GradeAnswer">
+    <Type Name="GradeAnswer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Grade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FormId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Form_GradeAnswer" Member="Form" ThisKey="FormId" OtherKey="Id" Type="Form" IsForeignKey="true" DeleteOnNull="true" />
+      <Association Name="Question_GradeAnswer" Member="Question" ThisKey="QuestionId" OtherKey="Id" Type="Question" IsForeignKey="true" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Question">
+    <Type Name="Question">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="AnswerType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Question_BinaryAnswer" Member="BinaryAnswer" ThisKey="Id" OtherKey="QuestionId" Type="BinaryAnswer" />
+      <Association Name="Question_GradeAnswer" Member="GradeAnswer" ThisKey="Id" OtherKey="QuestionId" Type="GradeAnswer" />
+      <Association Name="Question_QuestionStage" Member="QuestionStage" ThisKey="Id" OtherKey="QuestionId" Type="QuestionStage" />
+      <Association Name="Question_TextAnswer" Member="TextAnswer" ThisKey="Id" OtherKey="QuestionId" Type="TextAnswer" />
+    </Type>
+  </Table>
+  <Table Name="QuestionStage">
+    <Type Name="QuestionStage">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StageNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Question_QuestionStage" Member="Question" ThisKey="QuestionId" OtherKey="Id" Type="Question" IsForeignKey="true" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="TextAnswer">
+    <Type Name="TextAnswer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FormId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Form_TextAnswer" Member="Form" ThisKey="FormId" OtherKey="Id" Type="Form" IsForeignKey="true" DeleteOnNull="true" />
+      <Association Name="Question_TextAnswer" Member="Question" ThisKey="QuestionId" OtherKey="Id" Type="Question" IsForeignKey="true" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>
