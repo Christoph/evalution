@@ -52,9 +52,33 @@ namespace TheNewEngine.Datalayer
         [Test]
         public void InsertGradeQuestions()
         {
-            mExpectedCount = 2;
+            mExpectedCount = 7;
             mExpectedStageCount = 1;
             mDatabaseInitializer.InsertGradeQuestions();
+        }
+
+        [Test]
+        public void InsertFirstYES_NOQuestions()
+        {
+            mExpectedCount = 3;
+            mExpectedStageCount = 1;
+            mDatabaseInitializer.InsertFirstYES_NOQuestions();
+        }
+
+        [Test]
+        public void InsertFillInQuestions()
+        {
+            mExpectedCount = 2;
+            mExpectedStageCount = 1;
+            mDatabaseInitializer.InsertFillInQuestions();
+        }
+
+        [Test]
+        public void InsertSecondYES_NOQuestions()
+        {
+            mExpectedCount = 4;
+            mExpectedStageCount = 1;
+            mDatabaseInitializer.InsertSecondYES_NOQuestions();
         }
     }
 }
