@@ -15,7 +15,11 @@ namespace TheNewEngine.Datalayer
 
         public void InitDb()
         {
+            InsertFillInQuestions();
+            InsertFirstYES_NOQuestions();
+            InsertGradeQuestions();
             InsertQuestionSetOne();
+            InsertSecondYES_NOQuestions();
         }
 
         internal void InsertQuestionSetOne()
@@ -107,7 +111,7 @@ namespace TheNewEngine.Datalayer
             };
 
             var entities = questions.Select(
-                text => new Question()
+                text => new Question
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Binary,
@@ -127,7 +131,7 @@ namespace TheNewEngine.Datalayer
             };
 
             var entities = questions.Select(
-                text => new Question()
+                text => new Question
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Binary,
@@ -145,7 +149,7 @@ namespace TheNewEngine.Datalayer
             };
 
             var entities = questions.Select(
-                text => new Question()
+                text => new Question
                 {
                     Text = text,
                     AnswerType = (int) AnswerType.Text,
