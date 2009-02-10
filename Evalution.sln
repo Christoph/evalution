@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalayer", "src\Datalayer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Datalayer", "src\Test.Datalayer\Test.Datalayer.csproj", "{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "src\Presentation\Presentation.csproj", "{EABB34F2-2E77-466E-B35E-5E6E0C28AA46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Presentation", "src\Test.Presentation\Test.Presentation.csproj", "{04233740-ADA0-4CA9-A696-5F64E6149BE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EABB34F2-2E77-466E-B35E-5E6E0C28AA46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABB34F2-2E77-466E-B35E-5E6E0C28AA46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABB34F2-2E77-466E-B35E-5E6E0C28AA46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABB34F2-2E77-466E-B35E-5E6E0C28AA46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04233740-ADA0-4CA9-A696-5F64E6149BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04233740-ADA0-4CA9-A696-5F64E6149BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04233740-ADA0-4CA9-A696-5F64E6149BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04233740-ADA0-4CA9-A696-5F64E6149BE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

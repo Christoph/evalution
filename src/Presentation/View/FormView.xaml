@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Presentation.View.FormView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="177" Width="300">
+    <Grid Margin="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--NAME-->
+        <Label 
+          Grid.Row="0" Grid.Column="0" 
+          Content="Name:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=Nametxt}"
+          />
+        <TextBox 
+          x:Name="Nametxt"
+          Grid.Row="0" Grid.Column="2" 
+          Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" 
+          />
+        
+        <!--SCHOOL-->
+        <Label 
+          Grid.Row="2" Grid.Column="0" 
+          Content="School:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=Schooltxt}"
+          />
+        <TextBox 
+          x:Name="Schooltxt"
+          Grid.Row="2" Grid.Column="2" 
+          Text="{Binding Path=School, UpdateSourceTrigger=PropertyChanged}" 
+          />
+        
+        <!--Gender-->
+        <Label 
+          Grid.Row="4" Grid.Column="0" 
+          Content="Gender:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=GenderCb}"
+          />
+        <CheckBox 
+          x:Name="GenderCb"
+          Grid.Row="4" Grid.Column="2" 
+          IsChecked="{Binding Path=Gender, UpdateSourceTrigger=PropertyChanged}" 
+          />
+        
+        <!--SaveButton-->
+        <Button 
+            Content="Save"
+            Grid.Row="6" Grid.Column="2"
+            Command="{Binding Path=SaveCommand}"
+        />
+    </Grid>
+</UserControl>
