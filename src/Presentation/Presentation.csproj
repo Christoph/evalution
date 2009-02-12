@@ -105,6 +105,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\GradeQuestionViewModel.cs" />
+    <Compile Include="ViewModels\TextQuestionViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="View\BinaryQuestionView.xaml.cs">
       <DependentUpon>BinaryQuestionView.xaml</DependentUpon>
