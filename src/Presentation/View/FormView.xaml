@@ -22,7 +22,7 @@
         <!--NAME-->
         <Label 
           Grid.Row="0" Grid.Column="0" 
-          Content="Name:" 
+          Content="_Name:" 
           HorizontalAlignment="Right"
           Target="{Binding ElementName=Nametxt}"
           />
@@ -35,7 +35,7 @@
         <!--SCHOOL-->
         <Label 
           Grid.Row="2" Grid.Column="0" 
-          Content="School:" 
+          Content="_School:" 
           HorizontalAlignment="Right"
           Target="{Binding ElementName=Schooltxt}"
           />
@@ -48,7 +48,7 @@
         <!--Gender-->
         <Label 
           Grid.Row="4" Grid.Column="0" 
-          Content="Gender:" 
+          Content="_Gender:" 
           HorizontalAlignment="Right"
           Target="{Binding ElementName=GenderCb}"
           />

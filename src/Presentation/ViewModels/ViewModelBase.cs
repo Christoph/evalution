@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Presentation
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -61,6 +61,23 @@ namespace Presentation
 
                 Debug.Fail(msg);
             }
+        }
+
+        /// <summary>
+        /// Invoked when this object is being removed from the application
+        /// and will be subject to garbage collection.
+        /// </summary>
+        public void Dispose()
+        {
+            OnDispose();
+        }
+
+        /// <summary>
+        /// Child classes can override this method to perform 
+        /// clean-up logic, such as removing event handlers.
+        /// </summary>
+        protected virtual void OnDispose()
+        {
         }
     }
 }

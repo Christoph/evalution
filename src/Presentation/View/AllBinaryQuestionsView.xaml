@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Presentation.View.AllBinaryQuestionsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:View="clr-namespace:Presentation.View"
+    Height="300" Width="300">
+
+    <UserControl.Resources>
+        <CollectionViewSource
+            x:Key="AllQuestions" 
+            Source="{Binding Path=Questions}">
+        </CollectionViewSource>
+    </UserControl.Resources>
+    
+    <Grid>
+        <ListView
+            ItemsSource="{Binding}"
+            DataContext="{StaticResource AllQuestions}">
+                        
+            <!--<View:BinaryQuestionView DataContext="{Binding}">
+                    
+            </View:BinaryQuestionView>-->
+        </ListView>
+    </Grid>
+</UserControl>

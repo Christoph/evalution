@@ -10,6 +10,12 @@ namespace Presentation
             mBinaryQuestion = binaryQuestion;
         }
 
+        public BinaryQuestionViewModel(BinaryQuestion binaryQuestion, 
+            BinaryQuestionRepository repository)
+        {
+            mBinaryQuestion = binaryQuestion;
+        }
+        
         public string Question
         {
             get { return mBinaryQuestion.Question; }
@@ -38,6 +44,11 @@ namespace Presentation
 
                 OnPropertyChanged("IsTrue");
             }
+        }
+
+        public override string ToString()
+        {
+            return Question;
         }
     }
 }

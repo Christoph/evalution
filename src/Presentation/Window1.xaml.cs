@@ -39,6 +39,17 @@ namespace Presentation
 
             Grid.Children.Add(formView);
 
+
+            using (var dbi = new DatabaseInitializer("Db.sdf"))
+                dbi.InitDb();
+
+            var binaryQuestionsRepository = new BinaryQuestionRepository(new Db("Db.sdf"));
+            var allBinaryQuestionsView = new AllBinaryQuestionsView();
+            var allBinaryQuestionsViewModel = new AllBinaryQuestionsViewModel(
+                binaryQuestionsRepository);
+            allBinaryQuestionsView.DataContext = allBinaryQuestionsViewModel;
+            Grid.Children.Add(allBinaryQuestionsView);
+
             var binaryQuestionView = new BinaryQuestionView();
 
             var question = new BinaryQuestion() {Question = "die Doppelhaushälfte"};
