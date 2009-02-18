@@ -25,14 +25,14 @@ namespace Presentation
         {
             InitializeComponent();
 
-            var formView = new FormView();
+            var formView = new QuestionFormView();
 
             var form = new Form
             {
                 Name = "Chri*"
             };
 
-            var formViewModel = new FormViewModel(form, 
+            var formViewModel = new QuestionFormViewModel(form, 
                 new FormRepository(new Db("Db.sdf")));
 
             formView.DataContext = formViewModel;
@@ -47,7 +47,7 @@ namespace Presentation
 
             binaryQuestionView.DataContext = binaryQustionViewModel;
 
-            Grid.Children.Add(binaryQuestionView);
+//            Grid.Children.Add(binaryQuestionView);
         }
     }
 }

@@ -17,9 +17,9 @@ namespace Presentation.View
     /// <summary>
     /// Interaction logic for FormView.xaml
     /// </summary>
-    public partial class FormView : UserControl
+    public partial class QuestionFormView : UserControl
     {
-        public FormView()
+        public QuestionFormView()
         {
             InitializeComponent();
         }

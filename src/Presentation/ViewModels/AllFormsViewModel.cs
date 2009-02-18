@@ -7,12 +7,12 @@ namespace Presentation
     {
         private readonly FormRepository mFormRepository;
 
-        public ObservableCollection<FormViewModel> Forms { get; private set; }
+        public ObservableCollection<QuestionFormViewModel> Forms { get; private set; }
 
         public AllFormsViewModel(FormRepository formRepository)
         {
             mFormRepository = formRepository;
-            Forms = new ObservableCollection<FormViewModel>();
+            Forms = new ObservableCollection<QuestionFormViewModel>();
         }
     }
 }

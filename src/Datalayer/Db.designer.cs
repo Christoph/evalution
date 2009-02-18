@@ -20,6 +20,7 @@ namespace TheNewEngine.Datalayer
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
+    using Domain;
 	
 	
 	public partial class Db : System.Data.Linq.DataContext
@@ -339,7 +340,7 @@ namespace TheNewEngine.Datalayer
 	}
 	
 	[Table()]
-	public partial class Form : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Form : INotifyPropertyChanging, INotifyPropertyChanged, IQuestionForm
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
