@@ -1,4 +1,4 @@
-namespace TheNewEngine.Datalayer
+namespace Domain
 {
     public enum Stage
     {

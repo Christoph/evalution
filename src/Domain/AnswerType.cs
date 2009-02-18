@@ -1,6 +1,6 @@
 using System;
 
-namespace TheNewEngine.Datalayer
+namespace Domain
 {
     [Flags]
     public enum AnswerType

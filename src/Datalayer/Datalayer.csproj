@@ -67,7 +67,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnswerType.cs" />
     <Compile Include="BinaryQuestion.cs" />
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Db.designer.cs">
@@ -78,7 +77,6 @@
     <Compile Include="FormRepository.cs" />
     <Compile Include="GradeQuestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stage.cs" />
     <Compile Include="TextQuestion.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +135,12 @@
     <None Include="Db.dbml.layout">
       <DependentUpon>Db.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{2AED8586-21F9-42DC-B12D-72C2DC06864E}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
