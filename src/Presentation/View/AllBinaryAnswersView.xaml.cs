@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Presentation.View
 {
     /// <summary>
-    /// Interaction logic for BinaryQuestionView.xaml
+    /// Interaction logic for AllBinaryAnswersView.xaml
     /// </summary>
-    public partial class BinaryQuestionView : UserControl
+    public partial class AllBinaryAnswersView : UserControl
     {
-        public BinaryQuestionView()
+        public AllBinaryAnswersView()
         {
             InitializeComponent();
         }

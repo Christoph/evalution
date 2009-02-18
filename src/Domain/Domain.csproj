@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnswerType.cs" />
+    <Compile Include="IAnswer.cs" />
     <Compile Include="IGradeAnswer.cs" />
     <Compile Include="ITextAnswer.cs" />
     <Compile Include="IBinaryAnswer.cs" />

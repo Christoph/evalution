@@ -66,7 +66,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\BinaryQuestionView.xaml">
+    <Page Include="View\AllBinaryAnswersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,8 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DelegatedCommand.cs" />
+    <Compile Include="ViewModels\AllBinaryAnswersViewModel.cs" />
     <Compile Include="ViewModels\AllFormsViewModel.cs" />
-    <Compile Include="ViewModels\BinaryQuestionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -104,12 +104,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\BinaryAnswerViewModel.cs" />
     <Compile Include="ViewModels\GradeQuestionViewModel.cs" />
     <Compile Include="ViewModels\QuestionFormViewModel.cs" />
     <Compile Include="ViewModels\TextQuestionViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="View\BinaryQuestionView.xaml.cs">
-      <DependentUpon>BinaryQuestionView.xaml</DependentUpon>
+    <Compile Include="View\AllBinaryAnswersView.xaml.cs">
+      <DependentUpon>AllBinaryAnswersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QuestionFormView.xaml.cs">
       <DependentUpon>QuestionFormView.xaml</DependentUpon>

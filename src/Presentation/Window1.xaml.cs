@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Domain;
 using Presentation.View;
 using TheNewEngine.Datalayer;
 
@@ -37,17 +38,49 @@ namespace Presentation
 
             formView.DataContext = formViewModel;
 
-            Grid.Children.Add(formView);
+            Stack.Children.Add(formView);
 
-            var binaryQuestionView = new BinaryQuestionView();
+            var allBinaryAnswersView = new AllBinaryAnswersView();
+            var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(
+                new Repo());
+            allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
 
-            var question = new BinaryQuestion() {Question = "die Doppelhaushälfte"};
+            Stack.Children.Add(allBinaryAnswersView);
+        }
 
-            var binaryQustionViewModel = new BinaryQuestionViewModel(question);
+        private class BinaryAnswer : IBinaryAnswer
+        {
+            public IQuestion Question { get; set; }
 
-            binaryQuestionView.DataContext = binaryQustionViewModel;
+            public int Id { get; set; }
 
-//            Grid.Children.Add(binaryQuestionView);
+            public bool? Answer { get; set; }
+        }
+
+        private class Question : IQuestion
+        {
+            public int Id { get; set; }
+
+            public string Text { get; set; }
+
+            public int AnswerType { get; set; }
+        }
+
+        private class Repo : IBinaryAnswerRepository
+        {
+            public IEnumerable<IBinaryAnswer> GetAll()
+            {
+                return new[]
+                       {
+                           new BinaryAnswer {Question = new Question {Text = "First Q"}},
+                           new BinaryAnswer {Question = new Question {Text = "Question 2"}}
+                       };
+            }
+
+            public void Insert(IBinaryAnswer item)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

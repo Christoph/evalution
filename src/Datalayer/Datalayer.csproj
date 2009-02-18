@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="FormRepository.cs" />
     <Compile Include="GradeQuestion.cs" />
+    <Compile Include="IBinaryAnswerRepository.cs" />
     <Compile Include="IQuestionFormRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
