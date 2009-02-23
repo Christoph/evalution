@@ -2,7 +2,30 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="Auto" Width="Auto">
-    <Grid>
-        <Label Content="TODO"/> 
+    <Grid Margin="4">
+        <StackPanel Orientation="Horizontal">
+              <!--Question-->
+            <Label 
+              Content="_Question:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=Questiontxt}"
+              />
+            <TextBox 
+              Width="200"
+              x:Name="Questiontxt"
+              Text="{Binding Path=Question, UpdateSourceTrigger=PropertyChanged}" 
+              />
+            <!--Answer-->
+            <Label 
+              Content="_Answer:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=AnswerCb}"
+              />
+            <CheckBox 
+              x:Name="AnswerCb"
+              VerticalAlignment="Center" 
+              IsChecked="{Binding Path=Answer, UpdateSourceTrigger=PropertyChanged}" 
+              />  
+        </StackPanel>
     </Grid>
 </UserControl>

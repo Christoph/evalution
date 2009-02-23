@@ -101,7 +101,7 @@
           Grid.Row="2" Grid.Column="6" VerticalAlignment="Center" 
           IsChecked="{Binding Path=Gender, UpdateSourceTrigger=PropertyChanged}" 
           />
-
+        
         <!--Grade-->
         <Label 
           Grid.Row="4" Grid.Column="4" 

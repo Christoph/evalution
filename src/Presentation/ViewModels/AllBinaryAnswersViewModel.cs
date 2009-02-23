@@ -15,7 +15,7 @@ namespace Presentation
         public AllBinaryAnswersViewModel(IBinaryAnswerRepository binaryAnswerRepository)
         {
             mBinaryAnswerRepository = binaryAnswerRepository;
-
+            
             Answers = from answer in mBinaryAnswerRepository.GetAll()
                 select new BinaryAnswerViewModel(answer);
         }
