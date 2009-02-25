@@ -46,12 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnswerType.cs" />
-    <Compile Include="IAnswer.cs" />
-    <Compile Include="IGradeAnswer.cs" />
-    <Compile Include="ITextAnswer.cs" />
-    <Compile Include="IBinaryAnswer.cs" />
-    <Compile Include="IQuestion.cs" />
-    <Compile Include="IQuestionForm.cs" />
+    <Compile Include="Interfaces\IAnswer.cs" />
+    <Compile Include="Interfaces\IGradeAnswer.cs" />
+    <Compile Include="Interfaces\ITextAnswer.cs" />
+    <Compile Include="Interfaces\IBinaryAnswer.cs" />
+    <Compile Include="Interfaces\IQuestion.cs" />
+    <Compile Include="Interfaces\IQuestionForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stage.cs" />
   </ItemGroup>

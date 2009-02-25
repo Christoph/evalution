@@ -17,6 +17,13 @@ Height="Auto" Width="Auto">
             <CheckBox IsChecked="{Binding Path=Answer}"/>
         </DataTemplate>
 
+        <DataTemplate x:Key="QATemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Question}"/>
+                <CheckBox IsChecked="{Binding Path=Answer}"/>
+            </StackPanel>
+        </DataTemplate>
+        
     </UserControl.Resources>
 
     <ListView ItemsSource="{Binding Source={StaticResource BinaryAnswerViewModels}}">
