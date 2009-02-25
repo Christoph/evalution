@@ -70,6 +70,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AllGradeAnswersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\QuestionFormView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,14 +112,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\AllGradeAnswersViewModel.cs" />
     <Compile Include="ViewModels\AllTextAnswersViewModel.cs" />
     <Compile Include="ViewModels\BinaryAnswerViewModel.cs" />
-    <Compile Include="ViewModels\GradeQuestionViewModel.cs" />
+    <Compile Include="ViewModels\GradeAnswerViewModel.cs" />
     <Compile Include="ViewModels\QuestionFormViewModel.cs" />
     <Compile Include="ViewModels\TextAnswerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="View\AllBinaryAnswersView.xaml.cs">
       <DependentUpon>AllBinaryAnswersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AllGradeAnswersView.xaml.cs">
+      <DependentUpon>AllGradeAnswersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QuestionFormView.xaml.cs">
       <DependentUpon>QuestionFormView.xaml</DependentUpon>

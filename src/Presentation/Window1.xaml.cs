@@ -58,6 +58,15 @@ namespace Presentation
             allTextAnswersView.DataContext = allTextAnswersViewModel;
 
             Stack.Children.Add(allTextAnswersView);
+
+            //GradeAnswerView
+
+            var allGradeAnswersView = new AllGradeAnswersView();
+            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(
+                new GradeRepo());
+            allGradeAnswersView.DataContext = allGradeAnswersViewModel;
+
+            Stack.Children.Add(allGradeAnswersView);
         }
 
         private class BinaryAnswer : IBinaryAnswer
@@ -113,6 +122,23 @@ namespace Presentation
             }
         }
 
+        private class GradeRepo : IGradeAnswerRepository
+        {
+            public IEnumerable<IGradeAnswer> GetAll()
+            {
+                return new[]
+                       {
+                           new GradeAnswer() {Question = new Question {Text = "Grade q 1"}},
+                           new GradeAnswer() {Question = new Question {Text = "Grade q 2"}}
+                       };
+            }
+
+            public void Insert(IGradeAnswer item)
+            {
+                throw new System.NotImplementedException();
+            }
+        }
+
         private class TextAnswer : ITextAnswer
         {
             public IQuestion Question { get; set; }
@@ -120,6 +146,15 @@ namespace Presentation
             public int Id { get; set; }
 
             public string Answer { get; set; }
+        }
+
+        private class GradeAnswer : IGradeAnswer
+        {
+            public IQuestion Question { get; set; }
+
+            public int Id { get; set; }
+
+            public int? Answer { get; set; }
         }
     }
 }

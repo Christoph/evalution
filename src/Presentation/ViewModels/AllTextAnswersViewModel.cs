@@ -8,7 +8,7 @@ namespace Presentation
     {
         private readonly ITextAnswerRepository mTextAnswerRepository;
 
-        public IEnumerable<TextAnswerViewModel> Answers { get; set; }
+        public IEnumerable<TextAnswerViewModel> Answers { get; private set; }
 
         public AllTextAnswersViewModel(ITextAnswerRepository textAnswerRepository)
         {

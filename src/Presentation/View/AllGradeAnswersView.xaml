@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Presentation.View.AllGradeAnswersView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="Auto" Width="Auto">
+    
+    <UserControl.Resources>
+        <CollectionViewSource
+            x:Key="GradeAnswerViewModels"
+            Source="{Binding Path=Answers, 
+            UpdateSourceTrigger=PropertyChanged}"
+        />
+
+        <DataTemplate x:Key="QuestionTemplate">
+            <TextBlock Text="{Binding Path=Question}" Width="200"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GradeTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="1 "/>
+                <RadioButton>
+                    
+                </RadioButton>
+                <TextBlock Text="2 "/>
+                <RadioButton>
+
+                </RadioButton>
+                <TextBlock Text="3 "/>
+                <RadioButton>
+
+                </RadioButton>
+                <TextBlock Text="4 "/>
+                <RadioButton>
+
+                </RadioButton>
+                <TextBlock Text="5 "/>
+                <RadioButton>
+
+                </RadioButton>
+            </StackPanel>
+        </DataTemplate>
+
+    </UserControl.Resources>
+    
+    <ListView ItemsSource="{Binding Source={StaticResource GradeAnswerViewModels}}">
+        <ListView.Resources>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+        </ListView.Resources>
+        <ListView.View>
+            <GridView>
+                <GridView.Columns>
+                    <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
+                    <GridViewColumn Header="Answer" CellTemplate="{StaticResource GradeTemplate}"/>
+                </GridView.Columns>
+            </GridView>
+        </ListView.View>
+    </ListView>
+    
+</UserControl>

@@ -1,40 +1,41 @@
+using Domain;
 using TheNewEngine.Datalayer;
 namespace Presentation
 {
     public class GradeAnswerViewModel : ViewModelBase
     {
-        private readonly GradeQuestion mGradeQuestion;
+        private readonly IGradeAnswer mGradeAnswer;
 
-        public GradeAnswerViewModel(GradeQuestion gradeQuestion)
+        public GradeAnswerViewModel(IGradeAnswer gradeAnswer)
         {
-            this.mGradeQuestion = gradeQuestion;
+            this.mGradeAnswer = gradeAnswer;
         }
 
         public string Question
         {
-            get { return mGradeQuestion.Question; }
+            get { return mGradeAnswer.Question.Text; }
             set
             {
-                if (mGradeQuestion.Question == value)
+                if (mGradeAnswer.Question.Text == value)
                 {
                     return;
                 }
-                mGradeQuestion.Question = value;
+                mGradeAnswer.Question.Text = value;
 
                 OnPropertyChanged("Question");
             }
         }
 
-        public int Grade
+        public int? Grade
         {
-            get { return mGradeQuestion.Grade; }
+            get { return mGradeAnswer.Answer; }
             set
             {
-                if (mGradeQuestion.Grade == value)
+                if (mGradeAnswer.Answer == value)
                 {
                     return;
                 }
-                mGradeQuestion.Grade = value;
+                mGradeAnswer.Answer = value;
 
                 OnPropertyChanged("Grade");
             }
