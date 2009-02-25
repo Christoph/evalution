@@ -1,25 +1,25 @@
-﻿<UserControl x:Class="Presentation.View.AllBinaryAnswersView"
-xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-Height="Auto" Width="Auto">
+﻿<UserControl x:Class="Presentation.View.AllTextAnswersView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="Auto" Width="Auto">
     <UserControl.Resources>
         <CollectionViewSource
-            x:Key="BinaryAnswerViewModels"
+            x:Key="TextAnswerViewModels"
             Source="{Binding Path=Answers, 
             UpdateSourceTrigger=PropertyChanged}"
         />
 
         <DataTemplate x:Key="QuestionTemplate">
-            <TextBlock Text="{Binding Path=Question}" Width="200"/>
+            <TextBlock Text="{Binding Path=Question}" MinWidth="200"/>
         </DataTemplate>
 
-        <DataTemplate x:Key="BinaryTemplate">
-            <CheckBox IsChecked="{Binding Path=Answer}"/>
+        <DataTemplate x:Key="TextTemplate">
+            <TextBox Text="{Binding Path=Answer}" MinWidth="200"/>
         </DataTemplate>
-        
+
     </UserControl.Resources>
-
-    <ListView ItemsSource="{Binding Source={StaticResource BinaryAnswerViewModels}}">
+    
+    <ListView ItemsSource="{Binding Source={StaticResource TextAnswerViewModels}}">
         <ListView.Resources>
             <Style TargetType="{x:Type TextBlock}">
                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -29,7 +29,7 @@ Height="Auto" Width="Auto">
             <GridView>
                 <GridView.Columns>
                     <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
-                    <GridViewColumn Header="Answer" CellTemplate="{StaticResource BinaryTemplate}"/>
+                    <GridViewColumn Header="Answer" CellTemplate="{StaticResource TextTemplate}"/>
                 </GridView.Columns>
             </GridView>
         </ListView.View>
