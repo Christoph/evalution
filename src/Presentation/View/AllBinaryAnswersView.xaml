@@ -20,11 +20,6 @@ Height="Auto" Width="Auto">
     </UserControl.Resources>
 
     <ListView ItemsSource="{Binding Source={StaticResource BinaryAnswerViewModels}}">
-        <ListView.Resources>
-            <Style TargetType="{x:Type TextBlock}">
-                <Setter Property="HorizontalAlignment" Value="Center" />
-            </Style>
-        </ListView.Resources>
         <ListView.View>
             <GridView>
                 <GridView.Columns>

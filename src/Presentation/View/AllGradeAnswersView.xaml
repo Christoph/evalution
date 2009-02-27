@@ -42,11 +42,6 @@
     </UserControl.Resources>
     
     <ListView ItemsSource="{Binding Source={StaticResource GradeAnswerViewModels}}">
-        <ListView.Resources>
-            <Style TargetType="{x:Type TextBlock}">
-                <Setter Property="HorizontalAlignment" Value="Center" />
-            </Style>
-        </ListView.Resources>
         <ListView.View>
             <GridView>
                 <GridView.Columns>
