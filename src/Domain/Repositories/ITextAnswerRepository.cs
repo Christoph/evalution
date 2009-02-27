@@ -1,6 +1,7 @@
 using Domain;
+using Domain.Repositories;
 
-namespace TheNewEngine.Datalayer
+namespace Domain.Repositories
 {
     public interface ITextAnswerRepository : IRepository<ITextAnswer>
     {

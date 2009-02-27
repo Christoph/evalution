@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TheNewEngine.Datalayer
+namespace Domain.Repositories
 {
     public interface IRepository<T>
     {

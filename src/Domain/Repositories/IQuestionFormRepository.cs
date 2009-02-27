@@ -1,5 +1,6 @@
 using Domain;
-namespace TheNewEngine.Datalayer
+
+namespace Domain.Repositories
 {
     public interface IQuestionFormRepository : IRepository<IQuestionForm>
     {

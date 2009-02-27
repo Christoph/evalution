@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Domain;
 using System.Linq;
+using Domain.Repositories;
 
 namespace TheNewEngine.Datalayer
 {

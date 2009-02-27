@@ -1,6 +1,6 @@
 using Domain;
 
-namespace TheNewEngine.Datalayer
+namespace Domain.Repositories
 {
     public interface IGradeAnswerRepository : IRepository<IGradeAnswer>
     {
