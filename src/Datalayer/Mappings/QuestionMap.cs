@@ -9,6 +9,11 @@ namespace TheNewEngine.Datalayer.Mappings
             Id(x => x.Id);
             Map(x => x.Text);
             Map(x => x.AnswerType);
+
+            HasMany(x => x.TextAnswer);
+            HasMany(x => x.BinaryAnswer);
+            HasMany(x => x.GradeAnswer);
+            HasMany(x => x.QuestionStage);
         }
     }
 }
