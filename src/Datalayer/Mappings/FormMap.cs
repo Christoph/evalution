@@ -15,9 +15,12 @@ namespace TheNewEngine.Datalayer.Mappings
             Map(x => x.Name);
             Map(x => x.School);
 
-            HasMany(x => x.TextAnswer);
-            HasMany(x => x.BinaryAnswer);
-            HasMany(x => x.GradeAnswer);
+            HasMany(x => x.TextAnswer)
+                .Cascade.All();
+            HasMany(x => x.BinaryAnswer)
+                .Cascade.All();
+            HasMany(x => x.GradeAnswer)
+                .Cascade.All();
         }
     }
 }
