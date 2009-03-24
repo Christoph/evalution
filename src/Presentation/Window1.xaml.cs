@@ -28,20 +28,20 @@ namespace Presentation
             InitializeComponent();
 
 
-            //QuestionFormView
-            var formView = new QuestionFormView();
-
-            var form = new Form
-            {
-                Name = "Chri*"
-            };
-
-            var formViewModel = new QuestionFormViewModel(form, 
-                new FormRepository(new Db("Db.sdf")));
-
-            formView.DataContext = formViewModel;
-
-            Stack.Children.Add(formView);
+//            //QuestionFormView
+//            var formView = new QuestionFormView();
+//
+//            var form = new Form
+//            {
+//                Name = "Chri*"
+//            };
+//
+//            var formViewModel = new QuestionFormViewModel(form, 
+//                new FormRepository(new Db("Db.sdf")));
+//
+//            formView.DataContext = formViewModel;
+//
+//            Stack.Children.Add(formView);
 
             //AllBinaryAnswersView
             var allBinaryAnswersView = new AllBinaryAnswersView();

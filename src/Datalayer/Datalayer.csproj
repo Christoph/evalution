@@ -82,7 +82,13 @@
       <DependentUpon>Db.dbml</DependentUpon>
     </Compile>
     <Compile Include="DbAccess.cs" />
+    <Compile Include="Entities\Form.cs" />
+    <Compile Include="Entities\Question.cs" />
+    <Compile Include="Entities\QuestionStage.cs" />
     <Compile Include="FormRepository.cs" />
+    <Compile Include="Mappings\FormMap.cs" />
+    <Compile Include="Mappings\QuestionMap.cs" />
+    <Compile Include="Mappings\QuestionStageMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
