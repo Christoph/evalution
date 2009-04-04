@@ -2,7 +2,7 @@ namespace Domain
 {
     public interface IGradeAnswer : IAnswer
     {
-        int Id { get; set; }
+        int Id { get; }
 
         int? Answer { get; set; }
     }

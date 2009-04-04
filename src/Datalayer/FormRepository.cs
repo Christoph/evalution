@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Domain;
 using System.Linq;
@@ -7,22 +8,14 @@ namespace TheNewEngine.Datalayer
 {
     public class FormRepository : IQuestionFormRepository
     {
-        private readonly Db mDb;
-
-        public FormRepository(Db db)
+        public IEnumerable<IForm> GetAll()
         {
-            mDb = db;
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<IQuestionForm> GetAll()
+        public void Insert(IForm item)
         {
-            return mDb.Form.Cast<IQuestionForm>();
-        }
-
-        public void Insert(IQuestionForm form)
-        {
-            mDb.Form.InsertOnSubmit((Form)form);
-            mDb.SubmitChanges();
+            throw new NotImplementedException();
         }
     }
 }

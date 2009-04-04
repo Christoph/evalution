@@ -1,4 +1,5 @@
 using FluentNHibernate.Mapping;
+using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer.Mappings
 {
@@ -15,11 +16,11 @@ namespace TheNewEngine.Datalayer.Mappings
             Map(x => x.Name);
             Map(x => x.School);
 
-            HasMany(x => x.TextAnswer)
+            HasMany(x => x.TextAnswers)
                 .Cascade.All();
-            HasMany(x => x.BinaryAnswer)
+            HasMany(x => x.BinaryAnswers)
                 .Cascade.All();
-            HasMany(x => x.GradeAnswer)
+            HasMany(x => x.GradeAnswers)
                 .Cascade.All();
         }
     }

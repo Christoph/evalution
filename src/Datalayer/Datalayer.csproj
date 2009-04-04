@@ -76,12 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseInitializer.cs" />
-    <Compile Include="Db.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Db.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DbAccess.cs" />
+    <Compile Include="Entities\AnswerBase.cs" />
     <Compile Include="Entities\BinaryAnswer.cs" />
     <Compile Include="Entities\Form.cs" />
     <Compile Include="Entities\GradeAnswer.cs" />
@@ -141,18 +137,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Db.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Db.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Db.dbml.layout">
-      <DependentUpon>Db.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

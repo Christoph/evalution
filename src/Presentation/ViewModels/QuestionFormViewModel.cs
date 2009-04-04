@@ -6,11 +6,11 @@ namespace Presentation
 {
     public class QuestionFormViewModel : ViewModelBase
     {
-        private readonly IQuestionForm mForm;
+        private readonly IForm mForm;
 
         private readonly IQuestionFormRepository mFormRepository;
 
-        public QuestionFormViewModel(IQuestionForm form, IQuestionFormRepository formRepository)
+        public QuestionFormViewModel(IForm form, IQuestionFormRepository formRepository)
         {
             mForm = form;
             mFormRepository = formRepository;

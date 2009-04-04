@@ -2,7 +2,7 @@ namespace Domain
 {
     public interface IQuestion
     {
-        int Id { get; set; }
+        int Id { get; }
 
         string Text { get; set; }
 

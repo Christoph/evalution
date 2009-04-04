@@ -2,7 +2,7 @@ namespace Domain
 {
     public interface IBinaryAnswer : IAnswer
     {
-        int Id { get; set; }
+        int Id { get;}
 
         bool? Answer { get; set; }
     }

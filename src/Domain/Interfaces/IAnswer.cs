@@ -2,6 +2,6 @@ namespace Domain
 {
     public interface IAnswer
     {
-        IQuestion Question { get; set; } 
+        IQuestion Question { get; } 
     }
 }

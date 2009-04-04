@@ -14,11 +14,11 @@ namespace TheNewEngine.Datalayer
         private static ISessionFactory _sessionFactory;
         private static Configuration _configuration;
 
-        public static ISessionFactory CreateSessionFactory()
+        public static ISessionFactory CreateSessionFactory(string dbPath)
         {
             return Fluently.Configure()
                 .Database(MsSqlCeConfiguration.Standard.ShowSql().ConnectionString(
-                    c => c.Is(@"data source=\" + DATABASE_PATH)))
+                    c => c.Is(@"data source=" + dbPath)))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<FormRepository>())
                 .ExposeConfiguration(c => _configuration = c)
                 .BuildSessionFactory();
@@ -26,10 +26,17 @@ namespace TheNewEngine.Datalayer
 
         public static ISession GetSessionForEmptyDatabase()
         {
+            return GetSessionForEmptyDatabase(DATABASE_PATH);
+        }
+
+        public static ISession GetSessionForEmptyDatabase(string dbPath)
+        {
             if (_sessionFactory == null)
             {
-                _sessionFactory = CreateSessionFactory();
-                new SchemaExport(_configuration).SetOutputFile(SQL_SCRIPT_PATH).Execute(true, false, false, true);
+                _sessionFactory = CreateSessionFactory(dbPath);
+                new SchemaExport(_configuration)
+                    .SetOutputFile(SQL_SCRIPT_PATH)
+                    .Execute(true, false, false, true);
             }
 
             new SchemaExport(_configuration).Create(false, true);

@@ -1,16 +1,17 @@
 using System.Collections.Generic;
+using Domain;
 
 namespace TheNewEngine.Datalayer.Entities
 {
-    public class Form
+    public class Form : IForm
     {
         public virtual int Id { get; private set; }
         public virtual string Name { get; set; }
         public virtual string School { get; set; }
         public virtual string Email { get; set; }
-        public virtual int Age { get; set; }
-        public virtual bool Gender { get; set; }
-        public virtual int Grade { get; set; }
+        public virtual int? Age { get; set; }
+        public virtual bool? Gender { get; set; }
+        public virtual int? Grade { get; set; }
         public virtual string Instrument { get; set; }
 
         public virtual IList<TextAnswer> TextAnswers { get; set; }
@@ -26,17 +27,17 @@ namespace TheNewEngine.Datalayer.Entities
 
         public virtual void AddTextAnswer(TextAnswer textAnswer)
         {
-            textAnswer.Form = this;
+            textAnswer.FormRelation = this;
             TextAnswers.Add(textAnswer);
         }
         public virtual void AddGradeAnswer(GradeAnswer gradeAnswer)
         {
-            gradeAnswer.Form = this;
+            gradeAnswer.FormRelation = this;
             GradeAnswers.Add(gradeAnswer);
         }
         public virtual void AddBinaryAnswer(BinaryAnswer binaryAnswer)
         {
-            binaryAnswer.Form = this;
+            binaryAnswer.FormRelation = this;
             BinaryAnswers.Add(binaryAnswer);
         }
     }

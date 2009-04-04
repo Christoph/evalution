@@ -1,10 +1,8 @@
+using Domain;
 namespace TheNewEngine.Datalayer.Entities
 {
-    public class BinaryAnswer
+    public class BinaryAnswer : AnswerBase, IBinaryAnswer
     {
-        public virtual int Id { get; private set; }
-        public virtual bool Answer { get; set; }
-        public virtual Form Form { get; set; }
-        public virtual Question Question { get; set; }
+        public virtual bool? Answer { get; set; }
     }
 }

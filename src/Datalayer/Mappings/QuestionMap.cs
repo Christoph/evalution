@@ -1,4 +1,5 @@
 using FluentNHibernate.Mapping;
+using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer.Mappings
 {
@@ -10,10 +11,10 @@ namespace TheNewEngine.Datalayer.Mappings
             Map(x => x.Text);
             Map(x => x.AnswerType);
 
-            HasMany(x => x.TextAnswer);
-            HasMany(x => x.BinaryAnswer);
-            HasMany(x => x.GradeAnswer);
-            HasMany(x => x.QuestionStage);
+            HasMany(x => x.TextAnswers);
+            HasMany(x => x.BinaryAnswers);
+            HasMany(x => x.GradeAnswers);
+            HasMany(x => x.QuestionStages);
         }
     }
 }

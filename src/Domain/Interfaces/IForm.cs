@@ -1,8 +1,8 @@
 namespace Domain
 {
-    public interface IQuestionForm
+    public interface IForm
     {
-        int Id { get; set; }
+        int Id { get; }
 
         string Name { get; set; }
 

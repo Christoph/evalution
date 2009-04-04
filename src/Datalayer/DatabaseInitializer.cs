@@ -2,16 +2,18 @@ using System.Data.Linq;
 using System.Linq;
 using System;
 using Domain;
+using NHibernate;
+using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer
 {
     public class DatabaseInitializer : IDisposable
     {
-        private Db mDb;
+        private readonly ISession mSession;
 
-        public DatabaseInitializer(string connectionString)
+        public DatabaseInitializer(ISession session)
         {
-            mDb = new Db(connectionString);
+            mSession = session;
         }
 
         public void InitDb()
@@ -44,19 +46,20 @@ namespace TheNewEngine.Datalayer
                 text => new Question
                 {
                     Text = text,
-                    AnswerType = (int)AnswerType.Binary,
-                    QuestionStage = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
+                    AnswerType = (int)AnswerType.Binary, 
+                    QuestionStages = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
                 });
-            mDb.Question.InsertAllOnSubmit(translations);
-
+            mSession.Save(translations);
+           
             var songs = questions.Select(
                 text => new Question
                 {
                     Text = text,
                     AnswerType = (int)(AnswerType.Binary | AnswerType.Song),
-                    QuestionStage = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
+                    QuestionStages = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
                 });
-            mDb.Question.InsertAllOnSubmit(songs);
+            mSession.Save(songs);
+            mSession.Flush();
         }
 
         /// <summary>
@@ -65,8 +68,7 @@ namespace TheNewEngine.Datalayer
         /// <filterpriority>2</filterpriority>
         public void Dispose()
         {
-            mDb.SubmitChanges();
-            mDb.Dispose();
+            mSession.Dispose();
         }
 
         internal void InsertGradeQuestions()
@@ -87,9 +89,10 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Grade,
-                    QuestionStage = CreateStages(Stage.Pre)
+                    QuestionStages = CreateStages(Stage.Pre)
                 });
-            mDb.Question.InsertAllOnSubmit(entities);
+            mSession.Save(entities);
+            mSession.Flush();
         }
 
         private static EntitySet<QuestionStage> CreateStages(params Stage[] stages)
@@ -116,9 +119,10 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Binary,
-                    QuestionStage = CreateStages(Stage.Pre)
+                    QuestionStages = CreateStages(Stage.Pre)
                 });
-            mDb.Question.InsertAllOnSubmit(entities);
+            mSession.Save(entities);
+            mSession.Flush();
         }
 
         internal void InsertSecondYES_NOQuestions()
@@ -136,9 +140,10 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Binary,
-                    QuestionStage = CreateStages(Stage.During)
+                    QuestionStages = CreateStages(Stage.During)
                 });
-            mDb.Question.InsertAllOnSubmit(entities);
+            mSession.Save(entities);
+            mSession.Flush();
         }
 
         internal void InsertFillInQuestions()
@@ -154,10 +159,11 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int) AnswerType.Text,
-                    QuestionStage = CreateStages(Stage.Pre)
+                    QuestionStages = CreateStages(Stage.Pre)
 
                 });
-            mDb.Question.InsertAllOnSubmit(entities);
+            mSession.Save(entities);
+            mSession.Flush();
         }
     }
 }

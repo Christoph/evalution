@@ -1,10 +1,8 @@
+using Domain;
 namespace TheNewEngine.Datalayer.Entities
 {
-    public class GradeAnswer
+    public class GradeAnswer : AnswerBase, IGradeAnswer
     {
-        public virtual int Id { get; private set; }
-        public virtual int Grade { get; set; }
-        public virtual Form Form { get; set; }
-        public virtual Question Question { get; set; }
+        public virtual int? Answer { get; set; }
     }
 }

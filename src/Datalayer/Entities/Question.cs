@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using Domain;
 
 namespace TheNewEngine.Datalayer.Entities
 {
-    public class Question
+    public class Question : IQuestion
     {
         public virtual int Id { get; private set; }
         public virtual string Text { get; set; }
@@ -23,17 +24,17 @@ namespace TheNewEngine.Datalayer.Entities
 
         public virtual void AddTextAnswer(TextAnswer textAnswer)
         {
-            textAnswer.Question = this;
+            textAnswer.QuestionRelation = this;
             TextAnswers.Add(textAnswer);
         }
         public virtual void AddGradeAnswer(GradeAnswer gradeAnswer)
         {
-            gradeAnswer.Question = this;
+            gradeAnswer.QuestionRelation = this;
             GradeAnswers.Add(gradeAnswer);
         }
         public virtual void AddBinaryAnswer(BinaryAnswer binaryAnswer)
         {
-            binaryAnswer.Question = this;
+            binaryAnswer.QuestionRelation = this;
             BinaryAnswers.Add(binaryAnswer);
         }
         public virtual void AddQuestionStage(QuestionStage questionStage)
