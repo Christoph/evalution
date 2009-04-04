@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
 using System;
@@ -49,8 +50,8 @@ namespace TheNewEngine.Datalayer
                     AnswerType = (int)AnswerType.Binary, 
                     QuestionStages = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
                 });
-            mSession.Save(translations);
-           
+            SaveList(translations);
+
             var songs = questions.Select(
                 text => new Question
                 {
@@ -58,8 +59,16 @@ namespace TheNewEngine.Datalayer
                     AnswerType = (int)(AnswerType.Binary | AnswerType.Song),
                     QuestionStages = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
                 });
-            mSession.Save(songs);
+            SaveList(songs);
             mSession.Flush();
+        }
+
+        private void SaveList<T>(IEnumerable<T> list)
+        {
+            foreach (var element in list)
+            {
+                mSession.Save(element);
+            }
         }
 
         /// <summary>
@@ -91,16 +100,18 @@ namespace TheNewEngine.Datalayer
                     AnswerType = (int)AnswerType.Grade,
                     QuestionStages = CreateStages(Stage.Pre)
                 });
-            mSession.Save(entities);
+            entities.Select(e => mSession.Save(e));
             mSession.Flush();
         }
 
-        private static EntitySet<QuestionStage> CreateStages(params Stage[] stages)
+        private List<QuestionStage> CreateStages(params Stage[] stages)
         {
-            var stagesEntity = new EntitySet<QuestionStage>();
+            var stagesEntity = new List<QuestionStage>();
             foreach (var stage in stages)
             {
-                stagesEntity.Add(new QuestionStage { StageNumber = (int)stage });    
+                var questionStage = new QuestionStage { StageNumber = (int)stage };
+                mSession.SaveOrUpdate(questionStage);
+                stagesEntity.Add(questionStage);
             }
             return stagesEntity;
         }
@@ -142,7 +153,7 @@ namespace TheNewEngine.Datalayer
                     AnswerType = (int)AnswerType.Binary,
                     QuestionStages = CreateStages(Stage.During)
                 });
-            mSession.Save(entities);
+            entities.Select(e => mSession.Save(e));
             mSession.Flush();
         }
 
@@ -162,7 +173,7 @@ namespace TheNewEngine.Datalayer
                     QuestionStages = CreateStages(Stage.Pre)
 
                 });
-            mSession.Save(entities);
+            entities.Select(e => mSession.Save(e));
             mSession.Flush();
         }
     }

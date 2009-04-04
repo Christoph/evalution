@@ -1,6 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MbUnit.Framework;
+using NHibernate;
+using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer
 {
@@ -13,14 +17,16 @@ namespace TheNewEngine.Datalayer
         private int mExpectedCount;
 
         private int mExpectedStageCount;
+
+        private ISession mSession;
         
         [SetUp]
         public void Setup()
         {
             mDbName = "TestDatabaseInitializer.sdf";
-            File.Copy("Db.sdf", mDbName);
-            var session = DbAccess.GetSessionForEmptyDatabase(mDbName);
-            mDatabaseInitializer = new DatabaseInitializer(session);
+            File.Copy(@"..\EmptyDb.sdf", mDbName);
+            mSession = DbAccess.GetSessionForEmptyDatabase(mDbName);
+            mDatabaseInitializer = new DatabaseInitializer(mSession);
         }
 
         [TearDown]
@@ -28,13 +34,11 @@ namespace TheNewEngine.Datalayer
         {
             try
             {
+                var session = DbAccess.CreateNewSession();
+                var list = session.CreateCriteria(typeof(Question)).List();
+                Assert.AreEqual(mExpectedCount, list.Count);
+                Assert.AreEqual(mExpectedStageCount, list.Cast<Question>().Min(question => question.QuestionStages.Count));
                 mDatabaseInitializer.Dispose();
-
-
-                //                var db = new Db(mDbName);
-//
-//                Assert.AreEqual(mExpectedCount, db.Question.Count());
-//                Assert.AreEqual(mExpectedStageCount, db.Question.Min(question => question.QuestionStage.Count));
             }
             finally
             {
@@ -48,6 +52,7 @@ namespace TheNewEngine.Datalayer
             mExpectedCount = 22;
             mExpectedStageCount = 4;
             mDatabaseInitializer.InsertQuestionSetOne();
+            mSession.Close();
         }
 
         [Test]

@@ -7,7 +7,7 @@ namespace TheNewEngine.Datalayer.Mappings
     {
         public QuestionStageMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).Access.AsProperty().GeneratedBy.Increment();
             Map(x => x.StageNumber);
             References(x => x.Question);
         }
