@@ -9,7 +9,7 @@ namespace TheNewEngine.Datalayer.Mappings
         {
             Id(x => x.Id);
             Map(x => x.Age);
-            Map(x => x.Email);
+            Map(x => x.Email).Nullable();
             Map(x => x.Gender);
             Map(x => x.Grade);
             Map(x => x.Instrument);

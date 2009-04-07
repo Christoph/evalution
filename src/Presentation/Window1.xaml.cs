@@ -13,8 +13,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Domain;
 using Domain.Repositories;
+using NHibernate;
 using Presentation.View;
 using TheNewEngine.Datalayer;
+using TheNewEngine.Datalayer.Entities;
+using TheNewEngine.Datalayer.Repositories;
+using System.IO;
 
 namespace Presentation
 {
@@ -26,27 +30,37 @@ namespace Presentation
         public Window1()
         {
             InitializeComponent();
+            string dbName = "Db.sdf";
+            bool newDb = !File.Exists(dbName);
+            if (newDb)
+            {
+                File.Copy(@"..\EmptyDb.sdf", dbName);
+                DbAccess.GetSessionForEmptyDatabase(dbName);
+            }
+            var sessionFactory = DbAccess.CreateSessionFactory(dbName);
+            ISession session = sessionFactory.OpenSession();
 
+            if (newDb)
+            {
+                new DatabaseInitializer(session).InitDb();
+            }
 
-//            //QuestionFormView
-//            var formView = new QuestionFormView();
-//
-//            var form = new Form
-//            {
-//                Name = "Chri*"
-//            };
-//
-//            var formViewModel = new QuestionFormViewModel(form, 
-//                new FormRepository(new Db("Db.sdf")));
-//
-//            formView.DataContext = formViewModel;
-//
-//            Stack.Children.Add(formView);
+            //QuestionFormView
+            var formView = new QuestionFormView();
+
+            
+            var form = new Form();
+            var formViewModel = new QuestionFormViewModel(form, 
+                new FormRepository(session));
+
+            formView.DataContext = formViewModel;
+
+            Stack.Children.Add(formView);
 
             //AllBinaryAnswersView
             var allBinaryAnswersView = new AllBinaryAnswersView();
-            var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(
-                new Repo());
+            var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(form,
+                new BinaryAnswerRepository(session));
             allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
 
             Stack.Children.Add(allBinaryAnswersView);
@@ -87,24 +101,24 @@ namespace Presentation
 
             public int AnswerType { get; set; }
         }
-
-        private class Repo : IBinaryAnswerRepository
-        {
-            public IEnumerable<IBinaryAnswer> GetAll()
-            {
-                return new[]
-                       {
-                           new BinaryAnswer {Question = new Question {Text = "First Q"}},
-                           new BinaryAnswer {Question = new Question {Text = "Question 2"}},
-                           new BinaryAnswer {Question = new Question {Text = "Question 3"}}
-                       };
-            }
-
-            public void Insert(IBinaryAnswer item)
-            {
-                throw new NotImplementedException();
-            }
-        }
+//
+//        private class Repo : IBinaryAnswerRepository
+//        {
+//            public IEnumerable<IBinaryAnswer> GetAll()
+//            {
+//                return new[]
+//                       {
+//                           new BinaryAnswer {Question = new Question {Text = "First Q"}},
+//                           new BinaryAnswer {Question = new Question {Text = "Question 2"}},
+//                           new BinaryAnswer {Question = new Question {Text = "Question 3"}}
+//                       };
+//            }
+//
+//            public void Insert(IBinaryAnswer item)
+//            {
+//                throw new NotImplementedException();
+//            }
+//        }
 
         private class TextRepo : ITextAnswerRepository
         {

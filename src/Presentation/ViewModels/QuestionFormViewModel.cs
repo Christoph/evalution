@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Domain;
 using Domain.Repositories;
@@ -14,6 +16,12 @@ namespace Presentation
         {
             mForm = form;
             mFormRepository = formRepository;
+
+            var forms = mFormRepository.GetAll();
+            if (forms.Count() != 0)
+            {
+                mForm = forms.First();
+            }
         }
 
         public string Name

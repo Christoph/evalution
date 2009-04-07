@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Domain;
 using Domain.Repositories;
 
 namespace Presentation
@@ -10,11 +11,11 @@ namespace Presentation
 
         public IEnumerable<BinaryAnswerViewModel> Answers { get; private set; }
 
-        public AllBinaryAnswersViewModel(IBinaryAnswerRepository binaryAnswerRepository)
+        public AllBinaryAnswersViewModel(IForm form, IBinaryAnswerRepository binaryAnswerRepository)
         {
             mBinaryAnswerRepository = binaryAnswerRepository;
             
-            Answers = from answer in mBinaryAnswerRepository.GetAll()
+            Answers = from answer in mBinaryAnswerRepository.CreateFor(form, Stage.Pre)
                 select new BinaryAnswerViewModel(answer);
         }
     }
