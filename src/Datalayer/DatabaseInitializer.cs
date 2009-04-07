@@ -100,7 +100,7 @@ namespace TheNewEngine.Datalayer
                     AnswerType = (int)AnswerType.Grade,
                     QuestionStages = CreateStages(Stage.Pre)
                 });
-            entities.Select(e => mSession.Save(e));
+            SaveList(entities);
             mSession.Flush();
         }
 
@@ -132,7 +132,7 @@ namespace TheNewEngine.Datalayer
                     AnswerType = (int)AnswerType.Binary,
                     QuestionStages = CreateStages(Stage.Pre)
                 });
-            mSession.Save(entities);
+            SaveList(entities);
             mSession.Flush();
         }
 
@@ -153,7 +153,7 @@ namespace TheNewEngine.Datalayer
                     AnswerType = (int)AnswerType.Binary,
                     QuestionStages = CreateStages(Stage.During)
                 });
-            entities.Select(e => mSession.Save(e));
+            SaveList(entities);
             mSession.Flush();
         }
 
@@ -173,7 +173,7 @@ namespace TheNewEngine.Datalayer
                     QuestionStages = CreateStages(Stage.Pre)
 
                 });
-            entities.Select(e => mSession.Save(e));
+            SaveList(entities);
             mSession.Flush();
         }
     }
