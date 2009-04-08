@@ -8,7 +8,7 @@ namespace TheNewEngine.Datalayer.Mappings
         public BinaryAnswerMap()
         {
             Id(x => x.Id);
-            Map(x => x.Answer);
+            Map(x => x.Answer).Nullable();
             References(x => x.FormRelation);
             References(x => x.QuestionRelation);
         }

@@ -8,7 +8,7 @@ namespace TheNewEngine.Datalayer.Mappings
         public TextAnswerMap()
         {
             Id(x => x.Id);
-            Map(x => x.Answer);
+            Map(x => x.Answer).WithLengthOf(512);
             References(x => x.FormRelation);
             References(x => x.QuestionRelation);
         }
