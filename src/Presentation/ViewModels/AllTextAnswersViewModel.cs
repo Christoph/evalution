@@ -1,4 +1,5 @@
 using System.Linq;
+using Domain;
 using Domain.Repositories;
 using System.Collections.Generic;
 
@@ -10,11 +11,11 @@ namespace Presentation
 
         public IEnumerable<TextAnswerViewModel> Answers { get; private set; }
 
-        public AllTextAnswersViewModel(ITextAnswerRepository textAnswerRepository)
+        public AllTextAnswersViewModel(IForm form, ITextAnswerRepository textAnswerRepository)
         {
             mTextAnswerRepository = textAnswerRepository;
 
-            Answers = from answer in mTextAnswerRepository.GetAll()
+            Answers = from answer in mTextAnswerRepository.CreateFor(form, Stage.Pre)
                 select new TextAnswerViewModel(answer);
         }
     }

@@ -8,32 +8,32 @@ using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
-    public class BinaryAnswerRepository : IBinaryAnswerRepository
+    public class GradeAnswerRepository : IGradeAnswerRepository
     {
         private readonly ISession mSession;
 
-        public BinaryAnswerRepository(ISession session)
+        public GradeAnswerRepository(ISession session)
         {
             mSession = session;
         }
 
-        public IEnumerable<IBinaryAnswer> GetAll()
+        public IEnumerable<IGradeAnswer> GetAll()
         {
-            return mSession.CreateCriteria(typeof(IBinaryAnswer)).List().Cast<IBinaryAnswer>();
+            return mSession.CreateCriteria(typeof (IGradeAnswer)).List().Cast<IGradeAnswer>();
         }
 
-        public IEnumerable<IBinaryAnswer> CreateFor(IForm form, Stage stage)
+        public IEnumerable<IGradeAnswer> CreateFor(IForm form, Stage stage)
         {
             INHibernateQueryable<Question> questions = mSession.Linq<Question>();
 
             return (from question in questions
-                    where question.AnswerType == (int) AnswerType.Binary
+                    where question.AnswerType == (int)AnswerType.Grade
                     //where question.QuestionStages.Where(s => s.StageNumber == (int) stage).Count() == 1
-                    select new BinaryAnswer { QuestionRelation = question})
-                    .ToList().Cast<IBinaryAnswer>();
+                    select new GradeAnswer { QuestionRelation = question })
+                    .ToList().Cast<IGradeAnswer>();
         }
 
-        public void Insert(IBinaryAnswer item)
+        public void Insert(IGradeAnswer item)
         {
             mSession.Save(item);
             mSession.Flush();

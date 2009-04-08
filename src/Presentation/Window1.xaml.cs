@@ -68,8 +68,8 @@ namespace Presentation
             //TextAnswersView
 
             var allTextAnswersView = new AllTextAnswersView();
-            var allTextAnswersViewModel = new AllTextAnswersViewModel(
-                new TextRepo());
+            var allTextAnswersViewModel = new AllTextAnswersViewModel(form,
+                new TextAnswerRepository(session));
             allTextAnswersView.DataContext = allTextAnswersViewModel;
 
             Stack.Children.Add(allTextAnswersView);
@@ -77,8 +77,8 @@ namespace Presentation
             //GradeAnswerView
 
             var allGradeAnswersView = new AllGradeAnswersView();
-            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(
-                new GradeRepo());
+            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(form,
+                new GradeAnswerRepository(session));
             allGradeAnswersView.DataContext = allGradeAnswersViewModel;
 
             Stack.Children.Add(allGradeAnswersView);
@@ -120,56 +120,56 @@ namespace Presentation
 //            }
 //        }
 
-        private class TextRepo : ITextAnswerRepository
-        {
-            public IEnumerable<ITextAnswer> GetAll()
-            {
-                return new[]
-                       {
-                           new TextAnswer() {Question = new Question {Text = "1 Q"}},
-                           new TextAnswer() {Question = new Question {Text = "2 Q"}}
-                       };
-            }
+//        private class TextRepo : ITextAnswerRepository
+//        {
+//            public IEnumerable<ITextAnswer> GetAll()
+//            {
+//                return new[]
+//                       {
+//                           new TextAnswer() {Question = new Question {Text = "1 Q"}},
+//                           new TextAnswer() {Question = new Question {Text = "2 Q"}}
+//                       };
+//            }
+//
+//            public void Insert(ITextAnswer item)
+//            {
+//                throw new System.NotImplementedException();
+//            }
+//        }
 
-            public void Insert(ITextAnswer item)
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+//        private class GradeRepo : IGradeAnswerRepository
+//        {
+//            public IEnumerable<IGradeAnswer> GetAll()
+//            {
+//                return new[]
+//                       {
+//                           new GradeAnswer() {Question = new Question {Text = "Grade q 1"}},
+//                           new GradeAnswer() {Question = new Question {Text = "Grade q 2"}}
+//                       };
+//            }
+//
+//            public void Insert(IGradeAnswer item)
+//            {
+//                throw new System.NotImplementedException();
+//            }
+//        }
 
-        private class GradeRepo : IGradeAnswerRepository
-        {
-            public IEnumerable<IGradeAnswer> GetAll()
-            {
-                return new[]
-                       {
-                           new GradeAnswer() {Question = new Question {Text = "Grade q 1"}},
-                           new GradeAnswer() {Question = new Question {Text = "Grade q 2"}}
-                       };
-            }
-
-            public void Insert(IGradeAnswer item)
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
-        private class TextAnswer : ITextAnswer
-        {
-            public IQuestion Question { get; set; }
-
-            public int Id { get; set; }
-
-            public string Answer { get; set; }
-        }
-
-        private class GradeAnswer : IGradeAnswer
-        {
-            public IQuestion Question { get; set; }
-
-            public int Id { get; set; }
-
-            public int? Answer { get; set; }
-        }
+//        private class TextAnswer : ITextAnswer
+//        {
+//            public IQuestion Question { get; set; }
+//
+//            public int Id { get; set; }
+//
+//            public string Answer { get; set; }
+//        }
+//
+//        private class GradeAnswer : IGradeAnswer
+//        {
+//            public IQuestion Question { get; set; }
+//
+//            public int Id { get; set; }
+//
+//            public int? Answer { get; set; }
+//        }
     }
 }
