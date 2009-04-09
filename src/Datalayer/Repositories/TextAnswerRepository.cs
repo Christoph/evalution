@@ -26,11 +26,14 @@ namespace TheNewEngine.Datalayer.Repositories
         {
             INHibernateQueryable<Question> questions = mSession.Linq<Question>();
 
-            return (from question in questions
-                    where question.AnswerType == (int)AnswerType.Text
-                    //where question.QuestionStages.Where(s => s.StageNumber == (int) stage).Count() == 1
-                    select new TextAnswer { QuestionRelation = question })
-                    .ToList().Cast<ITextAnswer>();
+            var allTextQuestions = (from question in questions
+                where question.AnswerType == (int)AnswerType.Text
+                //where question.QuestionStages.Where(s => s.StageNumber == (int) stage).Count() == 1
+                select question).ToList();
+
+            return (from question in allTextQuestions
+            where question.QuestionStages.Where(q => q.StageNumber == (int)stage).Count() >= 0
+            select new TextAnswer {QuestionRelation = question}).Cast<ITextAnswer>();
         }
 
         public void Insert(ITextAnswer item)

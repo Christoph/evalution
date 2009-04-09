@@ -56,28 +56,11 @@ namespace TheNewEngine.Datalayer
                 text => new Question
                 {
                     Text = text,
-                    AnswerType = (int)(AnswerType.Binary | AnswerType.Song),
+                    AnswerType = (int)(AnswerType.Binary), //| AnswerType.Song),
                     QuestionStages = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
                 });
             SaveList(songs);
             mSession.Flush();
-        }
-
-        private void SaveList<T>(IEnumerable<T> list)
-        {
-            foreach (var element in list)
-            {
-                mSession.Save(element);
-            }
-        }
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        /// <filterpriority>2</filterpriority>
-        public void Dispose()
-        {
-            mSession.Dispose();
         }
 
         internal void InsertGradeQuestions()
@@ -102,18 +85,6 @@ namespace TheNewEngine.Datalayer
                 });
             SaveList(entities);
             mSession.Flush();
-        }
-
-        private List<QuestionStage> CreateStages(params Stage[] stages)
-        {
-            var stagesEntity = new List<QuestionStage>();
-            foreach (var stage in stages)
-            {
-                var questionStage = new QuestionStage { StageNumber = (int)stage };
-                mSession.SaveOrUpdate(questionStage);
-                stagesEntity.Add(questionStage);
-            }
-            return stagesEntity;
         }
 
         internal void InsertFirstYES_NOQuestions()
@@ -175,6 +146,35 @@ namespace TheNewEngine.Datalayer
                 });
             SaveList(entities);
             mSession.Flush();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+            mSession.Dispose();
+        }
+
+        private void SaveList<T>(IEnumerable<T> list)
+        {
+            foreach (var element in list)
+            {
+                mSession.Save(element);
+            }
+        }
+
+        private List<QuestionStage> CreateStages(params Stage[] stages)
+        {
+            var stagesEntity = new List<QuestionStage>();
+            foreach (var stage in stages)
+            {
+                var questionStage = new QuestionStage { StageNumber = (int)stage };
+                mSession.SaveOrUpdate(questionStage);
+                stagesEntity.Add(questionStage);
+            }
+            return stagesEntity;
         }
     }
 }

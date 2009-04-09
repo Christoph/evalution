@@ -59,8 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBinaryAnswerRepository.cs" />
     <Compile Include="TestDatabaseInitializer.cs" />
     <Compile Include="TestDbAccess.cs" />
+    <Compile Include="TestRepositoryBase.cs" />
+    <Compile Include="TestTextAnswerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datalayer\Datalayer.csproj">
