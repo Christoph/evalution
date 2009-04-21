@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Domain;
@@ -8,11 +7,11 @@ namespace Presentation
 {
     public class QuestionFormViewModel : ViewModelBase
     {
-        private readonly IForm mForm;
+        private readonly Form mForm;
 
         private readonly IQuestionFormRepository mFormRepository;
 
-        public QuestionFormViewModel(IForm form, IQuestionFormRepository formRepository)
+        public QuestionFormViewModel(Form form, IQuestionFormRepository formRepository)
         {
             mForm = form;
             mFormRepository = formRepository;

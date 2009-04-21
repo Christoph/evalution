@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using Domain;
 
 namespace Domain.Repositories
 {
-    public interface IBinaryAnswerRepository : IRepository<IBinaryAnswer>
+    public interface IBinaryAnswerRepository : IRepository<BinaryAnswer>
     {
-        IEnumerable<IBinaryAnswer> CreateFor(IForm form, Stage stage);
+        IEnumerable<BinaryAnswer> CreateFor(Form form, Stage stage);
     }
 }

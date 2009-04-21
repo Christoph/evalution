@@ -4,7 +4,6 @@ using Domain;
 using Domain.Repositories;
 using NHibernate;
 using NHibernate.Linq;
-using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
@@ -17,23 +16,23 @@ namespace TheNewEngine.Datalayer.Repositories
             mSession = session;
         }
 
-        public IEnumerable<IGradeAnswer> GetAll()
+        public IEnumerable<GradeAnswer> GetAll()
         {
-            return mSession.CreateCriteria(typeof (IGradeAnswer)).List().Cast<IGradeAnswer>();
+            return mSession.CreateCriteria(typeof (GradeAnswer)).List().Cast<GradeAnswer>();
         }
 
-        public IEnumerable<IGradeAnswer> CreateFor(IForm form, Stage stage)
+        public IEnumerable<GradeAnswer> CreateFor(Form form, Stage stage)
         {
             INHibernateQueryable<Question> questions = mSession.Linq<Question>();
 
             return (from question in questions
                     where question.AnswerType == (int)AnswerType.Grade
                     //where question.QuestionStages.Where(s => s.StageNumber == (int) stage).Count() == 1
-                    select new GradeAnswer { QuestionRelation = question })
-                    .ToList().Cast<IGradeAnswer>();
+                    select new GradeAnswer { Question = question })
+                    .ToList().Cast<GradeAnswer>();
         }
 
-        public void Insert(IGradeAnswer item)
+        public void Insert(GradeAnswer item)
         {
             mSession.Save(item);
             mSession.Flush();

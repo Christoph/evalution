@@ -11,7 +11,7 @@ namespace Presentation
 
         public IEnumerable<GradeAnswerViewModel> Answers { get; private set; }
 
-        public AllGradeAnswersViewModel(IForm form, IGradeAnswerRepository gradeAnswerRepository)
+        public AllGradeAnswersViewModel(Form form, IGradeAnswerRepository gradeAnswerRepository)
         {
             mGradeAnswerRepository = gradeAnswerRepository;
             

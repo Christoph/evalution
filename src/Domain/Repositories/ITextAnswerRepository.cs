@@ -1,11 +1,9 @@
 using System.Collections.Generic;
-using Domain;
-using Domain.Repositories;
 
 namespace Domain.Repositories
 {
-    public interface ITextAnswerRepository : IRepository<ITextAnswer>
+    public interface ITextAnswerRepository : IRepository<TextAnswer>
     {
-        IEnumerable<ITextAnswer> CreateFor(IForm form, Stage stage);
+        IEnumerable<TextAnswer> CreateFor(Form form, Stage stage);
     }
 }

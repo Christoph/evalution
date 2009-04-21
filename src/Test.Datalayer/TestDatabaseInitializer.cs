@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MbUnit.Framework;
 using NHibernate;
-using TheNewEngine.Datalayer.Entities;
+using Domain;
 
 namespace TheNewEngine.Datalayer
 {

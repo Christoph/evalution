@@ -1,4 +1,4 @@
-namespace TheNewEngine.Datalayer.Entities
+namespace Domain
 {
     public class QuestionStage
     {

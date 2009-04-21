@@ -86,13 +86,6 @@
   <ItemGroup>
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="DbAccess.cs" />
-    <Compile Include="Entities\AnswerBase.cs" />
-    <Compile Include="Entities\BinaryAnswer.cs" />
-    <Compile Include="Entities\Form.cs" />
-    <Compile Include="Entities\GradeAnswer.cs" />
-    <Compile Include="Entities\Question.cs" />
-    <Compile Include="Entities\QuestionStage.cs" />
-    <Compile Include="Entities\TextAnswer.cs" />
     <Compile Include="FormRepository.cs" />
     <Compile Include="Mappings\BinaryAnswerMap.cs" />
     <Compile Include="Mappings\FormMap.cs" />

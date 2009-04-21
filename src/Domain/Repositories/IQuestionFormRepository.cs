@@ -1,8 +1,6 @@
-using Domain;
-
 namespace Domain.Repositories
 {
-    public interface IQuestionFormRepository : IRepository<IForm>
+    public interface IQuestionFormRepository : IRepository<Form>
     {
         
     }

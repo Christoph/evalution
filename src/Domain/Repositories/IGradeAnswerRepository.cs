@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using Domain;
 
 namespace Domain.Repositories
 {
-    public interface IGradeAnswerRepository : IRepository<IGradeAnswer>
+    public interface IGradeAnswerRepository : IRepository<GradeAnswer>
     {
-        IEnumerable<IGradeAnswer> CreateFor(IForm form, Stage stage);
+        IEnumerable<GradeAnswer> CreateFor(Form form, Stage stage);
     }
 }

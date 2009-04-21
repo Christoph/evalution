@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using TheNewEngine.Datalayer.Entities;
+using Domain;
 
 namespace TheNewEngine.Datalayer.Mappings
 {
@@ -9,8 +9,8 @@ namespace TheNewEngine.Datalayer.Mappings
         {
             Id(x => x.Id);
             Map(x => x.Answer).Nullable();
-            References(x => x.FormRelation);
-            References(x => x.QuestionRelation);
+            References(x => x.Form);
+            References(x => x.Question);
         }
     }
 }

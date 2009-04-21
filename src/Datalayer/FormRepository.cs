@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using Domain;
 using System.Linq;
 using Domain.Repositories;
 using NHibernate;
-using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer
 {
@@ -17,12 +15,12 @@ namespace TheNewEngine.Datalayer
             mSession = session;
         }
 
-        public IEnumerable<IForm> GetAll()
+        public IEnumerable<Form> GetAll()
         {
-            return mSession.CreateCriteria(typeof(IForm)).List().Cast<IForm>();
+            return mSession.CreateCriteria(typeof(Form)).List().Cast<Form>();
         }
 
-        public void Insert(IForm item)
+        public void Insert(Form item)
         {
             mSession.Save(item);
             mSession.Flush();

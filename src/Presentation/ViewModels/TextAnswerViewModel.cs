@@ -1,14 +1,14 @@
 using Domain;
-using TheNewEngine.Datalayer;
+
 namespace Presentation
 {
     public class TextAnswerViewModel : ViewModelBase
     {
-        private readonly ITextAnswer mTextAnswer;
+        private readonly TextAnswer mTextAnswer;
 
-        public TextAnswerViewModel(ITextAnswer textAnswer)
+        public TextAnswerViewModel(TextAnswer textAnswer)
         {
-            this.mTextAnswer = textAnswer;
+            mTextAnswer = textAnswer;
         }
 
         public string Question

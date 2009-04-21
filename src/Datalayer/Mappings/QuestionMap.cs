@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using TheNewEngine.Datalayer.Entities;
+using Domain;
 
 namespace TheNewEngine.Datalayer.Mappings
 {

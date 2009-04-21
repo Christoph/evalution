@@ -4,7 +4,6 @@ using Domain;
 using Domain.Repositories;
 using NHibernate;
 using NHibernate.Linq;
-using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
@@ -17,12 +16,12 @@ namespace TheNewEngine.Datalayer.Repositories
             mSession = session;
         }
 
-        public IEnumerable<IBinaryAnswer> GetAll()
+        public IEnumerable<BinaryAnswer> GetAll()
         {
-            return mSession.CreateCriteria(typeof(IBinaryAnswer)).List().Cast<IBinaryAnswer>();
+            return mSession.CreateCriteria(typeof(BinaryAnswer)).List().Cast<BinaryAnswer>();
         }
 
-        public IEnumerable<IBinaryAnswer> CreateFor(IForm form, Stage stage)
+        public IEnumerable<BinaryAnswer> CreateFor(Form form, Stage stage)
         {
             INHibernateQueryable<Question> questions = mSession.Linq<Question>();
             var questionStages = mSession.Linq<QuestionStage>();
@@ -35,19 +34,20 @@ namespace TheNewEngine.Datalayer.Repositories
 
             //return f.ToList().Cast<IBinaryAnswer>();
 
-            var filteredQuestionStages = from questionStage in questionStages
-                where questionStage.StageNumber == (int)stage
-                select questionStage.Id;
+            var filteredQuestionStages = (from questionStage in questionStages
+                                          where questionStage.StageNumber == (int)stage
+                                          select questionStage.Id).ToArray();
 
-            var f = from question in questions
-                where question.AnswerType == (int)AnswerType.Binary
-                where filteredQuestionStages.Contains(question.Id)
-                select new BinaryAnswer { QuestionRelation = question };
+            var binaryQuestions = questions
+                .Where(q => q.AnswerType == (int)AnswerType.Binary)
+                .ToArray();
 
-            return f.ToList().Cast<IBinaryAnswer>();
+            return binaryQuestions
+                .Where(q => filteredQuestionStages.Contains(q.Id))
+                .Select(q => new BinaryAnswer {Question = q});
         }
 
-        public void Insert(IBinaryAnswer item)
+        public void Insert(BinaryAnswer item)
         {
             mSession.Save(item);
             mSession.Flush();

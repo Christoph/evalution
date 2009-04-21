@@ -4,9 +4,9 @@ namespace Presentation
 {
     public class BinaryAnswerViewModel : ViewModelBase
     {
-        private readonly IBinaryAnswer mBinaryAnswer;
+        private readonly BinaryAnswer mBinaryAnswer;
 
-        public BinaryAnswerViewModel(IBinaryAnswer binaryAnswer)
+        public BinaryAnswerViewModel(BinaryAnswer binaryAnswer)
         {
             mBinaryAnswer = binaryAnswer;
         }

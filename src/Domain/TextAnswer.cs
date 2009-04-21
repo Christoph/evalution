@@ -1,7 +1,6 @@
-using Domain;
-namespace TheNewEngine.Datalayer.Entities
+namespace Domain
 {
-    public class TextAnswer : AnswerBase, ITextAnswer
+    public class TextAnswer : AnswerBase
     {
         public virtual string Answer { get; set; }
     }

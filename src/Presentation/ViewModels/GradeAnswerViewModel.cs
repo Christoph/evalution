@@ -1,14 +1,14 @@
 using Domain;
-using TheNewEngine.Datalayer;
+
 namespace Presentation
 {
     public class GradeAnswerViewModel : ViewModelBase
     {
-        private readonly IGradeAnswer mGradeAnswer;
+        private readonly GradeAnswer mGradeAnswer;
 
-        public GradeAnswerViewModel(IGradeAnswer gradeAnswer)
+        public GradeAnswerViewModel(GradeAnswer gradeAnswer)
         {
-            this.mGradeAnswer = gradeAnswer;
+            mGradeAnswer = gradeAnswer;
         }
 
         public string Question

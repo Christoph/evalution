@@ -4,7 +4,6 @@ using Domain;
 using Domain.Repositories;
 using NHibernate;
 using NHibernate.Linq;
-using TheNewEngine.Datalayer.Entities;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
@@ -17,12 +16,12 @@ namespace TheNewEngine.Datalayer.Repositories
             mSession = session;
         }
 
-        public IEnumerable<ITextAnswer> GetAll()
+        public IEnumerable<TextAnswer> GetAll()
         {
-            return mSession.CreateCriteria(typeof (ITextAnswer)).List().Cast<ITextAnswer>();
+            return mSession.CreateCriteria(typeof (TextAnswer)).List().Cast<TextAnswer>();
         }
 
-        public IEnumerable<ITextAnswer> CreateFor(IForm form, Stage stage)
+        public IEnumerable<TextAnswer> CreateFor(Form form, Stage stage)
         {
             INHibernateQueryable<Question> questions = mSession.Linq<Question>();
 
@@ -33,10 +32,10 @@ namespace TheNewEngine.Datalayer.Repositories
 
             return (from question in allTextQuestions
             where question.QuestionStages.Where(q => q.StageNumber == (int)stage).Count() >= 0
-            select new TextAnswer {QuestionRelation = question}).Cast<ITextAnswer>();
+            select new TextAnswer { Question = question }).Cast<TextAnswer>();
         }
 
-        public void Insert(ITextAnswer item)
+        public void Insert(TextAnswer item)
         {
             mSession.Save(item);
             mSession.Flush();

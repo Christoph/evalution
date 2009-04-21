@@ -13,7 +13,7 @@ namespace TheNewEngine.Datalayer
         }
 
         [Test]
-        [Row(Stage.Pre, 29)]
+        [Row(Stage.Pre, 25)]
         [Row(Stage.Post, 22)]
         public void CreateFor(Stage stage, int expectedAnswerCount)
         {

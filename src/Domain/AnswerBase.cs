@@ -1,15 +1,11 @@
-using Domain;
-
-namespace TheNewEngine.Datalayer.Entities
+namespace Domain
 {
     public class AnswerBase
     {
         public virtual int Id { get; private set; }
 
-        public virtual IForm Form { get { return FormRelation; } }
-        public virtual Form FormRelation { get; set; }
+        public virtual Form Form { get; set; }
         
-        public virtual IQuestion Question { get { return QuestionRelation; } }
-        public virtual Question QuestionRelation { get; set; }
+        public virtual Question Question { get; set; }
     }
 }

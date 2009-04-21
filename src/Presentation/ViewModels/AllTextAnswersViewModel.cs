@@ -11,7 +11,7 @@ namespace Presentation
 
         public IEnumerable<TextAnswerViewModel> Answers { get; private set; }
 
-        public AllTextAnswersViewModel(IForm form, ITextAnswerRepository textAnswerRepository)
+        public AllTextAnswersViewModel(Form form, ITextAnswerRepository textAnswerRepository)
         {
             mTextAnswerRepository = textAnswerRepository;
 

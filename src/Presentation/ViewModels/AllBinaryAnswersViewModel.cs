@@ -11,7 +11,7 @@ namespace Presentation
 
         public IEnumerable<BinaryAnswerViewModel> Answers { get; private set; }
 
-        public AllBinaryAnswersViewModel(IForm form, IBinaryAnswerRepository binaryAnswerRepository)
+        public AllBinaryAnswersViewModel(Form form, IBinaryAnswerRepository binaryAnswerRepository)
         {
             mBinaryAnswerRepository = binaryAnswerRepository;
             

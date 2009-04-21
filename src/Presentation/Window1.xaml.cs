@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,6 @@ using Domain.Repositories;
 using NHibernate;
 using Presentation.View;
 using TheNewEngine.Datalayer;
-using TheNewEngine.Datalayer.Entities;
 using TheNewEngine.Datalayer.Repositories;
 using System.IO;
 
@@ -84,23 +83,6 @@ namespace Presentation
             Stack.Children.Add(allGradeAnswersView);
         }
 
-        private class BinaryAnswer : IBinaryAnswer
-        {
-            public IQuestion Question { get; set; }
-
-            public int Id { get; set; }
-
-            public bool? Answer { get; set; }
-        }
-
-        private class Question : IQuestion
-        {
-            public int Id { get; set; }
-
-            public string Text { get; set; }
-
-            public int AnswerType { get; set; }
-        }
 //
 //        private class Repo : IBinaryAnswerRepository
 //        {
