@@ -1,7 +1,7 @@
 using Domain.Repositories;
 namespace Domain
 {
-    public class FormFactory
+    public class FormFactory : IFormFactory
     {
         private readonly IBinaryAnswerRepository mBinaryAnswerRepository;
 

@@ -2,7 +2,7 @@ namespace Domain
 {
     public class CurrentFormHolder
     {
-        private readonly FormFactory mFormFactory;
+        private readonly IFormFactory mFormFactory;
 
         private Form mForm;
 
@@ -19,7 +19,7 @@ namespace Domain
             }
         }
 
-        public CurrentFormHolder(FormFactory formFactory)
+        public CurrentFormHolder(IFormFactory formFactory)
         {
             mFormFactory = formFactory;
             ResetWithNewForm();
