@@ -27,12 +27,6 @@ namespace Presentation
         {
             mCurrentFormHolder = currentFormHolder;
             mFormRepository = formRepository;
-
-            var forms = mFormRepository.GetAll();
-            if (forms.Count() != 0)
-            {
-                Form = forms.First();
-            }
         }
 
         public string Name

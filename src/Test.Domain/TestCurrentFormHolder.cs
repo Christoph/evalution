@@ -32,5 +32,17 @@ namespace Domain
             Assert.IsNotNull(mHolder.Form);
             Assert.AreNotSame(mHolder.Form, oldForm);
         }
+
+        [Test]
+        public void Form_setter_calls_changed_event()
+        {
+            Form changed = null;
+            mHolder.OnChanged += x => changed = x;
+
+            var form = new Form();
+            mHolder.Form = form;
+
+            Assert.AreSame(form, changed);
+        }
     }
 }

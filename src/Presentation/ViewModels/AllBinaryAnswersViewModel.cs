@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
 using Domain;
 using Domain.Repositories;
 
@@ -11,20 +10,27 @@ namespace Presentation
 
         private readonly IBinaryAnswerRepository mBinaryAnswerRepository;
 
-        public IEnumerable<BinaryAnswerViewModel> Answers { get; private set; }
+        public ObservableCollection<BinaryAnswerViewModel> Answers { get; private set; }
 
         public AllBinaryAnswersViewModel(CurrentFormHolder currentFormHolder, IBinaryAnswerRepository binaryAnswerRepository)
         {
             mCurrentFormHolder = currentFormHolder;
             mBinaryAnswerRepository = binaryAnswerRepository;
 
-            SetAnswers();
+            Answers = new ObservableCollection<BinaryAnswerViewModel>();
+
+            mCurrentFormHolder.OnChanged += SetAnswers;
+
+            SetAnswers(mCurrentFormHolder.Form);
         }
 
-        private void SetAnswers()
+        private void SetAnswers(Form form)
         {
-            Answers = from answer in mCurrentFormHolder.Form.BinaryAnswers
-                      select new BinaryAnswerViewModel(answer);
+            Answers.Clear();
+            foreach (var binaryAnswer in form.BinaryAnswers)
+            {
+                Answers.Add(new BinaryAnswerViewModel(binaryAnswer));
+            }
         }
     }
 }

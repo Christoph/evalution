@@ -1,3 +1,5 @@
+using System;
+
 namespace Domain
 {
     public class CurrentFormHolder
@@ -16,8 +18,11 @@ namespace Domain
                 {
                     ResetWithNewForm();
                 }
+                OnChanged(mForm);
             }
         }
+
+        public event Action<Form> OnChanged;
 
         public CurrentFormHolder(IFormFactory formFactory)
         {
