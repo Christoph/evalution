@@ -19,9 +19,11 @@ namespace TheNewEngine.Datalayer
         {
             var repository = new BinaryAnswerRepository(mSession);
 
-            var textAnswers = repository.CreateFor(null, stage);
+            var form = new Form();
+            var textAnswers = repository.CreateFor(form, stage);
 
             Assert.AreEqual(expectedAnswerCount, textAnswers.Count());
+            Assert.AreEqual(expectedAnswerCount, form.BinaryAnswers.Count);
         }
     }
 }

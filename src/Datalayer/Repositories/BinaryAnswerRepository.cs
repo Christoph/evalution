@@ -27,12 +27,20 @@ namespace TheNewEngine.Datalayer.Repositories
                 "select q " +
                 "from QuestionStage as s " +
                 "inner join s.Question as q " +
-                "where q.AnswerType = :answer_type and s.StageNumber = :stage_number ")
-                .SetParameter("answer_type", (int)AnswerType.Binary)
+                "where (q.AnswerType = :answer_type1 or q.AnswerType = :answer_type2) and s.StageNumber = :stage_number ")
+                .SetParameter("answer_type1", (int)AnswerType.Binary)
+                .SetParameter("answer_type2", (int)(AnswerType.Binary | AnswerType.Song))
                 .SetParameter("stage_number", (int)stage)
                 .List<Question>();
 
-            return temp.Select(x => new BinaryAnswer { Question = x });
+            var binaryAnswers = temp.Select(x => new BinaryAnswer { Question = x, Form = form });
+
+            foreach (var answer in binaryAnswers)
+            {
+                form.BinaryAnswers.Add(answer);
+            }
+            
+            return binaryAnswers;
         }
 
         public void Insert(BinaryAnswer item)

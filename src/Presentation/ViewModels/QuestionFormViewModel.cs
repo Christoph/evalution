@@ -7,19 +7,31 @@ namespace Presentation
 {
     public class QuestionFormViewModel : ViewModelBase
     {
-        private Form mForm;
+        private CurrentFormHolder mCurrentFormHolder;
+
+        private Form Form
+        {
+            get
+            {
+                return mCurrentFormHolder.Form;
+            }
+            set
+            {
+                mCurrentFormHolder.Form = value;
+            }
+        }
 
         private readonly IQuestionFormRepository mFormRepository;
 
-        public QuestionFormViewModel(Form form, IQuestionFormRepository formRepository)
+        public QuestionFormViewModel(CurrentFormHolder currentFormHolder, IQuestionFormRepository formRepository)
         {
-            mForm = form;
+            mCurrentFormHolder = currentFormHolder;
             mFormRepository = formRepository;
 
             var forms = mFormRepository.GetAll();
             if (forms.Count() != 0)
             {
-                mForm = forms.First();
+                Form = forms.First();
             }
         }
 
@@ -27,15 +39,15 @@ namespace Presentation
         {
             get
             {
-                return mForm.Name;
+                return Form.Name;
             }
             set
             {
-                if(mForm.Name == value)
+                if(Form.Name == value)
                 {
                     return;
                 }
-                mForm.Name = value;
+                Form.Name = value;
 
                 OnPropertyChanged("Name");
             }
@@ -43,14 +55,14 @@ namespace Presentation
 
         public string School
         {
-            get { return mForm.School; }
+            get { return Form.School; }
             set
             {
-                if (mForm.School == value)
+                if (Form.School == value)
                 {
                     return;
                 }
-                mForm.School = value;
+                Form.School = value;
 
                 OnPropertyChanged("School");
             }
@@ -58,14 +70,14 @@ namespace Presentation
 
         public string Class
         {
-            get { return mForm.Class; }
+            get { return Form.Class; }
             set
             {
-                if (mForm.Class == value)
+                if (Form.Class == value)
                 {
                     return;
                 }
-                mForm.Class = value;
+                Form.Class = value;
 
                 OnPropertyChanged("Class");
             }
@@ -73,14 +85,14 @@ namespace Presentation
 
         public int? Age
         {
-            get { return mForm.Age; }
+            get { return Form.Age; }
             set
             {
-                if (mForm.Age == value)
+                if (Form.Age == value)
                 {
                     return;
                 }
-                mForm.Age = value;
+                Form.Age = value;
 
                 OnPropertyChanged("Age");
             }
@@ -88,14 +100,14 @@ namespace Presentation
 
         public int? Grade
         {
-            get { return mForm.Grade; }
+            get { return Form.Grade; }
             set
             {
-                if (mForm.Grade == value)
+                if (Form.Grade == value)
                 {
                     return;
                 }
-                mForm.Grade = value;
+                Form.Grade = value;
 
                 OnPropertyChanged("Grade");
             }
@@ -103,14 +115,14 @@ namespace Presentation
 
         public string Instrument
         {
-            get { return mForm.Instrument; }
+            get { return Form.Instrument; }
             set
             {
-                if (mForm.Instrument == value)
+                if (Form.Instrument == value)
                 {
                     return;
                 }
-                mForm.Instrument = value;
+                Form.Instrument = value;
 
                 OnPropertyChanged("Instrument");
             }
@@ -118,14 +130,14 @@ namespace Presentation
 
         public string Email
         {
-            get { return mForm.Email; }
+            get { return Form.Email; }
             set
             {
-                if (mForm.Email == value)
+                if (Form.Email == value)
                 {
                     return;
                 }
-                mForm.Email = value;
+                Form.Email = value;
 
                 OnPropertyChanged("Email");
             }
@@ -133,14 +145,14 @@ namespace Presentation
 
         public bool? Gender
         {
-            get { return mForm.Gender; }
+            get { return Form.Gender; }
             set
             {
-                if (mForm.Gender == value)
+                if (Form.Gender == value)
                 {
                     return;
                 }
-                mForm.Gender = value;
+                Form.Gender = value;
 
                 OnPropertyChanged("Gender");
             }
@@ -148,7 +160,7 @@ namespace Presentation
 
         public void Save()
         {
-            mFormRepository.Insert(mForm);
+            mFormRepository.Insert(Form);
 
             OnPropertyChanged("DisplayName");
          }
@@ -160,7 +172,7 @@ namespace Presentation
                 return new DelegatedCommand(p =>
                 {
                     Save();
-                    ResetFormTo(mFormRepository.GetPreviousForm(mForm.Id));
+                    ResetFormTo(mFormRepository.GetPreviousForm(Form.Id));
                 });
             }
         }
@@ -172,7 +184,10 @@ namespace Presentation
                 return new DelegatedCommand(p =>
                 {
                     Save();
-                    ResetFormTo(mFormRepository.GetNextForm(mForm.Id));
+
+                    var nextForm = mFormRepository.GetNextForm(Form.Id);
+
+                    ResetFormTo(nextForm);
                 });
             }
         }
@@ -184,14 +199,15 @@ namespace Presentation
                 return new DelegatedCommand(p =>
                 {
                     Save();
-                    ResetFormTo(new Form());
+                    mCurrentFormHolder.ResetWithNewForm();
+                    ResetFormTo(Form);
                 });
             }
         }
 
         private void ResetFormTo(Form form)
         {
-            mForm = form;
+            Form = form;
             OnPropertyChanged("Name");
             OnPropertyChanged("School");
             OnPropertyChanged("Class");

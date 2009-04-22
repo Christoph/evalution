@@ -7,7 +7,7 @@ namespace TheNewEngine.Datalayer.Mappings
     {
         public TextAnswerMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).Access.AsProperty().GeneratedBy.Increment();
             Map(x => x.Answer).WithLengthOf(512);
             References(x => x.Form);
             References(x => x.Question);

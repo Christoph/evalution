@@ -48,7 +48,9 @@
     <Compile Include="AnswerBase.cs" />
     <Compile Include="AnswerType.cs" />
     <Compile Include="BinaryAnswer.cs" />
+    <Compile Include="CurrentFormHolder.cs" />
     <Compile Include="Form.cs" />
+    <Compile Include="FormFactory.cs" />
     <Compile Include="GradeAnswer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />

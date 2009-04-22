@@ -7,16 +7,24 @@ namespace Presentation
 {
     public class AllBinaryAnswersViewModel : ViewModelBase
     {
+        private readonly CurrentFormHolder mCurrentFormHolder;
+
         private readonly IBinaryAnswerRepository mBinaryAnswerRepository;
 
         public IEnumerable<BinaryAnswerViewModel> Answers { get; private set; }
 
-        public AllBinaryAnswersViewModel(Form form, IBinaryAnswerRepository binaryAnswerRepository)
+        public AllBinaryAnswersViewModel(CurrentFormHolder currentFormHolder, IBinaryAnswerRepository binaryAnswerRepository)
         {
+            mCurrentFormHolder = currentFormHolder;
             mBinaryAnswerRepository = binaryAnswerRepository;
-            
-            Answers = from answer in mBinaryAnswerRepository.CreateFor(form, Stage.Pre)
-                select new BinaryAnswerViewModel(answer);
+
+            SetAnswers();
+        }
+
+        private void SetAnswers()
+        {
+            Answers = from answer in mCurrentFormHolder.Form.BinaryAnswers
+                      select new BinaryAnswerViewModel(answer);
         }
     }
 }

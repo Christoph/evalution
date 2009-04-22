@@ -18,7 +18,7 @@ namespace Domain
         public virtual IList<BinaryAnswer> BinaryAnswers { get; set; }
         public virtual IList<GradeAnswer> GradeAnswers { get; set; }
 
-        public Form()
+        internal Form()
         {
             TextAnswers = new List<TextAnswer>();
             BinaryAnswers = new List<BinaryAnswer>();

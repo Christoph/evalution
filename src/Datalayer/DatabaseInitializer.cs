@@ -54,7 +54,7 @@ namespace TheNewEngine.Datalayer
                 text => new Question
                 {
                     Text = text,
-                    AnswerType = (int)(AnswerType.Binary), //| AnswerType.Song),
+                    AnswerType = (int)(AnswerType.Binary | AnswerType.Song),
                     QuestionStages = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
                 });
             SaveList(songs);

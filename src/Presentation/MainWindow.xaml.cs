@@ -31,12 +31,13 @@ namespace Presentation
                 new DatabaseInitializer(session).InitDb();
             }
 
+            var binaryAnswerRepository = new BinaryAnswerRepository(session);
+
             //QuestionFormView
             var formView = new QuestionFormView();
 
-            
-            var form = new Form();
-            var formViewModel = new QuestionFormViewModel(form, 
+            var currentFormHolder = new CurrentFormHolder(new FormFactory(binaryAnswerRepository));
+            var formViewModel = new QuestionFormViewModel(currentFormHolder, 
                 new FormRepository(session));
 
             formView.DataContext = formViewModel;
@@ -45,27 +46,28 @@ namespace Presentation
 
             //AllBinaryAnswersView
             var allBinaryAnswersView = new AllBinaryAnswersView();
-            var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(form,
-                new BinaryAnswerRepository(session));
+            
+            var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(currentFormHolder,
+                binaryAnswerRepository);
             allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
 
             Stack.Children.Add(allBinaryAnswersView);
 
             //TextAnswersView
 
-            var allTextAnswersView = new AllTextAnswersView();
-            var allTextAnswersViewModel = new AllTextAnswersViewModel(form,
-                new TextAnswerRepository(session));
-            allTextAnswersView.DataContext = allTextAnswersViewModel;
+//            var allTextAnswersView = new AllTextAnswersView();
+//            var allTextAnswersViewModel = new AllTextAnswersViewModel(form,
+//                new TextAnswerRepository(session));
+//            allTextAnswersView.DataContext = allTextAnswersViewModel;
 
 //            Stack.Children.Add(allTextAnswersView);
 
             //GradeAnswerView
 
-            var allGradeAnswersView = new AllGradeAnswersView();
-            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(form,
-                new GradeAnswerRepository(session));
-            allGradeAnswersView.DataContext = allGradeAnswersViewModel;
+//            var allGradeAnswersView = new AllGradeAnswersView();
+//            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(form,
+//                new GradeAnswerRepository(session));
+//            allGradeAnswersView.DataContext = allGradeAnswersViewModel;
 
 //            Stack.Children.Add(allGradeAnswersView);
         }

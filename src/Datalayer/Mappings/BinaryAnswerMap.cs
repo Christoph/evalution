@@ -7,7 +7,7 @@ namespace TheNewEngine.Datalayer.Mappings
     {
         public BinaryAnswerMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).Access.AsProperty().GeneratedBy.Increment();
             Map(x => x.Answer).Nullable();
             References(x => x.Form);
             References(x => x.Question);

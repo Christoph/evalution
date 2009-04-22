@@ -47,7 +47,7 @@ namespace TheNewEngine.Datalayer
 
             if (id >= maxId)
             {
-                return new Form();
+                return null;
             }
 
             int nextId = id + 1;

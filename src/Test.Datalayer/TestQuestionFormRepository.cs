@@ -44,7 +44,7 @@ namespace TheNewEngine.Datalayer
         }
 
         [Test]
-        public void GetNextForm_returns_new_Form_when_at_last_index()
+        public void GetNextForm_returns_null_when_at_last_index()
         {
             Form form1 = new Form { Name = "Form1" };
 
@@ -54,8 +54,7 @@ namespace TheNewEngine.Datalayer
 
             var next = repository.GetNextForm(form1.Id);
 
-            Assert.IsNotNull(next);
-            Assert.IsNull(next.Name);
+            Assert.IsNull(next);
         }
     }
 }
