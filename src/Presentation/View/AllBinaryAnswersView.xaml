@@ -10,7 +10,7 @@ Height="Auto" Width="Auto">
         />
 
         <DataTemplate x:Key="QuestionTemplate">
-            <TextBlock Text="{Binding Path=Question}" Width="200"/>
+            <TextBlock Text="{Binding Path=Question}"/>
         </DataTemplate>
 
         <DataTemplate x:Key="BinaryTemplate">

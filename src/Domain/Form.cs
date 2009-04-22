@@ -8,6 +8,7 @@ namespace Domain
         public virtual string Name { get; set; }
         public virtual string School { get; set; }
         public virtual string Email { get; set; }
+        public virtual string Class { get; set; }
         public virtual int? Age { get; set; }
         public virtual bool? Gender { get; set; }
         public virtual int? Grade { get; set; }

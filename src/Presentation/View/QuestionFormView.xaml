@@ -2,136 +2,148 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="Auto" Width="Auto">
-    <Grid Margin="4">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="6" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="6" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <StackPanel>
+        <Grid Margin="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="15" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="15" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="15" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="15" />
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
 
-        <!--NAME-->
-        <Label 
-          Grid.Row="0" Grid.Column="0" 
-          Content="_Name:" 
-          HorizontalAlignment="Right"
-          Target="{Binding ElementName=Nametxt}"
-          />
-        <TextBox 
-          x:Name="Nametxt"
-          Grid.Row="0" Grid.Column="2" 
-          Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" 
-          />
-        
-        <!--SCHOOL-->
-        <Label 
-          Grid.Row="2" Grid.Column="0" 
-          Content="_School:" 
-          HorizontalAlignment="Right"
-          Target="{Binding ElementName=Schooltxt}"
-          />
-        <TextBox 
-          x:Name="Schooltxt"
-          Grid.Row="2" Grid.Column="2" 
-          Text="{Binding Path=School, UpdateSourceTrigger=PropertyChanged}" 
-          />
+            <!--NAME-->
+            <Label 
+              Grid.Row="0" Grid.Column="0" 
+              Content="_Name:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=Nametxt}"
+              />
+            <TextBox 
+              x:Name="Nametxt"
+              Grid.Row="0" Grid.Column="2" 
+              Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" 
+              />
+            
+            <!--SCHOOL-->
+            <Label 
+              Grid.Row="2" Grid.Column="0" 
+              Content="_School:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=Schooltxt}"
+              />
+            <TextBox 
+              x:Name="Schooltxt"
+              Grid.Row="2" Grid.Column="2" 
+              Text="{Binding Path=School, UpdateSourceTrigger=PropertyChanged}" 
+              />
 
-        <!--CLASS-->
-        <Label 
-          Grid.Row="4" Grid.Column="0" 
-          Content="_Class:" 
-          HorizontalAlignment="Right"
-          Target="{Binding ElementName=Classtxt}"
-          />
-        <TextBox 
-          x:Name="Classtxt"
-          Grid.Row="4" Grid.Column="2" 
-          Text="{Binding Path=Class, UpdateSourceTrigger=PropertyChanged}" 
-          />
+            <!--CLASS-->
+            <Label 
+              Grid.Row="4" Grid.Column="0" 
+              Content="_Class:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=Classtxt}"
+              />
+            <TextBox 
+              x:Name="Classtxt"
+              Grid.Row="4" Grid.Column="2" 
+              Text="{Binding Path=Class, UpdateSourceTrigger=PropertyChanged}" 
+              />
 
-        <!--EMAIL-->
-        <Label 
-          Grid.Row="6" Grid.Column="0" 
-          Content="_Email:" 
-          HorizontalAlignment="Right"
-          Target="{Binding ElementName=Emailtxt}"
-          />
-        <TextBox 
-          x:Name="Emailtxt"
-          Grid.Row="6" Grid.Column="2" 
-          Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" 
-          />
+            <!--EMAIL-->
+            <Label 
+              Grid.Row="6" Grid.Column="0" 
+              Content="_Email:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=Emailtxt}"
+              />
+            <TextBox 
+              x:Name="Emailtxt"
+              Grid.Row="6" Grid.Column="2" 
+              Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" 
+              />
 
-        <!--AGE-->
-        <Label 
-          Grid.Row="0" Grid.Column="4" 
-          Content="_Age:" 
-          HorizontalAlignment="Right"
-          Target="{Binding ElementName=Agetxt}"
-          />
-        <TextBox 
-          x:Name="Agetxt"
-          Grid.Row="0" Grid.Column="6" 
-          Text="{Binding Path=Age, UpdateSourceTrigger=PropertyChanged}" 
-          />
+            <!--AGE-->
+            <Label 
+              Grid.Row="0" Grid.Column="4" 
+              Content="_Age:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=Agetxt}"
+              />
+            <TextBox 
+              x:Name="Agetxt"
+              Grid.Row="0" Grid.Column="6" 
+              Text="{Binding Path=Age, UpdateSourceTrigger=PropertyChanged}" 
+              />
 
-        <!--Gender-->
-        <Label 
-          Grid.Row="2" Grid.Column="4" 
-          Content="_Gender:" 
-          HorizontalAlignment="Right"
-          Target="{Binding ElementName=GenderCb}"
-          />
-        <CheckBox 
-          x:Name="GenderCb"
-          Grid.Row="2" Grid.Column="6" VerticalAlignment="Center" 
-          IsChecked="{Binding Path=Gender, UpdateSourceTrigger=PropertyChanged}" 
-          />
-        
-        <!--Grade-->
-        <Label 
-          Grid.Row="4" Grid.Column="4" 
-          Content="_Grade:" 
-          HorizontalAlignment="Right"
-          Target="{Binding ElementName=Gradetxt}"
-          />
-        <TextBox 
-          x:Name="Gradetxt"
-          Grid.Row="4" Grid.Column="6" 
-          Text="{Binding Path=Grade, UpdateSourceTrigger=PropertyChanged}" 
-          />
+            <!--Gender-->
+            <Label 
+              Grid.Row="2" Grid.Column="4" 
+              Content="_IsMale:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=GenderCb}"
+              />
+            <CheckBox 
+              x:Name="GenderCb"
+              Grid.Row="2" Grid.Column="6" VerticalAlignment="Center" 
+              IsChecked="{Binding Path=Gender, UpdateSourceTrigger=PropertyChanged}" 
+              />
+            
+            <!--Grade-->
+            <Label 
+              Grid.Row="4" Grid.Column="4" 
+              Content="_Grade:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=Gradetxt}"
+              />
+            <TextBox 
+              x:Name="Gradetxt"
+              Grid.Row="4" Grid.Column="6" 
+              Text="{Binding Path=Grade, UpdateSourceTrigger=PropertyChanged}" 
+              />
 
-        <!--INSTRUMENT-->
-        <Label 
-          Grid.Row="6" Grid.Column="4" 
-          Content="_Instrument:" 
-          HorizontalAlignment="Right"
-          Target="{Binding ElementName=Instrumenttxt}"
-          />
-        <TextBox 
-          x:Name="Instrumenttxt"
-          Grid.Row="6" Grid.Column="6" 
-          Text="{Binding Path=Instrument, UpdateSourceTrigger=PropertyChanged}" 
-          />
+            <!--INSTRUMENT-->
+            <Label 
+              Grid.Row="6" Grid.Column="4" 
+              Content="_Instrument:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=Instrumenttxt}"
+              />
+            <TextBox 
+              x:Name="Instrumenttxt"
+              Grid.Row="6" Grid.Column="6" 
+              Text="{Binding Path=Instrument, UpdateSourceTrigger=PropertyChanged}" 
+              />
+        </Grid>
+        <StackPanel Orientation="Horizontal">
+            <Button
+                Content="Previous"
+                Command="{Binding Path=PreviousCommand}"
+            />
 
-        <Button
-            Content="Save"
-            Grid.Row="6" Grid.Column="2"
-            Command="{Binding Path=SaveCommand}"
-        />
-    </Grid>
+            <Button
+                Content="New"
+                Command="{Binding Path=NewCommand}"
+            />
+
+            <Button
+                Content="Next"
+                Command="{Binding Path=NextCommand}"
+            />
+        </StackPanel>
+    </StackPanel>
 </UserControl>

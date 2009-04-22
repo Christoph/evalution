@@ -7,7 +7,7 @@ namespace Presentation
 {
     public class QuestionFormViewModel : ViewModelBase
     {
-        private readonly Form mForm;
+        private Form mForm;
 
         private readonly IQuestionFormRepository mFormRepository;
 
@@ -58,14 +58,14 @@ namespace Presentation
 
         public string Class
         {
-            get { return "Class"; }
+            get { return mForm.Class; }
             set
             {
-//                if (mForm.Class == value)
-//                {
-//                    return;
-//                }
-//                mForm.Class = value;
+                if (mForm.Class == value)
+                {
+                    return;
+                }
+                mForm.Class = value;
 
                 OnPropertyChanged("Class");
             }
@@ -152,6 +152,31 @@ namespace Presentation
 
             OnPropertyChanged("DisplayName");
          }
+
+        public ICommand NewCommand
+        {
+            get
+            {
+                return new DelegatedCommand(p =>
+                {
+                    Save();
+                    ResetForm();
+                });
+            }
+        }
+
+        private void ResetForm()
+        {
+            mForm = new Form();
+            OnPropertyChanged("Name");
+            OnPropertyChanged("School");
+            OnPropertyChanged("Class");
+            OnPropertyChanged("Age");
+            OnPropertyChanged("Grade");
+            OnPropertyChanged("Instrument");
+            OnPropertyChanged("Email");
+            OnPropertyChanged("Gender");
+        }
 
         public ICommand SaveCommand 
         { 

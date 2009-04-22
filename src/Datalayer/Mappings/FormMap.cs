@@ -7,10 +7,11 @@ namespace TheNewEngine.Datalayer.Mappings
     {
         public FormMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).Access.AsProperty().GeneratedBy.Increment();
             Map(x => x.Age).Nullable();
             Map(x => x.Email).Nullable().WithLengthOf(512);
             Map(x => x.Gender).Nullable();
+            Map(x => x.Class).Nullable().WithLengthOf(512);
             Map(x => x.Grade).Nullable();
             Map(x => x.Instrument).Nullable().WithLengthOf(512);
             Map(x => x.Name).Nullable().WithLengthOf(512);
