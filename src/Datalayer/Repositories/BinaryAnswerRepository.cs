@@ -23,28 +23,16 @@ namespace TheNewEngine.Datalayer.Repositories
 
         public IEnumerable<BinaryAnswer> CreateFor(Form form, Stage stage)
         {
-            INHibernateQueryable<Question> questions = mSession.Linq<Question>();
-            var questionStages = mSession.Linq<QuestionStage>();
+            var temp = mSession.CreateQuery(
+                "select q " +
+                "from QuestionStage as s " +
+                "inner join s.Question as q " +
+                "where q.AnswerType = :answer_type and s.StageNumber = :stage_number ")
+                .SetParameter("answer_type", (int)AnswerType.Binary)
+                .SetParameter("stage_number", (int)stage)
+                .List<Question>();
 
-            //var f = from questionStage in questionStages
-            //    where questionStage.StageNumber == (int)stage
-            //    let question = questionStage.Question
-            //    where question.AnswerType == (int)AnswerType.Binary
-            //    select new BinaryAnswer {QuestionRelation = question};
-
-            //return f.ToList().Cast<IBinaryAnswer>();
-
-            var filteredQuestionStages = (from questionStage in questionStages
-                                          where questionStage.StageNumber == (int)stage
-                                          select questionStage.Id).ToArray();
-
-            var binaryQuestions = questions
-                .Where(q => q.AnswerType == (int)AnswerType.Binary)
-                .ToArray();
-
-            return binaryQuestions
-                .Where(q => filteredQuestionStages.Contains(q.Id))
-                .Select(q => new BinaryAnswer {Question = q});
+            return temp.Select(x => new BinaryAnswer { Question = x });
         }
 
         public void Insert(BinaryAnswer item)
