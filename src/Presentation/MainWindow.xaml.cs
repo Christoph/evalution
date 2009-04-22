@@ -1,18 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Domain;
-using Domain.Repositories;
 using NHibernate;
 using Presentation.View;
 using TheNewEngine.Datalayer;
@@ -22,11 +9,11 @@ using System.IO;
 namespace Presentation
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class MainWindow : Window
     {
-        public Window1()
+        public MainWindow()
         {
             InitializeComponent();
             string dbName = "Db.sdf";
@@ -71,7 +58,7 @@ namespace Presentation
                 new TextAnswerRepository(session));
             allTextAnswersView.DataContext = allTextAnswersViewModel;
 
-            Stack.Children.Add(allTextAnswersView);
+//            Stack.Children.Add(allTextAnswersView);
 
             //GradeAnswerView
 
@@ -80,7 +67,7 @@ namespace Presentation
                 new GradeAnswerRepository(session));
             allGradeAnswersView.DataContext = allGradeAnswersViewModel;
 
-            Stack.Children.Add(allGradeAnswersView);
+//            Stack.Children.Add(allGradeAnswersView);
         }
     }
 }

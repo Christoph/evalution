@@ -1,7 +1,7 @@
-﻿<Window x:Class="Presentation.Window1"
+﻿<Window x:Class="Presentation.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Window1" Height="700" Width="1024">
+    Title="MainWindow" Height="700" Width="1024">
     <StackPanel x:Name="Stack">
         
     </StackPanel>
