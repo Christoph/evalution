@@ -153,6 +153,30 @@ namespace Presentation
             OnPropertyChanged("DisplayName");
          }
 
+        public ICommand PreviousCommand
+        {
+            get
+            {
+                return new DelegatedCommand(p =>
+                {
+                    Save();
+                    ResetFormTo(mFormRepository.GetPreviousForm(mForm.Id));
+                });
+            }
+        }
+
+        public ICommand NextCommand
+        {
+            get
+            {
+                return new DelegatedCommand(p =>
+                {
+                    Save();
+                    ResetFormTo(mFormRepository.GetNextForm(mForm.Id));
+                });
+            }
+        }
+
         public ICommand NewCommand
         {
             get
@@ -160,14 +184,14 @@ namespace Presentation
                 return new DelegatedCommand(p =>
                 {
                     Save();
-                    ResetForm();
+                    ResetFormTo(new Form());
                 });
             }
         }
 
-        private void ResetForm()
+        private void ResetFormTo(Form form)
         {
-            mForm = new Form();
+            mForm = form;
             OnPropertyChanged("Name");
             OnPropertyChanged("School");
             OnPropertyChanged("Class");

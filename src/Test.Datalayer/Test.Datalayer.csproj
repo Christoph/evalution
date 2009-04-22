@@ -62,6 +62,7 @@
     <Compile Include="TestBinaryAnswerRepository.cs" />
     <Compile Include="TestDatabaseInitializer.cs" />
     <Compile Include="TestDbAccess.cs" />
+    <Compile Include="TestQuestionFormRepository.cs" />
     <Compile Include="TestRepositoryBase.cs" />
     <Compile Include="TestTextAnswerRepository.cs" />
   </ItemGroup>
