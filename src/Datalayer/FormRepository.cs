@@ -32,7 +32,16 @@ namespace TheNewEngine.Datalayer
         {
             int previousId = id - 1;
 
-            var previous = mSession.Linq<Form>()
+            var forms = mSession.Linq <Form>();
+
+            var minId = forms.Min(x => x.Id);
+
+            if (id <= minId)
+            {
+                return null;
+            }
+
+            var previous = forms
                 .Where(x => x.Id == previousId)
                 .SingleOrDefault();
 

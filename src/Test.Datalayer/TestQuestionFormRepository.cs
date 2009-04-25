@@ -56,5 +56,19 @@ namespace TheNewEngine.Datalayer
 
             Assert.IsNull(next);
         }
+
+        [Test]
+        public void GetPreviousForm_returns_null_when_at_first_position()
+        {
+            Form form1 = new Form {Name = "Form1"};
+
+            var repository = new FormRepository(mSession);
+
+            repository.Insert(form1);
+
+            var previous = repository.GetPreviousForm(form1.Id);
+
+            Assert.IsNull(previous);
+        }
     }
 }
