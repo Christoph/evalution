@@ -3,7 +3,6 @@ using System.Linq;
 using Domain;
 using Domain.Repositories;
 using NHibernate;
-using NHibernate.Linq;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
@@ -21,19 +20,23 @@ namespace TheNewEngine.Datalayer.Repositories
             return mSession.CreateCriteria(typeof(BinaryAnswer)).List().Cast<BinaryAnswer>();
         }
 
-        public IEnumerable<BinaryAnswer> CreateFor(Form form, Stage stage)
+        public IEnumerable<BinaryAnswer> CreateFor(Form form)
         {
             var temp = mSession.CreateQuery(
-                "select q " +
+                "select q, s " +
                 "from QuestionStage as s " +
                 "inner join s.Question as q " +
-                "where (q.AnswerType = :answer_type1 or q.AnswerType = :answer_type2) and s.StageNumber = :stage_number ")
+                "where (q.AnswerType = :answer_type1 or q.AnswerType = :answer_type2)")
                 .SetParameter("answer_type1", (int)AnswerType.Binary)
-                .SetParameter("answer_type2", (int)(AnswerType.Binary | AnswerType.Song))
-                .SetParameter("stage_number", (int)stage)
-                .List<Question>();
+                .SetParameter("answer_type2", (int)(AnswerType.Binary | AnswerType.Song));
 
-            var binaryAnswers = temp.Select(x => new BinaryAnswer { Question = x, Form = form });
+            var binaryAnswers = temp.Enumerable().Cast<object>().Select(x => 
+                new BinaryAnswer
+                {
+                    Question = (Question)((object[])x)[0],
+                    QuestionStage = (QuestionStage)((object[])x)[1],
+                    Form = form
+                }).ToArray();
 
             foreach (var answer in binaryAnswers)
             {

@@ -48,7 +48,7 @@ namespace Presentation
             var allBinaryAnswersView = new AllBinaryAnswersView();
             
             var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(currentFormHolder,
-                binaryAnswerRepository);
+                binaryAnswerRepository, Stage.Pre);
             allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
 
             Stack.Children.Add(allBinaryAnswersView);

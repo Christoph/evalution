@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Windows.Input;
 using Domain;
 using Domain.Repositories;
@@ -11,22 +10,85 @@ namespace Presentation
 
         private Form Form
         {
-            get
-            {
-                return mCurrentFormHolder.Form;
-            }
-            set
-            {
-                mCurrentFormHolder.Form = value;
-            }
+            get { return mCurrentFormHolder.Form; }
+            set { mCurrentFormHolder.Form = value; }
         }
 
         private readonly IQuestionFormRepository mFormRepository;
 
-        public QuestionFormViewModel(CurrentFormHolder currentFormHolder, IQuestionFormRepository formRepository)
+        public QuestionFormViewModel(CurrentFormHolder currentFormHolder, 
+            IQuestionFormRepository formRepository)
         {
             mCurrentFormHolder = currentFormHolder;
             mFormRepository = formRepository;
+        }
+
+        public void Save()
+        {
+            mFormRepository.Insert(Form);
+
+            OnPropertyChanged("DisplayName");
+        }
+
+        public ICommand PreviousCommand
+        {
+            get
+            {
+                return new DelegatedCommand(p =>
+                {
+                    Save();
+                    ResetFormTo(mFormRepository.GetPreviousForm(Form.Id));
+                });
+            }
+        }
+
+        public ICommand NextCommand
+        {
+            get
+            {
+                return new DelegatedCommand(p =>
+                {
+                    Save();
+
+                    var nextForm = mFormRepository.GetNextForm(Form.Id);
+
+                    ResetFormTo(nextForm);
+                });
+            }
+        }
+
+        public ICommand NewCommand
+        {
+            get
+            {
+                return new DelegatedCommand(p =>
+                {
+                    Save();
+                    mCurrentFormHolder.ResetWithNewForm();
+                    ResetFormTo(Form);
+                });
+            }
+        }
+
+        private void ResetFormTo(Form form)
+        {
+            Form = form;
+            OnPropertyChanged("Name");
+            OnPropertyChanged("School");
+            OnPropertyChanged("Class");
+            OnPropertyChanged("Age");
+            OnPropertyChanged("Grade");
+            OnPropertyChanged("Instrument");
+            OnPropertyChanged("Email");
+            OnPropertyChanged("Gender");
+        }
+
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new DelegatedCommand(p => Save());
+            }
         }
 
         public string Name
@@ -149,74 +211,6 @@ namespace Presentation
                 Form.Gender = value;
 
                 OnPropertyChanged("Gender");
-            }
-        }
-
-        public void Save()
-        {
-            mFormRepository.Insert(Form);
-
-            OnPropertyChanged("DisplayName");
-         }
-
-        public ICommand PreviousCommand
-        {
-            get
-            {
-                return new DelegatedCommand(p =>
-                {
-                    Save();
-                    ResetFormTo(mFormRepository.GetPreviousForm(Form.Id));
-                });
-            }
-        }
-
-        public ICommand NextCommand
-        {
-            get
-            {
-                return new DelegatedCommand(p =>
-                {
-                    Save();
-
-                    var nextForm = mFormRepository.GetNextForm(Form.Id);
-
-                    ResetFormTo(nextForm);
-                });
-            }
-        }
-
-        public ICommand NewCommand
-        {
-            get
-            {
-                return new DelegatedCommand(p =>
-                {
-                    Save();
-                    mCurrentFormHolder.ResetWithNewForm();
-                    ResetFormTo(Form);
-                });
-            }
-        }
-
-        private void ResetFormTo(Form form)
-        {
-            Form = form;
-            OnPropertyChanged("Name");
-            OnPropertyChanged("School");
-            OnPropertyChanged("Class");
-            OnPropertyChanged("Age");
-            OnPropertyChanged("Grade");
-            OnPropertyChanged("Instrument");
-            OnPropertyChanged("Email");
-            OnPropertyChanged("Gender");
-        }
-
-        public ICommand SaveCommand 
-        { 
-            get
-            {
-                return new DelegatedCommand(p => Save());
             }
         }
     }

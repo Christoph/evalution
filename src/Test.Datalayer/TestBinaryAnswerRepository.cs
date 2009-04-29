@@ -13,17 +13,28 @@ namespace TheNewEngine.Datalayer
         }
 
         [Test]
-        [Row(Stage.Pre, 25)]
-        [Row(Stage.Post, 22)]
-        public void CreateFor(Stage stage, int expectedAnswerCount)
+        public void CreateFor()
         {
             var repository = new BinaryAnswerRepository(mSession);
 
             var form = new Form();
-            var textAnswers = repository.CreateFor(form, stage);
+            var binaryAnswers = repository.CreateFor(form);
 
-            Assert.AreEqual(expectedAnswerCount, textAnswers.Count());
+            var expectedAnswerCount = 95;
+
+            Assert.AreEqual(expectedAnswerCount, binaryAnswers.Count());
             Assert.AreEqual(expectedAnswerCount, form.BinaryAnswers.Count);
+        }
+
+        [Test]
+        public void BelongsTo()
+        {
+            var repository = new BinaryAnswerRepository(mSession);
+
+            var form = new Form();
+            var binaryAnswers = repository.CreateFor(form);
+
+            Assert.AreEqual(25, binaryAnswers.Where(b => b.BelongsTo(Stage.Pre)).Count());
         }
     }
 }

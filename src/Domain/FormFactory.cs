@@ -13,7 +13,7 @@ namespace Domain
         public Form CreateNew()
         {
             var form = new Form();
-            mBinaryAnswerRepository.CreateFor(form, Stage.Pre);
+            mBinaryAnswerRepository.CreateFor(form);
 
             return form;
         }
