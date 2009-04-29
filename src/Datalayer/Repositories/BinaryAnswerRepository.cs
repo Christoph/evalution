@@ -1,20 +1,18 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Domain;
 using Domain.Repositories;
 using NHibernate;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
-    public class BinaryAnswerRepository : AnswerRepositoryBase<BinaryAnswer>, IBinaryAnswerRepository
+    public class BinaryAnswerRepository : AnswerRepositoryBase<BinaryAnswer>
     {
         public BinaryAnswerRepository(ISession session)
             : base(session)
         {
         }
         
-        public IEnumerable<BinaryAnswer> CreateFor(Form form)
+        public override IEnumerable<BinaryAnswer> CreateFor(Form form)
         {
             var binaryAnswers = GetAnswersFor(AnswerType.Binary, (q, s) => new BinaryAnswer
             {

@@ -3,9 +3,9 @@ namespace Domain
 {
     public class FormFactory : IFormFactory
     {
-        private readonly IBinaryAnswerRepository mBinaryAnswerRepository;
+        private readonly IAnswerRepository<BinaryAnswer> mBinaryAnswerRepository;
 
-        public FormFactory(IBinaryAnswerRepository binaryAnswerRepository)
+        public FormFactory(IAnswerRepository<BinaryAnswer> binaryAnswerRepository)
         {
             mBinaryAnswerRepository = binaryAnswerRepository;
         }

@@ -18,7 +18,11 @@ namespace Domain
                 {
                     ResetWithNewForm();
                 }
-                OnChanged(mForm);
+
+                if (OnChanged != null)
+                {
+                    OnChanged(mForm);
+                }
             }
         }
 

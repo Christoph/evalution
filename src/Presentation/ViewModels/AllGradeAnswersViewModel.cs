@@ -7,15 +7,15 @@ namespace Presentation
 {
     public class AllGradeAnswersViewModel : ViewModelBase
     {
-        private readonly IGradeAnswerRepository mGradeAnswerRepository;
+        private readonly IAnswerRepository<GradeAnswer> mGradeAnswerRepository;
 
         public IEnumerable<GradeAnswerViewModel> Answers { get; private set; }
 
-        public AllGradeAnswersViewModel(Form form, IGradeAnswerRepository gradeAnswerRepository)
+        public AllGradeAnswersViewModel(Form form, IAnswerRepository<GradeAnswer> gradeAnswerRepository)
         {
             mGradeAnswerRepository = gradeAnswerRepository;
             
-            Answers = from answer in mGradeAnswerRepository.CreateFor(form, Stage.Pre)
+            Answers = from answer in mGradeAnswerRepository.CreateFor(form)
                 select new GradeAnswerViewModel(answer);
         }
     }

@@ -9,14 +9,14 @@ namespace Presentation
     {
         private readonly CurrentFormHolder mCurrentFormHolder;
 
-        private readonly IBinaryAnswerRepository mBinaryAnswerRepository;
+        private readonly IAnswerRepository<BinaryAnswer> mBinaryAnswerRepository;
 
         private readonly Stage mStage;
 
         public ObservableCollection<BinaryAnswerViewModel> Answers { get; private set; }
 
         public AllBinaryAnswersViewModel(CurrentFormHolder currentFormHolder,
-            IBinaryAnswerRepository binaryAnswerRepository, Stage stage)
+            IAnswerRepository<BinaryAnswer> binaryAnswerRepository, Stage stage)
         {
             mCurrentFormHolder = currentFormHolder;
             mBinaryAnswerRepository = binaryAnswerRepository;

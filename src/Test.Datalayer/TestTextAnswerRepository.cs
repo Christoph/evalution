@@ -17,7 +17,7 @@ namespace TheNewEngine.Datalayer
         {
             var repository = new TextAnswerRepository(mSession);
 
-            var textAnswers = repository.CreateFor(null, Stage.Pre);
+            var textAnswers = repository.CreateFor(null);
 
             Assert.AreEqual(2, textAnswers.Count());
         }

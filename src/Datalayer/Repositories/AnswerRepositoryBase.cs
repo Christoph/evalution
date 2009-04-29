@@ -7,7 +7,7 @@ using NHibernate;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
-    public class AnswerRepositoryBase<T> : IRepository<T>
+    public abstract class AnswerRepositoryBase<T> : IAnswerRepository<T>
     {
         private readonly ISession mSession;
 
@@ -26,6 +26,8 @@ namespace TheNewEngine.Datalayer.Repositories
             mSession.Save(item);
             mSession.Flush();
         }
+
+        public abstract IEnumerable<T> CreateFor(Form form);
 
         protected IEnumerable<T> GetAnswersFor(AnswerType answerType,
             Func<Question, QuestionStage, T> create)
