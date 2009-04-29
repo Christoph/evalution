@@ -20,7 +20,7 @@ namespace TheNewEngine.Datalayer
             var form = new Form();
             var binaryAnswers = repository.CreateFor(form);
 
-            var expectedAnswerCount = 95;
+            var expectedAnswerCount = 51;
 
             Assert.AreEqual(expectedAnswerCount, binaryAnswers.Count());
             Assert.AreEqual(expectedAnswerCount, form.BinaryAnswers.Count);
@@ -34,7 +34,7 @@ namespace TheNewEngine.Datalayer
             var form = new Form();
             var binaryAnswers = repository.CreateFor(form);
 
-            Assert.AreEqual(25, binaryAnswers.Where(b => b.BelongsTo(Stage.Pre)).Count());
+            Assert.AreEqual(14, binaryAnswers.Where(b => b.BelongsTo(Stage.Pre)).Count());
         }
     }
 }
