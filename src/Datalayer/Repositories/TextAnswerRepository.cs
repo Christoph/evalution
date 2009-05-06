@@ -13,7 +13,7 @@ namespace TheNewEngine.Datalayer.Repositories
 
         public override IEnumerable<TextAnswer> CreateFor(Form form)
         {
-            var textAnswers = GetAnswersFor(AnswerType.Binary, (q, s) => new TextAnswer
+            var textAnswers = GetAnswersFor(AnswerType.Text, (q, s) => new TextAnswer
             {
                 Question = q,
                 QuestionStage = s,

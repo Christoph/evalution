@@ -62,23 +62,25 @@ namespace Presentation
 
             Stack.Children.Add(allSongAnswersView);
 
-            //TextAnswersView
+//            GradeAnswerView
 
-//            var allTextAnswersView = new AllTextAnswersView();
-//            var allTextAnswersViewModel = new AllTextAnswersViewModel(form,
-//                new TextAnswerRepository(session));
-//            allTextAnswersView.DataContext = allTextAnswersViewModel;
+            var allGradeAnswersView = new AllGradeAnswersView();
+            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(currentFormHolder,
+                new GradeAnswerRepository(session), Stage.Pre);
+            allGradeAnswersView.DataContext = allGradeAnswersViewModel;
 
-//            Stack.Children.Add(allTextAnswersView);
+            Stack.Children.Add(allGradeAnswersView);
+            
+//            TextAnswersView
 
-            //GradeAnswerView
+            var allTextAnswersView = new AllTextAnswersView();
+            var allTextAnswersViewModel = new AllTextAnswersViewModel(currentFormHolder,
+                new TextAnswerRepository(session), Stage.Pre);
+            allTextAnswersView.DataContext = allTextAnswersViewModel;
 
-//            var allGradeAnswersView = new AllGradeAnswersView();
-//            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(form,
-//                new GradeAnswerRepository(session));
-//            allGradeAnswersView.DataContext = allGradeAnswersViewModel;
+            Stack.Children.Add(allTextAnswersView);
 
-//            Stack.Children.Add(allGradeAnswersView);
+
         }
     }
 }

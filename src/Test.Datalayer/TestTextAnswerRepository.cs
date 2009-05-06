@@ -17,9 +17,13 @@ namespace TheNewEngine.Datalayer
         {
             var repository = new TextAnswerRepository(mSession);
 
-            var textAnswers = repository.CreateFor(null);
+            var form = new Form();
+            var textAnswers = repository.CreateFor(form);
 
-            Assert.AreEqual(2, textAnswers.Count());
+            var expectedAnswerCount = 2;
+
+            Assert.AreEqual(expectedAnswerCount, textAnswers.Count());
+            Assert.AreEqual(expectedAnswerCount, form.TextAnswers.Count);
         }
     }
 }

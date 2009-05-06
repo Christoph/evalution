@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Linq;
 using Domain;
 using Domain.Repositories;
@@ -7,16 +8,35 @@ namespace Presentation
 {
     public class AllGradeAnswersViewModel : ViewModelBase
     {
+        private readonly CurrentFormHolder mCurrentFormHolder;
+
         private readonly IAnswerRepository<GradeAnswer> mGradeAnswerRepository;
 
-        public IEnumerable<GradeAnswerViewModel> Answers { get; private set; }
+        private readonly Stage mStage;
 
-        public AllGradeAnswersViewModel(Form form, IAnswerRepository<GradeAnswer> gradeAnswerRepository)
+        public ObservableCollection<GradeAnswerViewModel> Answers { get; private set; }
+
+        public AllGradeAnswersViewModel(CurrentFormHolder currentFormHolder,
+            IAnswerRepository<GradeAnswer> gradeAnswerRepository, Stage stage)
         {
+            mCurrentFormHolder = currentFormHolder;
             mGradeAnswerRepository = gradeAnswerRepository;
-            
-            Answers = from answer in mGradeAnswerRepository.CreateFor(form)
-                select new GradeAnswerViewModel(answer);
+            mStage = stage;
+
+            Answers = new ObservableCollection<GradeAnswerViewModel>();
+
+            mCurrentFormHolder.OnChanged += SetAnswers;
+
+            SetAnswers(mCurrentFormHolder.Form);
+        }
+
+        private void SetAnswers(Form form)
+        {
+            Answers.Clear();
+            foreach (var gradeAnswer in form.GradeAnswers.Where(x => x.BelongsTo(mStage)))
+            {
+                Answers.Add(new GradeAnswerViewModel(gradeAnswer));
+            }
         }
     }
 }

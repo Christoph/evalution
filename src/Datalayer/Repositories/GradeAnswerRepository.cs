@@ -16,7 +16,7 @@ namespace TheNewEngine.Datalayer.Repositories
 
         public override IEnumerable<GradeAnswer> CreateFor(Form form)
         {
-            var gradeAnswers = GetAnswersFor(AnswerType.Binary, (q, s) => new GradeAnswer
+            var gradeAnswers = GetAnswersFor(AnswerType.Grade, (q, s) => new GradeAnswer
             {
                 Question = q,
                 QuestionStage = s,
