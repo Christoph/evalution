@@ -21,6 +21,7 @@ namespace Presentation
             InitializeDependencies();
 
             ISession session = DependencyResolver.Resolve<ISession>();
+            AnswerControl answerControl = new AnswerControl();
 
             //QuestionFormView
             var formView = new QuestionFormView();
@@ -33,42 +34,7 @@ namespace Presentation
 
             Stack.Children.Add(formView);
 
-            //AllBinaryAnswersView
-            var allBinaryAnswersView = new AllBinaryAnswersView();
-            
-            var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(currentFormHolder,
-               Stage.Pre, x => x.BinaryAnswers);
-            allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
-
-            Stack.Children.Add(allBinaryAnswersView);
-
-            var allSongAnswersView = new AllBinaryAnswersView();
-
-            var allSongAnswersViewModel = new AllBinaryAnswersViewModel(
-                currentFormHolder, Stage.Pre, x => x.SongAnswers);
-            allSongAnswersView.DataContext = allSongAnswersViewModel;
-
-            Stack.Children.Add(allSongAnswersView);
-
-//            GradeAnswerView
-
-            var allGradeAnswersView = new AllGradeAnswersView();
-
-            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(currentFormHolder,
-                 Stage.Pre);
-            allGradeAnswersView.DataContext = allGradeAnswersViewModel;
-
-            Stack.Children.Add(allGradeAnswersView);
-            
-//            TextAnswersView
-
-            var allTextAnswersView = new AllTextAnswersView();
-
-            var allTextAnswersViewModel = new AllTextAnswersViewModel(currentFormHolder,
-                 Stage.Pre);
-            allTextAnswersView.DataContext = allTextAnswersViewModel;
-
-            Stack.Children.Add(allTextAnswersView);
+            Stack.Children.Add(answerControl);
         }
 
         private void InitializeDependencies()

@@ -74,6 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AnswerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +104,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnswerControl.xaml.cs">
+      <DependentUpon>AnswerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DelegatedCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

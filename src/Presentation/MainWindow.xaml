@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="MainWindow" Height="700" Width="1024">
     <StackPanel x:Name="Stack">
-        
+
     </StackPanel>
+    
 </Window>
