@@ -97,11 +97,8 @@
     <Compile Include="Repositories\AnswerRepositoryBase.cs" />
     <Compile Include="Repositories\BinaryAnswerRepository.cs" />
     <Compile Include="Repositories\GradeAnswerRepository.cs" />
+    <Compile Include="Repositories\SongAnswerRepository.cs" />
     <Compile Include="Repositories\TextAnswerRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Db.sdf">
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

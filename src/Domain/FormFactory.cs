@@ -5,15 +5,19 @@ namespace Domain
     {
         private readonly IAnswerRepository<BinaryAnswer> mBinaryAnswerRepository;
 
-        public FormFactory(IAnswerRepository<BinaryAnswer> binaryAnswerRepository)
+        private readonly IAnswerRepository<BinaryAnswer> mSongAnswerRepository;
+
+        public FormFactory(IAnswerRepository<BinaryAnswer> binaryAnswerRepository, IAnswerRepository<BinaryAnswer> songAnswerRepository)
         {
             mBinaryAnswerRepository = binaryAnswerRepository;
+            mSongAnswerRepository = songAnswerRepository;
         }
 
         public Form CreateNew()
         {
             var form = new Form();
             mBinaryAnswerRepository.CreateFor(form);
+            mSongAnswerRepository.CreateFor(form);
 
             return form;
         }

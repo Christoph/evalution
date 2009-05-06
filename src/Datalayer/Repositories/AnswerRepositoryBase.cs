@@ -37,7 +37,7 @@ namespace TheNewEngine.Datalayer.Repositories
                 "from QuestionStage as s " +
                 "inner join s.Question as q " +
                 "where q.AnswerType = :answer_type")
-                .SetParameter("answer_type", (int)AnswerType.Binary)
+                .SetParameter("answer_type", (int)answerType)
                 .Enumerable().Cast<object>().Select(
                 x =>
                 {

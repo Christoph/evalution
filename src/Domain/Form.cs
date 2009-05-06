@@ -16,6 +16,7 @@ namespace Domain
 
         public virtual IList<TextAnswer> TextAnswers { get; set; }
         public virtual IList<BinaryAnswer> BinaryAnswers { get; set; }
+        public virtual IList<BinaryAnswer> SongAnswers { get; set; }
         public virtual IList<GradeAnswer> GradeAnswers { get; set; }
 
         internal Form()
@@ -23,6 +24,7 @@ namespace Domain
             TextAnswers = new List<TextAnswer>();
             BinaryAnswers = new List<BinaryAnswer>();
             GradeAnswers = new List<GradeAnswer>();
+            SongAnswers = new List<BinaryAnswer>();
         }
 
         public virtual void AddTextAnswer(TextAnswer textAnswer)
@@ -39,6 +41,11 @@ namespace Domain
         {
             binaryAnswer.Form = this;
             BinaryAnswers.Add(binaryAnswer);
+        }
+        public virtual void AddSongAnswer(BinaryAnswer songAnswer)
+        {
+            songAnswer.Form = this;
+            SongAnswers.Add(songAnswer);
         }
     }
 }

@@ -21,6 +21,8 @@ namespace TheNewEngine.Datalayer.Mappings
                 .Cascade.All();
             HasMany(x => x.BinaryAnswers)
                 .Cascade.All();
+            HasMany(x => x.SongAnswers)
+                .Cascade.All();
             HasMany(x => x.GradeAnswers)
                 .Cascade.All();
         }

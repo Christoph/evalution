@@ -32,11 +32,12 @@ namespace Presentation
             }
 
             var binaryAnswerRepository = new BinaryAnswerRepository(session);
+            var songAnswerRepository = new SongAnswerRepository(session);
 
             //QuestionFormView
             var formView = new QuestionFormView();
 
-            var currentFormHolder = new CurrentFormHolder(new FormFactory(binaryAnswerRepository));
+            var currentFormHolder = new CurrentFormHolder(new FormFactory(binaryAnswerRepository, songAnswerRepository));
             var formViewModel = new QuestionFormViewModel(currentFormHolder, 
                 new FormRepository(session));
 
@@ -48,10 +49,18 @@ namespace Presentation
             var allBinaryAnswersView = new AllBinaryAnswersView();
             
             var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(currentFormHolder,
-                binaryAnswerRepository, Stage.Pre);
+                binaryAnswerRepository, Stage.Pre, x => x.BinaryAnswers);
             allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
 
             Stack.Children.Add(allBinaryAnswersView);
+
+            var allSongAnswersView = new AllBinaryAnswersView();
+
+            var allSongAnswersViewModel = new AllBinaryAnswersViewModel(
+                currentFormHolder, songAnswerRepository, Stage.Pre, x => x.SongAnswers);
+            allSongAnswersView.DataContext = allSongAnswersViewModel;
+
+            Stack.Children.Add(allSongAnswersView);
 
             //TextAnswersView
 
