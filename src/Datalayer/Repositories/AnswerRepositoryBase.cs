@@ -27,7 +27,7 @@ namespace TheNewEngine.Datalayer.Repositories
             mSession.Flush();
         }
 
-        public abstract IEnumerable<T> CreateFor(Form form);
+        public abstract void CreateFor(Form form);
 
         protected IEnumerable<T> GetAnswersFor(AnswerType answerType,
             Func<Question, QuestionStage, T> create)

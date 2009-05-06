@@ -12,7 +12,7 @@ namespace TheNewEngine.Datalayer.Repositories
         {
         }
         
-        public override IEnumerable<BinaryAnswer> CreateFor(Form form)
+        public override void CreateFor(Form form)
         {
             var binaryAnswers = GetAnswersFor(AnswerType.Binary, (q, s) => new BinaryAnswer
             {
@@ -25,8 +25,6 @@ namespace TheNewEngine.Datalayer.Repositories
             {
                 form.BinaryAnswers.Add(answer);
             }
-            
-            return binaryAnswers;
         }
     }
 }

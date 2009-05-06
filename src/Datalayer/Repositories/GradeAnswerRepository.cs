@@ -14,7 +14,7 @@ namespace TheNewEngine.Datalayer.Repositories
             mSession = session;
         }
 
-        public override IEnumerable<GradeAnswer> CreateFor(Form form)
+        public override void CreateFor(Form form)
         {
             var gradeAnswers = GetAnswersFor(AnswerType.Grade, (q, s) => new GradeAnswer
             {
@@ -27,8 +27,6 @@ namespace TheNewEngine.Datalayer.Repositories
             {
                 form.GradeAnswers.Add(answer);
             }
-
-            return gradeAnswers;
         }
     }
 }

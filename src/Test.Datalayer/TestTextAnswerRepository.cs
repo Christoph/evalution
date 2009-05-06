@@ -18,12 +18,9 @@ namespace TheNewEngine.Datalayer
             var repository = new TextAnswerRepository(mSession);
 
             var form = new Form();
-            var textAnswers = repository.CreateFor(form);
+            repository.CreateFor(form);
 
-            var expectedAnswerCount = 2;
-
-            Assert.AreEqual(expectedAnswerCount, textAnswers.Count());
-            Assert.AreEqual(expectedAnswerCount, form.TextAnswers.Count);
+            Assert.AreEqual(2, form.TextAnswers.Count);
         }
     }
 }

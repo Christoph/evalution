@@ -18,12 +18,9 @@ namespace TheNewEngine.Datalayer
             var repository = new GradeAnswerRepository(mSession);
 
             var form = new Form();
-            var gradeAnswers = repository.CreateFor(form);
+            repository.CreateFor(form);
 
-            var expectedAnswerCount = 7;
-
-            Assert.AreEqual(expectedAnswerCount, gradeAnswers.Count());
-            Assert.AreEqual(expectedAnswerCount, form.GradeAnswers.Count);
+            Assert.AreEqual(7, form.GradeAnswers.Count);
         }
     }
 }

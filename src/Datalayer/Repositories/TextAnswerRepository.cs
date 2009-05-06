@@ -11,7 +11,7 @@ namespace TheNewEngine.Datalayer.Repositories
         {
         }
 
-        public override IEnumerable<TextAnswer> CreateFor(Form form)
+        public override void CreateFor(Form form)
         {
             var textAnswers = GetAnswersFor(AnswerType.Text, (q, s) => new TextAnswer
             {
@@ -24,8 +24,6 @@ namespace TheNewEngine.Datalayer.Repositories
             {
                 form.TextAnswers.Add(answer);
             }
-
-            return textAnswers;
         }
     }
 }
