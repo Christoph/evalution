@@ -9,7 +9,7 @@ namespace Presentation
 {
     public class AllBinaryAnswersViewModel : ViewModelBase
     {
-        private readonly CurrentFormHolder mCurrentFormHolder;
+        private readonly ICurrentFormHolder mCurrentFormHolder;
 
         private readonly Stage mStage;
 
@@ -17,7 +17,7 @@ namespace Presentation
 
         public ObservableCollection<BinaryAnswerViewModel> Answers { get; private set; }
 
-        public AllBinaryAnswersViewModel(CurrentFormHolder currentFormHolder,
+        public AllBinaryAnswersViewModel(ICurrentFormHolder currentFormHolder,
             Stage stage, Func<Form, IList<BinaryAnswer>> getAnswers)
         {
             mCurrentFormHolder = currentFormHolder;

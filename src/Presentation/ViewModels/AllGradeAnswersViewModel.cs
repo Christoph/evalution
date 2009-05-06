@@ -6,13 +6,13 @@ namespace Presentation
 {
     public class AllGradeAnswersViewModel : ViewModelBase
     {
-        private readonly CurrentFormHolder mCurrentFormHolder;
+        private readonly ICurrentFormHolder mCurrentFormHolder;
 
         private readonly Stage mStage;
 
         public ObservableCollection<GradeAnswerViewModel> Answers { get; private set; }
 
-        public AllGradeAnswersViewModel(CurrentFormHolder currentFormHolder,
+        public AllGradeAnswersViewModel(ICurrentFormHolder currentFormHolder,
             Stage stage)
         {
             mCurrentFormHolder = currentFormHolder;

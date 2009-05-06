@@ -2,7 +2,7 @@ using System;
 
 namespace Domain
 {
-    public class CurrentFormHolder
+    public class CurrentFormHolder : ICurrentFormHolder
     {
         private readonly IFormFactory mFormFactory;
 

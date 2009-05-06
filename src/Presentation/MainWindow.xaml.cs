@@ -1,6 +1,7 @@
 using System.Windows;
 using Domain;
 using NHibernate;
+using Ninject;
 using Presentation.View;
 using TheNewEngine.Datalayer;
 using TheNewEngine.Datalayer.Repositories;
@@ -16,33 +17,15 @@ namespace Presentation
         public MainWindow()
         {
             InitializeComponent();
-            string dbName = "Db.sdf";
-            bool newDb = !File.Exists(dbName);
-            if (newDb)
-            {
-                File.Copy(@"..\EmptyDb.sdf", dbName);
-                DbAccess.GetSessionForEmptyDatabase(dbName);
-            }
-            var sessionFactory = DbAccess.CreateSessionFactory(dbName);
-            ISession session = sessionFactory.OpenSession();
 
-            if (newDb)
-            {
-                new DatabaseInitializer(session).InitDb();
-            }
+            InitializeDependencies();
 
-            var binaryAnswerRepository = new BinaryAnswerRepository(session);
-            var songAnswerRepository = new SongAnswerRepository(session);
-            var textAnswerRepository = new TextAnswerRepository(session);
-            var gradeAnswerRepository = new GradeAnswerRepository(session);
-
-            var formFactory = new FormFactory(
-                gradeAnswerRepository, textAnswerRepository, binaryAnswerRepository, songAnswerRepository);
+            ISession session = DependencyResolver.Resolve<ISession>();
 
             //QuestionFormView
             var formView = new QuestionFormView();
 
-            var currentFormHolder = new CurrentFormHolder(formFactory);
+            var currentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
             var formViewModel = new QuestionFormViewModel(currentFormHolder, 
                 new FormRepository(session));
 
@@ -86,6 +69,27 @@ namespace Presentation
             allTextAnswersView.DataContext = allTextAnswersViewModel;
 
             Stack.Children.Add(allTextAnswersView);
+        }
+
+        private void InitializeDependencies()
+        {
+            IKernel kernel = new StandardKernel(new DatalayerModule(), new DomainModule());
+
+            DependencyResolver.InitializeWith(kernel);
+
+            ISession session = DependencyResolver.Resolve<ISession>();
+
+            var binaryAnswerRepository = new BinaryAnswerRepository(session);
+            var songAnswerRepository = new SongAnswerRepository(session);
+            var textAnswerRepository = new TextAnswerRepository(session);
+            var gradeAnswerRepository = new GradeAnswerRepository(session);
+
+            var formFactory = new FormFactory(
+                gradeAnswerRepository, textAnswerRepository, binaryAnswerRepository, songAnswerRepository);
+
+            var currentFormHolder = new CurrentFormHolder(formFactory);
+
+            kernel.Bind<ICurrentFormHolder>().ToConstant(currentFormHolder);
         }
     }
 }

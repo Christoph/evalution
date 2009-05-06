@@ -6,7 +6,7 @@ namespace Presentation
 {
     public class QuestionFormViewModel : ViewModelBase
     {
-        private CurrentFormHolder mCurrentFormHolder;
+        private ICurrentFormHolder mCurrentFormHolder;
 
         private Form Form
         {
@@ -16,7 +16,7 @@ namespace Presentation
 
         private readonly IQuestionFormRepository mFormRepository;
 
-        public QuestionFormViewModel(CurrentFormHolder currentFormHolder, 
+        public QuestionFormViewModel(ICurrentFormHolder currentFormHolder, 
             IQuestionFormRepository formRepository)
         {
             mCurrentFormHolder = currentFormHolder;
