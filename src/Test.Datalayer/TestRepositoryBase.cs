@@ -1,6 +1,8 @@
+using System;
 using System.IO;
 using MbUnit.Framework;
 using NHibernate;
+using Gallio.Framework;
 
 namespace TheNewEngine.Datalayer
 {
@@ -19,6 +21,7 @@ namespace TheNewEngine.Datalayer
         public void Setup()
         {
             File.Copy(@"..\EmptyDb.sdf", mDbName);
+            TestLog.WriteLine(Environment.CurrentDirectory);
             DbAccess.GetSessionForEmptyDatabase(mDbName);
 
             var sessionFactory = DbAccess.CreateSessionFactory(mDbName);

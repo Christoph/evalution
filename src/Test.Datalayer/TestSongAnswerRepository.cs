@@ -1,26 +1,26 @@
 using System.Linq;
+using Domain;
 using MbUnit.Framework;
 using TheNewEngine.Datalayer.Repositories;
-using Domain;
 
 namespace TheNewEngine.Datalayer
 {
-    public class TestTextAnswerRepository : TestRepositoryBase
+    public class TestSongAnswerRepository : TestRepositoryBase
     {
-        public TestTextAnswerRepository()
-            : base("TestTextAnswerRepository.sdf")
+        public TestSongAnswerRepository()
+            :base("TestSongAnswerRepository.sdf")
         {
         }
 
         [Test]
         public void CreateFor()
         {
-            var repository = new TextAnswerRepository(mSession);
+            var repository = new SongAnswerRepository(mSession);
 
             var form = new Form();
             repository.CreateFor(form);
 
-            Assert.AreEqual(2, form.TextAnswers.Count);
+            Assert.AreEqual(44, form.SongAnswers.Count);
         }
     }
 }

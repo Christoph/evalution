@@ -3,17 +3,21 @@ namespace Domain
 {
     public class FormFactory : IFormFactory
     {
-        private readonly IBinaryAnswerRepository mBinaryAnswerRepository;
+        private readonly IAnswerRepository[] mAnswerRepositories;
 
-        public FormFactory(IBinaryAnswerRepository binaryAnswerRepository)
+        public FormFactory(params IAnswerRepository[] answerRepositories)
         {
-            mBinaryAnswerRepository = binaryAnswerRepository;
+            mAnswerRepositories = answerRepositories;
         }
 
         public Form CreateNew()
         {
             var form = new Form();
-            mBinaryAnswerRepository.CreateFor(form, Stage.Pre);
+
+            foreach (var repository in mAnswerRepositories)
+            {
+                repository.CreateFor(form);
+            }
 
             return form;
         }

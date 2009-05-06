@@ -1,22 +1,36 @@
+using System.Collections.ObjectModel;
 using System.Linq;
 using Domain;
-using Domain.Repositories;
-using System.Collections.Generic;
 
 namespace Presentation
 {
     public class AllTextAnswersViewModel : ViewModelBase
     {
-        private readonly ITextAnswerRepository mTextAnswerRepository;
+        private readonly ICurrentFormHolder mCurrentFormHolder;
 
-        public IEnumerable<TextAnswerViewModel> Answers { get; private set; }
+        private readonly Stage mStage;
 
-        public AllTextAnswersViewModel(Form form, ITextAnswerRepository textAnswerRepository)
+        public ObservableCollection<TextAnswerViewModel> Answers { get; private set; }
+
+        public AllTextAnswersViewModel(ICurrentFormHolder currentFormHolder, Stage stage)
         {
-            mTextAnswerRepository = textAnswerRepository;
+            mCurrentFormHolder = currentFormHolder;
+            mStage = stage;
 
-            Answers = from answer in mTextAnswerRepository.CreateFor(form, Stage.Pre)
-                select new TextAnswerViewModel(answer);
+            Answers = new ObservableCollection<TextAnswerViewModel>();
+
+            mCurrentFormHolder.OnChanged += SetAnswers;
+
+            SetAnswers(mCurrentFormHolder.Form);
+        }
+
+        private void SetAnswers(Form form)
+        {
+            Answers.Clear();
+            foreach (var textAnswer in form.TextAnswers.Where(x => x.BelongsTo(mStage)))
+            {
+                Answers.Add(new TextAnswerViewModel(textAnswer));
+            }
         }
     }
 }

@@ -5,22 +5,22 @@ using Domain;
 
 namespace TheNewEngine.Datalayer
 {
-    public class TestTextAnswerRepository : TestRepositoryBase
+    public class TestGradeAnswerRepository : TestRepositoryBase
     {
-        public TestTextAnswerRepository()
-            : base("TestTextAnswerRepository.sdf")
+        public TestGradeAnswerRepository()
+            : base("TestGradeAnswerRepository.sdf")
         {
         }
 
         [Test]
         public void CreateFor()
         {
-            var repository = new TextAnswerRepository(mSession);
+            var repository = new GradeAnswerRepository(mSession);
 
             var form = new Form();
             repository.CreateFor(form);
 
-            Assert.AreEqual(2, form.TextAnswers.Count);
+            Assert.AreEqual(7, form.GradeAnswers.Count);
         }
     }
 }

@@ -1,20 +1,20 @@
+using System;
 using System.Collections.Generic;
 using Domain;
-using Domain.Repositories;
 using NHibernate;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
-    public class BinaryAnswerRepository : AnswerRepositoryBase<BinaryAnswer>
+    public class SongAnswerRepository : AnswerRepositoryBase<BinaryAnswer>
     {
-        public BinaryAnswerRepository(ISession session)
+        public SongAnswerRepository(ISession session)
             : base(session)
         {
         }
-        
+
         public override void CreateFor(Form form)
         {
-            var binaryAnswers = GetAnswersFor(AnswerType.Binary, (q, s) => new BinaryAnswer
+            var binaryAnswers = GetAnswersFor(AnswerType.Song, (q, s) => new BinaryAnswer
             {
                 Question = q,
                 QuestionStage = s,
@@ -23,7 +23,7 @@ namespace TheNewEngine.Datalayer.Repositories
 
             foreach (var answer in binaryAnswers)
             {
-                form.BinaryAnswers.Add(answer);
+                form.SongAnswers.Add(answer);
             }
         }
     }

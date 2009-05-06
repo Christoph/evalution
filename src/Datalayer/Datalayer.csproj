@@ -62,6 +62,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Redist\NHibernate.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Redist\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -85,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseInitializer.cs" />
+    <Compile Include="DatalayerModule.cs" />
     <Compile Include="DbAccess.cs" />
     <Compile Include="FormRepository.cs" />
     <Compile Include="Mappings\BinaryAnswerMap.cs" />
@@ -94,13 +99,11 @@
     <Compile Include="Mappings\QuestionStageMap.cs" />
     <Compile Include="Mappings\TextAnswerMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AnswerRepositoryBase.cs" />
     <Compile Include="Repositories\BinaryAnswerRepository.cs" />
     <Compile Include="Repositories\GradeAnswerRepository.cs" />
+    <Compile Include="Repositories\SongAnswerRepository.cs" />
     <Compile Include="Repositories\TextAnswerRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Db.sdf">
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

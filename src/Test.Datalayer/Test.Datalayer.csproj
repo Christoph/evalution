@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestGradeAnswerRepository.cs" />
+    <Compile Include="TestSongAnswerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBinaryAnswerRepository.cs" />
     <Compile Include="TestDatabaseInitializer.cs" />

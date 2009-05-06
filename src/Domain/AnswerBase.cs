@@ -7,5 +7,12 @@ namespace Domain
         public virtual Form Form { get; set; }
         
         public virtual Question Question { get; set; }
+
+        public virtual QuestionStage QuestionStage { get; set; }
+
+        public virtual bool BelongsTo(Stage stage)
+        {
+            return QuestionStage.StageNumber == (int)stage;
+        }
     }
 }
