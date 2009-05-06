@@ -1,6 +1,6 @@
 namespace Domain.Repositories
 {
-    public interface IAnswerRepository<T> : IRepository<T>
+    public interface IAnswerRepository
     {
         void CreateFor(Form form);
     }

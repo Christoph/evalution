@@ -1,8 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Domain;
-using Domain.Repositories;
-using System.Collections.Generic;
 
 namespace Presentation
 {
@@ -10,17 +8,14 @@ namespace Presentation
     {
         private readonly CurrentFormHolder mCurrentFormHolder;
 
-        private readonly IAnswerRepository<GradeAnswer> mGradeAnswerRepository;
-
         private readonly Stage mStage;
 
         public ObservableCollection<GradeAnswerViewModel> Answers { get; private set; }
 
         public AllGradeAnswersViewModel(CurrentFormHolder currentFormHolder,
-            IAnswerRepository<GradeAnswer> gradeAnswerRepository, Stage stage)
+            Stage stage)
         {
             mCurrentFormHolder = currentFormHolder;
-            mGradeAnswerRepository = gradeAnswerRepository;
             mStage = stage;
 
             Answers = new ObservableCollection<GradeAnswerViewModel>();

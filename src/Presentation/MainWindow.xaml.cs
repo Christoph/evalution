@@ -33,11 +33,16 @@ namespace Presentation
 
             var binaryAnswerRepository = new BinaryAnswerRepository(session);
             var songAnswerRepository = new SongAnswerRepository(session);
+            var textAnswerRepository = new TextAnswerRepository(session);
+            var gradeAnswerRepository = new GradeAnswerRepository(session);
+
+            var formFactory = new FormFactory(
+                gradeAnswerRepository, textAnswerRepository, binaryAnswerRepository, songAnswerRepository);
 
             //QuestionFormView
             var formView = new QuestionFormView();
 
-            var currentFormHolder = new CurrentFormHolder(new FormFactory(binaryAnswerRepository, songAnswerRepository));
+            var currentFormHolder = new CurrentFormHolder(formFactory);
             var formViewModel = new QuestionFormViewModel(currentFormHolder, 
                 new FormRepository(session));
 
@@ -49,7 +54,7 @@ namespace Presentation
             var allBinaryAnswersView = new AllBinaryAnswersView();
             
             var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(currentFormHolder,
-                binaryAnswerRepository, Stage.Pre, x => x.BinaryAnswers);
+               Stage.Pre, x => x.BinaryAnswers);
             allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
 
             Stack.Children.Add(allBinaryAnswersView);
@@ -57,7 +62,7 @@ namespace Presentation
             var allSongAnswersView = new AllBinaryAnswersView();
 
             var allSongAnswersViewModel = new AllBinaryAnswersViewModel(
-                currentFormHolder, songAnswerRepository, Stage.Pre, x => x.SongAnswers);
+                currentFormHolder, Stage.Pre, x => x.SongAnswers);
             allSongAnswersView.DataContext = allSongAnswersViewModel;
 
             Stack.Children.Add(allSongAnswersView);
@@ -65,8 +70,9 @@ namespace Presentation
 //            GradeAnswerView
 
             var allGradeAnswersView = new AllGradeAnswersView();
+
             var allGradeAnswersViewModel = new AllGradeAnswersViewModel(currentFormHolder,
-                new GradeAnswerRepository(session), Stage.Pre);
+                 Stage.Pre);
             allGradeAnswersView.DataContext = allGradeAnswersViewModel;
 
             Stack.Children.Add(allGradeAnswersView);
@@ -74,13 +80,12 @@ namespace Presentation
 //            TextAnswersView
 
             var allTextAnswersView = new AllTextAnswersView();
+
             var allTextAnswersViewModel = new AllTextAnswersViewModel(currentFormHolder,
-                new TextAnswerRepository(session), Stage.Pre);
+                 Stage.Pre);
             allTextAnswersView.DataContext = allTextAnswersViewModel;
 
             Stack.Children.Add(allTextAnswersView);
-
-
         }
     }
 }

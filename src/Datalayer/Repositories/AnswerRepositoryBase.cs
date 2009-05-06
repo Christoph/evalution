@@ -7,7 +7,7 @@ using NHibernate;
 
 namespace TheNewEngine.Datalayer.Repositories
 {
-    public abstract class AnswerRepositoryBase<T> : IAnswerRepository<T>
+    public abstract class AnswerRepositoryBase<T> : IAnswerRepository, IRepository<T>
     {
         private readonly ISession mSession;
 

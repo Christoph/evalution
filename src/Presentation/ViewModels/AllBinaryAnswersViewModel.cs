@@ -11,8 +11,6 @@ namespace Presentation
     {
         private readonly CurrentFormHolder mCurrentFormHolder;
 
-        private readonly IAnswerRepository<BinaryAnswer> mBinaryAnswerRepository;
-
         private readonly Stage mStage;
 
         private readonly Func<Form, IList<BinaryAnswer>> mGetAnswers;
@@ -20,11 +18,9 @@ namespace Presentation
         public ObservableCollection<BinaryAnswerViewModel> Answers { get; private set; }
 
         public AllBinaryAnswersViewModel(CurrentFormHolder currentFormHolder,
-            IAnswerRepository<BinaryAnswer> binaryAnswerRepository, Stage stage,
-            Func<Form, IList<BinaryAnswer>> getAnswers)
+            Stage stage, Func<Form, IList<BinaryAnswer>> getAnswers)
         {
             mCurrentFormHolder = currentFormHolder;
-            mBinaryAnswerRepository = binaryAnswerRepository;
             mStage = stage;
             mGetAnswers = getAnswers;
 
