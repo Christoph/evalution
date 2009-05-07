@@ -43,7 +43,7 @@
     
     <ListView ItemsSource="{Binding Source={StaticResource GradeAnswerViewModels}}">
         <ListView.View>
-            <GridView>
+            <GridView> 
                 <GridView.Columns>
                     <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
                     <GridViewColumn Header="Answer" CellTemplate="{StaticResource GradeTemplate}"/>

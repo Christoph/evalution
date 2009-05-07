@@ -34,7 +34,7 @@ namespace Presentation
 
             Stack.Children.Add(formView);
 
-            Stack.Children.Add(answerControl);
+            Grid.Children.Add(answerControl);
         }
 
         private void InitializeDependencies()

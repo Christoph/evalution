@@ -20,7 +20,7 @@ namespace Presentation
                Stage.Pre, x => x.BinaryAnswers);
             allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
 
-            UniformGrid.Children.Add(allBinaryAnswersView);
+            Eins.Children.Add(allBinaryAnswersView);
 
             //            AllSongsAnswerView
             var allSongAnswersView = new AllBinaryAnswersView();
@@ -29,7 +29,7 @@ namespace Presentation
                 Stage.Pre, x => x.SongAnswers);
             allSongAnswersView.DataContext = allSongAnswersViewModel;
 
-            UniformGrid.Children.Add(allSongAnswersView);
+            Zwei.Children.Add(allSongAnswersView);
 
             //            GradeAnswerView
 
@@ -39,7 +39,7 @@ namespace Presentation
                  Stage.Pre);
             allGradeAnswersView.DataContext = allGradeAnswersViewModel;
 
-            UniformGrid.Children.Add(allGradeAnswersView);
+            Drei.Children.Add(allGradeAnswersView);
 
             //            TextAnswersView
 
@@ -49,7 +49,7 @@ namespace Presentation
                  Stage.Pre);
             allTextAnswersView.DataContext = allTextAnswersViewModel;
 
-            UniformGrid.Children.Add(allTextAnswersView);
+            Vier.Children.Add(allTextAnswersView);
         }
     }
 }
