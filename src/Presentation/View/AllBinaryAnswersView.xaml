@@ -18,8 +18,9 @@ Height="Auto" Width="Auto">
         </DataTemplate>
         
     </UserControl.Resources>
-
-    <ListView ItemsSource="{Binding Source={StaticResource BinaryAnswerViewModels}}">
+    
+    <StackPanel>
+    <ListView ItemsSource="{Binding Source={StaticResource BinaryAnswerViewModels}}" Background="Transparent">
         <ListView.View>
             <GridView>
                 <GridView.Columns>
@@ -29,4 +30,5 @@ Height="Auto" Width="Auto">
             </GridView>
         </ListView.View>
     </ListView>
+    </StackPanel>
 </UserControl>

@@ -11,37 +11,34 @@
         />
 
         <DataTemplate x:Key="QuestionTemplate">
-            <TextBlock Text="{Binding Path=Question}" Width="200"/>
+            <TextBlock Text="{Binding Path=Question}" Width="200" HorizontalAlignment="Left"/>
         </DataTemplate>
 
         <DataTemplate x:Key="GradeTemplate">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="1 "/>
-                <RadioButton>
-                    
-                </RadioButton>
-                <TextBlock Text="2 "/>
-                <RadioButton>
-
-                </RadioButton>
-                <TextBlock Text="3 "/>
-                <RadioButton>
-
-                </RadioButton>
-                <TextBlock Text="4 "/>
-                <RadioButton>
-
-                </RadioButton>
-                <TextBlock Text="5 "/>
-                <RadioButton>
-
-                </RadioButton>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <ComboBox>
+                    <ComboBoxItem>
+                        1
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        2
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        3
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        4
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        5
+                    </ComboBoxItem>
+                </ComboBox>
             </StackPanel>
         </DataTemplate>
 
     </UserControl.Resources>
     
-    <ListView ItemsSource="{Binding Source={StaticResource GradeAnswerViewModels}}">
+    <ListView ItemsSource="{Binding Source={StaticResource GradeAnswerViewModels}}" Background="Transparent">
         <ListView.View>
             <GridView> 
                 <GridView.Columns>

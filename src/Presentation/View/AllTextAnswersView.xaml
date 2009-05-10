@@ -19,7 +19,7 @@
 
     </UserControl.Resources>
     
-    <ListView ItemsSource="{Binding Source={StaticResource TextAnswerViewModels}}">
+    <ListView ItemsSource="{Binding Source={StaticResource TextAnswerViewModels}}" Background="Transparent">
         <ListView.View>
             <GridView>
                 <GridView.Columns>
