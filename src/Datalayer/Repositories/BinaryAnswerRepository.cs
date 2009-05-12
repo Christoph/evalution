@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Domain;
-using Domain.Repositories;
 using NHibernate;
 
 namespace TheNewEngine.Datalayer.Repositories

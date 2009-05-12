@@ -12,14 +12,17 @@ namespace TheNewEngine.Datalayer
     {
         private readonly ISession mSession;
 
+        private INHibernateQueryable<Form> mForms;
+
         public FormRepository(ISession session)
         {
             mSession = session;
+            mForms = mSession.Linq<Form>();
         }
 
-        public IEnumerable<Form> GetAll()
+        public int GetNextId()
         {
-            return mSession.CreateCriteria(typeof(Form)).List().Cast<Form>();
+            return mForms.Max(x => x.Id) + 1;
         }
 
         public void Insert(Form item)
@@ -30,18 +33,14 @@ namespace TheNewEngine.Datalayer
 
         public Form GetPreviousForm(int id)
         {
-            int previousId = id - 1;
-
-            var forms = mSession.Linq <Form>();
-
-            var minId = forms.Min(x => x.Id);
-
-            if (id <= minId)
+            if (!HasPrevious(id))
             {
                 return null;
             }
 
-            var previous = forms
+            var previousId = id - 1;
+
+            var previous = mForms
                 .Where(x => x.Id == previousId)
                 .SingleOrDefault();
 
@@ -50,22 +49,34 @@ namespace TheNewEngine.Datalayer
 
         public Form GetNextForm(int id)
         {
-            var forms = mSession.Linq<Form>();
-
-            int maxId = forms.Max(x => x.Id);
-
-            if (id >= maxId)
+            if (!HasNext(id))
             {
                 return null;
             }
 
             int nextId = id + 1;
 
-            var next = forms
+            var next = mForms
                 .Where(x => x.Id == nextId)
                 .SingleOrDefault();
 
             return next;
+        }
+
+        public bool HasPrevious(int id)
+        {
+            return id > mForms.Min(x => x.Id);
+        }
+
+        public bool HasNext(int id)
+        {
+            return id < mForms.Max(x => x.Id);
+        }
+
+        public Form GetLast()
+        {
+            var lastId = mForms.Max(y => y.Id);
+            return mForms.Where(x => x.Id == lastId).SingleOrDefault();
         }
     }
 }
