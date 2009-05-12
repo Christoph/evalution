@@ -111,6 +111,7 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AllAnswersViewModelBase.cs" />
     <Compile Include="ViewModels\AllBinaryAnswersViewModel.cs" />
     <Compile Include="ViewModels\AllFormsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

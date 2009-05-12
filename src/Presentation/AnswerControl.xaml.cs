@@ -12,44 +12,52 @@ namespace Presentation
         public AnswerControl()
         {
             InitializeComponent();
+            var currentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
 
-            //            AllBinaryAnswersView
+            // AllBinaryAnswersView
             var allBinaryAnswersView = new AllBinaryAnswersView();
 
-            var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(DependencyResolver.Resolve<ICurrentFormHolder>(),
-               Stage.Pre, x => x.BinaryAnswers);
+            var allBinaryAnswersViewModel = new AllBinaryAnswersViewModel(
+                currentFormHolder, Stage.Pre, x => x.BinaryAnswers, "Vocabulary");
             allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
 
-            Eins.Children.Add(allBinaryAnswersView);
+            Stack.Children.Add(allBinaryAnswersView);
 
-            //            AllSongsAnswerView
+            // AllSongsAnswerView
             var allSongAnswersView = new AllBinaryAnswersView();
 
-            var allSongAnswersViewModel = new AllBinaryAnswersViewModel(DependencyResolver.Resolve<ICurrentFormHolder>(),
-                Stage.Pre, x => x.SongAnswers);
+            var allSongAnswersViewModel = new AllBinaryAnswersViewModel(
+                currentFormHolder, Stage.Pre, x => x.SongAnswers, "Songs");
             allSongAnswersView.DataContext = allSongAnswersViewModel;
 
-            Zwei.Children.Add(allSongAnswersView);
+            Stack.Children.Add(allSongAnswersView);
 
-            //            GradeAnswerView
+            // GradeAnswerView
 
             var allGradeAnswersView = new AllGradeAnswersView();
 
-            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(DependencyResolver.Resolve<ICurrentFormHolder>(),
-                 Stage.Pre);
+            var allGradeAnswersViewModel = new AllGradeAnswersViewModel(currentFormHolder, Stage.Pre, "Grades");
             allGradeAnswersView.DataContext = allGradeAnswersViewModel;
 
-            Drei.Children.Add(allGradeAnswersView);
+            Stack.Children.Add(allGradeAnswersView);
 
-            //            TextAnswersView
+            // Yes_No
+            var allYesNoAnswersView = new AllBinaryAnswersView();
+
+            var allYesNoAnswersViewModel = new AllBinaryAnswersViewModel(
+                currentFormHolder, Stage.PreYesNo, x => x.BinaryAnswers, "YesNo");
+            allYesNoAnswersView.DataContext = allYesNoAnswersViewModel;
+
+            Stack.Children.Add(allYesNoAnswersView);
+
+            // TextAnswersView
 
             var allTextAnswersView = new AllTextAnswersView();
 
-            var allTextAnswersViewModel = new AllTextAnswersViewModel(DependencyResolver.Resolve<ICurrentFormHolder>(),
-                 Stage.Pre);
+            var allTextAnswersViewModel = new AllTextAnswersViewModel(currentFormHolder, Stage.Pre, "Text");
             allTextAnswersView.DataContext = allTextAnswersViewModel;
 
-            Vier.Children.Add(allTextAnswersView);
+            Stack.Children.Add(allTextAnswersView);
         }
     }
 }

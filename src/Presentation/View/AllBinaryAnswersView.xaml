@@ -20,15 +20,16 @@ Height="Auto" Width="Auto">
     </UserControl.Resources>
     
     <StackPanel>
-    <ListView ItemsSource="{Binding Source={StaticResource BinaryAnswerViewModels}}" Background="Transparent">
-        <ListView.View>
-            <GridView>
-                <GridView.Columns>
-                    <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
-                    <GridViewColumn Header="Answer" CellTemplate="{StaticResource BinaryTemplate}"/>
-                </GridView.Columns>
-            </GridView>
-        </ListView.View>
-    </ListView>
+        <Label Content="{Binding Path=Header}" />
+        <ListView ItemsSource="{Binding Source={StaticResource BinaryAnswerViewModels}}" Background="Transparent">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
+                        <GridViewColumn Header="Answer" CellTemplate="{StaticResource BinaryTemplate}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </StackPanel>
 </UserControl>

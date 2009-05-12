@@ -99,7 +99,7 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Binary,
-                    QuestionStages = CreateStages(Stage.Pre)
+                    QuestionStages = CreateStages(Stage.PreYesNo)
                 });
             SaveList(entities);
             mSession.Flush();

@@ -4,28 +4,19 @@ using Domain;
 
 namespace Presentation
 {
-    public class AllGradeAnswersViewModel : ViewModelBase
+    public class AllGradeAnswersViewModel : AllAnswersViewModelBase
     {
-        private readonly ICurrentFormHolder mCurrentFormHolder;
-
-        private readonly Stage mStage;
-
         public ObservableCollection<GradeAnswerViewModel> Answers { get; private set; }
 
         public AllGradeAnswersViewModel(ICurrentFormHolder currentFormHolder,
-            Stage stage)
+            Stage stage, string header) : base(currentFormHolder,stage,header)
         {
-            mCurrentFormHolder = currentFormHolder;
-            mStage = stage;
-
             Answers = new ObservableCollection<GradeAnswerViewModel>();
-
-            mCurrentFormHolder.OnChanged += SetAnswers;
 
             SetAnswers(mCurrentFormHolder.Form);
         }
 
-        private void SetAnswers(Form form)
+        protected override void SetAnswers(Form form)
         {
             Answers.Clear();
             foreach (var gradeAnswer in form.GradeAnswers.Where(x => x.BelongsTo(mStage)))

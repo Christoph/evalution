@@ -18,15 +18,17 @@
         </DataTemplate>
 
     </UserControl.Resources>
-    
-    <ListView ItemsSource="{Binding Source={StaticResource TextAnswerViewModels}}" Background="Transparent">
-        <ListView.View>
-            <GridView>
-                <GridView.Columns>
-                    <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
-                    <GridViewColumn Header="Answer" CellTemplate="{StaticResource TextTemplate}"/>
-                </GridView.Columns>
-            </GridView>
-        </ListView.View>
-    </ListView>
+    <StackPanel>
+        <Label Content="{Binding Path=Header}"/>
+        <ListView ItemsSource="{Binding Source={StaticResource TextAnswerViewModels}}" Background="Transparent">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
+                        <GridViewColumn Header="Answer" CellTemplate="{StaticResource TextTemplate}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </StackPanel>
 </UserControl>
