@@ -31,10 +31,10 @@ namespace Presentation
                 new FormRepository(session));
 
             formView.DataContext = formViewModel;
+            
+            TopContent.Children.Add(formView);
 
-            Stack.Children.Add(formView);
-
-            Stack.Children.Add(answerControl);
+            BottomContent.Children.Add(answerControl);
         }
 
         private void InitializeDependencies()
