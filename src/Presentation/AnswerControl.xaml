@@ -3,8 +3,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="Auto" Width="Auto">
     <ScrollViewer>
-    <StackPanel Background="Transparent" x:Name="Stack">
-        
-    </StackPanel>
+        <StackPanel Background="Transparent" x:Name="Stack">
+            <StackPanel x:Name="Pre">
+                <Label Content="First Question Set" FontSize="14" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel x:Name="During">
+                <Label Content="Second Question Set" FontSize="14" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel x:Name="Past">
+                <Label Content="Third Question Set" FontSize="14" FontWeight="Bold"/>
+            </StackPanel>
+        </StackPanel>
     </ScrollViewer>
 </UserControl>
