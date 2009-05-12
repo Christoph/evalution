@@ -64,13 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestFormRepository.cs" />
     <Compile Include="TestGradeAnswerRepository.cs" />
     <Compile Include="TestSongAnswerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBinaryAnswerRepository.cs" />
     <Compile Include="TestDatabaseInitializer.cs" />
     <Compile Include="TestDbAccess.cs" />
-    <Compile Include="TestQuestionFormRepository.cs" />
     <Compile Include="TestRepositoryBase.cs" />
     <Compile Include="TestTextAnswerRepository.cs" />
   </ItemGroup>

@@ -28,6 +28,34 @@ namespace TheNewEngine.Datalayer
         }
 
         [Test]
+        public void HasPrevious()
+        {
+            Form form1 = new Form { Name = "Form1" };
+            Form form2 = new Form { Name = "Form2" };
+
+            var repository = new FormRepository(mSession);
+
+            repository.Insert(form1);
+            repository.Insert(form2);
+
+            Assert.IsTrue(repository.HasPrevious(form2.Id));
+        }
+
+        [Test]
+        public void HasPrevious_and_returns_false_if_none_exists()
+        {
+            Form form1 = new Form { Name = "Form1" };
+            Form form2 = new Form { Name = "Form2" };
+
+            var repository = new FormRepository(mSession);
+
+            repository.Insert(form1);
+            repository.Insert(form2);
+
+            Assert.IsFalse(repository.HasPrevious(form1.Id));
+        }
+
+        [Test]
         public void GetNext()
         {
             Form form1 = new Form { Name = "Form1" };
@@ -41,6 +69,34 @@ namespace TheNewEngine.Datalayer
             var next = repository.GetNextForm(form1.Id);
 
             Assert.AreEqual(form2.Name, next.Name);
+        }
+
+        [Test]
+        public void HasNext()
+        {
+            Form form1 = new Form { Name = "Form1" };
+            Form form2 = new Form { Name = "Form2" };
+
+            var repository = new FormRepository(mSession);
+
+            repository.Insert(form1);
+            repository.Insert(form2);
+
+            Assert.IsTrue(repository.HasNext(form1.Id));
+        }
+
+        [Test]
+        public void HasNext_and_returns_false_if_none_exists()
+        {
+            Form form1 = new Form { Name = "Form1" };
+            Form form2 = new Form { Name = "Form2" };
+
+            var repository = new FormRepository(mSession);
+
+            repository.Insert(form1);
+            repository.Insert(form2);
+
+            Assert.IsFalse(repository.HasNext(form2.Id));
         }
 
         [Test]
