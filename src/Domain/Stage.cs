@@ -8,6 +8,5 @@ namespace Domain
         DuringWithHelp,
         DuringYesNo,
         Post,
-
     }
 }

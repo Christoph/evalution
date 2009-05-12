@@ -140,7 +140,6 @@ namespace TheNewEngine.Datalayer
                     Text = text,
                     AnswerType = (int) AnswerType.Text,
                     QuestionStages = CreateStages(Stage.Pre)
-
                 });
             SaveList(entities);
             mSession.Flush();

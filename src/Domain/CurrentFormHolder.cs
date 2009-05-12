@@ -28,10 +28,10 @@ namespace Domain
 
         public event Action<Form> OnChanged;
 
-        public CurrentFormHolder(IFormFactory formFactory)
+        public CurrentFormHolder(Form form, IFormFactory formFactory)
         {
             mFormFactory = formFactory;
-            ResetWithNewForm();
+            Form = form;
         }
 
         public void ResetWithNewForm()

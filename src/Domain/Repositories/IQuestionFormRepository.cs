@@ -5,5 +5,13 @@ namespace Domain.Repositories
         Form GetPreviousForm(int id);
 
         Form GetNextForm(int id);
+
+        bool HasPrevious(int id);
+
+        bool HasNext(int id);
+
+        int GetNextId();
+
+        Form GetLast();
     }
 }

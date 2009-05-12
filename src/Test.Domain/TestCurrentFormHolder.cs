@@ -13,7 +13,7 @@ namespace Domain
             var factory = new Mock<IFormFactory>();
             factory.Setup(x => x.CreateNew()).Returns(() => new Form());
 
-            mHolder = new CurrentFormHolder(factory.Object);
+            mHolder = new CurrentFormHolder(null, factory.Object);
         }
 
         [Test]

@@ -21,6 +21,12 @@ namespace Presentation
         {
             mCurrentFormHolder = currentFormHolder;
             mFormRepository = formRepository;
+
+            mCurrentFormHolder.OnChanged += f =>
+            {
+                HasPrevious = mFormRepository.HasPrevious(f.Id);
+                HasNext = mFormRepository.HasNext(f.Id);
+            };
         }
 
         public void Save()
@@ -28,6 +34,30 @@ namespace Presentation
             mFormRepository.Insert(Form);
 
             OnPropertyChanged("DisplayName");
+        }
+
+        private bool mHasPrevious;
+
+        public bool HasPrevious
+        {
+            get { return mHasPrevious; }
+            set
+            {
+                mHasPrevious = value;
+                OnPropertyChanged("HasPrevious");
+            }
+        }
+
+        private bool mHasNext;
+
+        public bool HasNext
+        {
+            get { return mHasNext; }
+            set
+            {
+                mHasNext = value;
+                OnPropertyChanged("HasNext");
+            }
         }
 
         public ICommand PreviousCommand

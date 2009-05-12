@@ -26,7 +26,6 @@ namespace Presentation
             During.Children.Add(GetAllSongsAnswersView("Songs", Stage.During));
             During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.DuringWithHelp));
             During.Children.Add(GetAllSongsAnswersView("Songs", Stage.DuringWithHelp));
-            During.Children.Add(GetAllGradeAnswersView("Grade", Stage.DuringYesNo));
 
             Past.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
             Past.Children.Add(GetAllSongsAnswersView("Songs", Stage.Post));
@@ -49,6 +48,7 @@ namespace Presentation
 
             var allGradeAnswersViewModel = new AllGradeAnswersViewModel(mCurrentFormHolder, stage, name);
             allGradeAnswersView.DataContext = allGradeAnswersViewModel;
+
             return allGradeAnswersView;
         }
 

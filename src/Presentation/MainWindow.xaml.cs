@@ -1,11 +1,11 @@
 using System.Windows;
 using Domain;
+using Domain.Repositories;
 using NHibernate;
 using Ninject;
 using Presentation.View;
 using TheNewEngine.Datalayer;
 using TheNewEngine.Datalayer.Repositories;
-using System.IO;
 
 namespace Presentation
 {
@@ -14,21 +14,22 @@ namespace Presentation
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IQuestionFormRepository mFormRepository;
+
         public MainWindow()
         {
             InitializeComponent();
 
             InitializeDependencies();
 
-            ISession session = DependencyResolver.Resolve<ISession>();
-            AnswerControl answerControl = new AnswerControl();
+            var answerControl = new AnswerControl();
 
             //QuestionFormView
             var formView = new QuestionFormView();
 
             var currentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
-            var formViewModel = new QuestionFormViewModel(currentFormHolder, 
-                new FormRepository(session));
+            var formViewModel = new QuestionFormViewModel(currentFormHolder,
+                mFormRepository);
 
             formView.DataContext = formViewModel;
             
@@ -43,17 +44,18 @@ namespace Presentation
 
             DependencyResolver.InitializeWith(kernel);
 
-            ISession session = DependencyResolver.Resolve<ISession>();
+            var session = DependencyResolver.Resolve<ISession>();
 
             var binaryAnswerRepository = new BinaryAnswerRepository(session);
             var songAnswerRepository = new SongAnswerRepository(session);
             var textAnswerRepository = new TextAnswerRepository(session);
             var gradeAnswerRepository = new GradeAnswerRepository(session);
+            mFormRepository = new FormRepository(session);
 
-            var formFactory = new FormFactory(
+            var formFactory = new FormFactory(mFormRepository,
                 gradeAnswerRepository, textAnswerRepository, binaryAnswerRepository, songAnswerRepository);
 
-            var currentFormHolder = new CurrentFormHolder(formFactory);
+            var currentFormHolder = new CurrentFormHolder(mFormRepository.GetLast(), formFactory);
 
             kernel.Bind<ICurrentFormHolder>().ToConstant(currentFormHolder);
         }

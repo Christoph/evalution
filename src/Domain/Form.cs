@@ -4,7 +4,7 @@ namespace Domain
 {
     public class Form
     {
-        public virtual int Id { get; private set; }
+        public virtual int Id { get; set; }
         public virtual string Name { get; set; }
         public virtual string School { get; set; }
         public virtual string Email { get; set; }

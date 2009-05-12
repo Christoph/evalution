@@ -33,7 +33,7 @@ namespace TheNewEngine.Datalayer
             var form = new Form();
             repository.CreateFor(form);
 
-            Assert.AreEqual(14, form.BinaryAnswers.Where(b => b.BelongsTo(Stage.Pre)).Count());
+            Assert.AreEqual(11, form.BinaryAnswers.Where(b => b.BelongsTo(Stage.Pre)).Count());
         }
     }
 }
