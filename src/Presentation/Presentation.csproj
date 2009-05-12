@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\BinaryAnswerViewModel.cs" />
     <Compile Include="ViewModels\GradeAnswerViewModel.cs" />
     <Compile Include="ViewModels\QuestionFormViewModel.cs" />
+    <Compile Include="ViewModels\NumberToStringConverter.cs" />
     <Compile Include="ViewModels\TextAnswerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="View\AllBinaryAnswersView.xaml.cs">

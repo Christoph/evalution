@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="Presentation.View.AllGradeAnswersView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Presentation="clr-namespace:Presentation"
     Height="Auto" Width="Auto">
     
     <UserControl.Resources>
@@ -10,13 +11,15 @@
             UpdateSourceTrigger=PropertyChanged}"
         />
 
+        <Presentation:NumberToStringConverter x:Key="converter"/>
+        
         <DataTemplate x:Key="QuestionTemplate">
             <TextBlock Text="{Binding Path=Question}" Width="200" HorizontalAlignment="Left"/>
         </DataTemplate>
 
         <DataTemplate x:Key="GradeTemplate">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <ComboBox>
+                <ComboBox SelectedValuePath="Content" SelectedValue="{Binding Path=Grade, Converter={StaticResource converter}}" Width="40">
                     <ComboBoxItem>
                         1
                     </ComboBoxItem>

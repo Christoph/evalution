@@ -14,7 +14,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="TextTemplate">
-            <TextBox Text="{Binding Path=Answer}" MinWidth="200"/>
+            <TextBox Text="{Binding Path=Text}" MinWidth="200"/>
         </DataTemplate>
 
     </UserControl.Resources>
