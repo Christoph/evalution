@@ -65,6 +65,9 @@ namespace TheNewEngine.Datalayer
 
         public bool HasPrevious(int id)
         {
+            if (mForms.Count() == 0)
+                return false;
+
             return id > mForms.Min(x => x.Id);
         }
 

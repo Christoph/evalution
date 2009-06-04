@@ -42,7 +42,7 @@ namespace TheNewEngine.Datalayer
         }
 
         [Test]
-        public void HasPrevious_and_returns_false_if_none_exists()
+        public void HasPrevious_should_return_false_if_it_is_the_first_form()
         {
             Form form1 = new Form { Name = "Form1" };
             Form form2 = new Form { Name = "Form2" };
@@ -53,6 +53,14 @@ namespace TheNewEngine.Datalayer
             repository.Insert(form2);
 
             Assert.IsFalse(repository.HasPrevious(form1.Id));
+        }
+
+        [Test]
+        public void HasPrevious_should_return_false_if_no_form_exists_yet()
+        {
+            var repository = new FormRepository(mSession);
+
+            Assert.IsFalse(repository.HasPrevious(1));
         }
 
         [Test]
