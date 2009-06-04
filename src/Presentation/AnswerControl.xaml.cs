@@ -71,5 +71,17 @@ namespace Presentation
             allBinaryAnswersView.DataContext = allBinaryAnswersViewModel;
             return allBinaryAnswersView;
         }
+
+        private void Stack_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+        	if (e.Delta < 0)
+            {
+               	ScrollViewer.LineDown();
+            }
+            else
+            {
+                ScrollViewer.LineUp();
+            }
+        }
     }
 }
