@@ -75,8 +75,13 @@ namespace TheNewEngine.Datalayer
 
         public Form GetLast()
         {
-            var lastId = mForms.Max(y => y.Id);
-            return mForms.Where(x => x.Id == lastId).SingleOrDefault();
+            if (mForms.Count() > 0)
+            {
+                var lastId = mForms.Max(y => y.Id);
+                return mForms.Where(x => x.Id == lastId).SingleOrDefault();
+            }
+
+            return null;
         }
     }
 }

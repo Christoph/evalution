@@ -167,7 +167,7 @@ namespace TheNewEngine.Datalayer
             var stagesEntity = new List<QuestionStage>();
             foreach (var stage in stages)
             {
-                var questionStage = new QuestionStage { StageNumber = (int)stage };
+                var questionStage = new QuestionStage { StageNumber = stage };
                 mSession.SaveOrUpdate(questionStage);
                 stagesEntity.Add(questionStage);
             }

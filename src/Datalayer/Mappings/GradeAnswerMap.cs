@@ -1,17 +1,12 @@
-using FluentNHibernate.Mapping;
 using Domain;
 
 namespace TheNewEngine.Datalayer.Mappings
 {
-    public class GradeAnswerMap : ClassMap<GradeAnswer>
+    public class GradeAnswerMap : AnswerBaseMap<GradeAnswer>
     {
         public GradeAnswerMap()
         {
-            Id(x => x.Id).Access.AsProperty().GeneratedBy.Increment();
             Map(x => x.Answer).Nullable();
-            HasOne(x => x.QuestionStage);
-            References(x => x.Form);
-            References(x => x.Question);
         }
     }
 }

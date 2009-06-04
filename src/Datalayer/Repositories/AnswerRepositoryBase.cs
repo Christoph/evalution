@@ -30,7 +30,7 @@ namespace TheNewEngine.Datalayer.Repositories
         public abstract void CreateFor(Form form);
 
         protected IEnumerable<T> GetAnswersFor(AnswerType answerType,
-            Func<Question, QuestionStage, T> create)
+            Func<Question, Stage, T> create)
         {
             return mSession.CreateQuery(
                 "select q, s " +
@@ -44,7 +44,7 @@ namespace TheNewEngine.Datalayer.Repositories
                     var question = (Question)((object[])x)[0];
                     var stage = (QuestionStage)((object[])x)[1];
 
-                    return create(question, stage);
+                    return create(question, stage.StageNumber);
                 }).ToArray();
         }
     }

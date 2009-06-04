@@ -22,11 +22,14 @@ namespace Presentation
             mCurrentFormHolder = currentFormHolder;
             mFormRepository = formRepository;
 
-            mCurrentFormHolder.OnChanged += f =>
-            {
-                HasPrevious = mFormRepository.HasPrevious(f.Id);
-                HasNext = mFormRepository.HasNext(f.Id);
-            };
+            UpdateHasPreviosAndHasNext(mCurrentFormHolder.Form);
+            mCurrentFormHolder.OnChanged += UpdateHasPreviosAndHasNext;
+        }
+
+        private void UpdateHasPreviosAndHasNext(Form form)
+        {
+            HasPrevious = mFormRepository.HasPrevious(form.Id);
+            HasNext = mFormRepository.HasNext(form.Id);
         }
 
         public void Save()

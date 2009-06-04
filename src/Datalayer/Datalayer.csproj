@@ -92,6 +92,7 @@
     <Compile Include="DatalayerModule.cs" />
     <Compile Include="DbAccess.cs" />
     <Compile Include="FormRepository.cs" />
+    <Compile Include="Mappings\AnswerBaseMap.cs" />
     <Compile Include="Mappings\BinaryAnswerMap.cs" />
     <Compile Include="Mappings\FormMap.cs" />
     <Compile Include="Mappings\GradeAnswerMap.cs" />

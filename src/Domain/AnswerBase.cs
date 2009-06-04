@@ -8,11 +8,11 @@ namespace Domain
         
         public virtual Question Question { get; set; }
 
-        public virtual QuestionStage QuestionStage { get; set; }
+        public virtual Stage QuestionStage { get; set; }
 
         public virtual bool BelongsTo(Stage stage)
         {
-            return QuestionStage.StageNumber == (int)stage;
+            return QuestionStage == stage;
         }
     }
 }
