@@ -8,21 +8,7 @@ namespace Presentation
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        /// Returns the user-friendly name of this object.
-        /// Child classes can set this property to a new value,
-        /// or override it to determine the value on-demand.
-        /// </summary>
-        public virtual string DisplayName { get; protected set; }
-
-        /// <summary>
-        /// Returns whether an exception is thrown, or if a Debug.Fail() is used
-        /// when an invalid property name is passed to the VerifyPropertyName method.
-        /// The default value is false, but subclasses used by unit tests might 
-        /// override this property's getter to return true.
-        /// </summary>
-        protected virtual bool ThrowOnInvalidPropertyName { get; private set; }
-
+        
         /// <summary>
         /// Raises this object's PropertyChanged event.
         /// </summary>
@@ -54,12 +40,7 @@ namespace Presentation
             {
                 string msg = "Invalid property name: " + propertyName;
 
-                if (ThrowOnInvalidPropertyName)
-                {
-                    throw new Exception(msg);
-                }
-
-                Debug.Fail(msg);
+                throw new Exception(msg);
             }
         }
     }

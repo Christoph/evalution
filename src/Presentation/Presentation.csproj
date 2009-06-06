@@ -90,6 +90,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ButtonsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\QuestionFormView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -130,6 +134,7 @@
     <Compile Include="ViewModels\AllGradeAnswersViewModel.cs" />
     <Compile Include="ViewModels\AllTextAnswersViewModel.cs" />
     <Compile Include="ViewModels\BinaryAnswerViewModel.cs" />
+    <Compile Include="ViewModels\ButtonsViewModel.cs" />
     <Compile Include="ViewModels\GradeAnswerViewModel.cs" />
     <Compile Include="ViewModels\QuestionFormViewModel.cs" />
     <Compile Include="ViewModels\NumberToStringConverter.cs" />
@@ -140,6 +145,9 @@
     </Compile>
     <Compile Include="View\AllGradeAnswersView.xaml.cs">
       <DependentUpon>AllGradeAnswersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ButtonsView.xaml.cs">
+      <DependentUpon>ButtonsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QuestionFormView.xaml.cs">
       <DependentUpon>QuestionFormView.xaml</DependentUpon>

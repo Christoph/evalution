@@ -28,12 +28,17 @@ namespace Presentation
             var formView = new QuestionFormView();
 
             var currentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
-            var formViewModel = new QuestionFormViewModel(currentFormHolder,
-                mFormRepository);
+            var formViewModel = new QuestionFormViewModel(currentFormHolder, mFormRepository);
 
             formView.DataContext = formViewModel;
-            
-            TopContent.Children.Add(formView);
+
+            var buttonsView = new ButtonsView();
+            var buttonsViewModel = new ButtonsViewModel(currentFormHolder, mFormRepository);
+            buttonsView.DataContext = buttonsViewModel;
+
+            TopContent.Children.Add(buttonsView);
+
+            CenterContent.Children.Add(formView);
 
             BottomContent.Children.Add(answerControl);
         }

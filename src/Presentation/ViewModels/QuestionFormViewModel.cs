@@ -1,4 +1,3 @@
-using System.Windows.Input;
 using Domain;
 using Domain.Repositories;
 
@@ -11,7 +10,6 @@ namespace Presentation
         private Form Form
         {
             get { return mCurrentFormHolder.Form; }
-            set { mCurrentFormHolder.Form = value; }
         }
 
         private readonly IQuestionFormRepository mFormRepository;
@@ -22,90 +20,11 @@ namespace Presentation
             mCurrentFormHolder = currentFormHolder;
             mFormRepository = formRepository;
 
-            UpdateHasPreviosAndHasNext(mCurrentFormHolder.Form);
-            mCurrentFormHolder.OnChanged += UpdateHasPreviosAndHasNext;
-        }
-
-        private void UpdateHasPreviosAndHasNext(Form form)
-        {
-            HasPrevious = mFormRepository.HasPrevious(form.Id);
-            HasNext = mFormRepository.HasNext(form.Id);
-        }
-
-        public void Save()
-        {
-            mFormRepository.Insert(Form);
-
-            OnPropertyChanged("DisplayName");
-        }
-
-        private bool mHasPrevious;
-
-        public bool HasPrevious
-        {
-            get { return mHasPrevious; }
-            set
-            {
-                mHasPrevious = value;
-                OnPropertyChanged("HasPrevious");
-            }
-        }
-
-        private bool mHasNext;
-
-        public bool HasNext
-        {
-            get { return mHasNext; }
-            set
-            {
-                mHasNext = value;
-                OnPropertyChanged("HasNext");
-            }
-        }
-
-        public ICommand PreviousCommand
-        {
-            get
-            {
-                return new DelegatedCommand(p =>
-                {
-                    Save();
-                    ResetFormTo(mFormRepository.GetPreviousForm(Form.Id));
-                });
-            }
-        }
-
-        public ICommand NextCommand
-        {
-            get
-            {
-                return new DelegatedCommand(p =>
-                {
-                    Save();
-
-                    var nextForm = mFormRepository.GetNextForm(Form.Id);
-
-                    ResetFormTo(nextForm);
-                });
-            }
-        }
-
-        public ICommand NewCommand
-        {
-            get
-            {
-                return new DelegatedCommand(p =>
-                {
-                    Save();
-                    mCurrentFormHolder.ResetWithNewForm();
-                    ResetFormTo(Form);
-                });
-            }
+            mCurrentFormHolder.OnChanged += ResetFormTo;
         }
 
         private void ResetFormTo(Form form)
         {
-            Form = form;
             OnPropertyChanged("Name");
             OnPropertyChanged("School");
             OnPropertyChanged("Class");
@@ -116,17 +35,8 @@ namespace Presentation
             OnPropertyChanged("Gender");
         }
 
-        public ICommand SaveCommand
-        {
-            get
-            {
-                return new DelegatedCommand(p => Save());
-            }
-        }
-
         public string Name
-        {
-            get
+        {get
             {
                 return Form.Name;
             }
