@@ -17,6 +17,8 @@ namespace Presentation
 
             var buttonsViewModel = DependencyResolver.Resolve <ButtonsViewModel>();
             ButtonsView.DataContext = buttonsViewModel;
+
+            AnswerView.CreateChildViews();
         }
     }
 }

@@ -12,6 +12,6 @@
 
         <View:ButtonsView x:Name="ButtonsView" Grid.Row="0"/>
         <View:QuestionFormView x:Name="FormView" Grid.Row="1"/>
-        <Presentation:AnswerControl Grid.Row="2"/>
+        <Presentation:AnswerControl x:Name="AnswerView" Grid.Row="2"/>
     </Grid>
 </Window>

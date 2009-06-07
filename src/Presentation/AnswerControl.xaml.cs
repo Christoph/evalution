@@ -14,6 +14,10 @@ namespace Presentation
         public AnswerControl()
         {
             InitializeComponent();
+        }
+
+        public void CreateChildViews()
+        {
             mCurrentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
 
             Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Pre));
