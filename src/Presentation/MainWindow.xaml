@@ -6,12 +6,11 @@
     <Grid x:Name="Stack">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
-        <View:ButtonsView x:Name="ButtonsView" Grid.Row="0"/>
-        <View:QuestionFormView x:Name="FormView" Grid.Row="1"/>
-        <Presentation:AnswerControl x:Name="AnswerView" Grid.Row="2"/>
+        <View:QuestionFormView x:Name="FormView" Grid.Row="0"/>
+        <Presentation:AnswerControl x:Name="AnswerView" Grid.Row="1"/>
+        <View:ButtonsView x:Name="ButtonsView" Grid.Row="2" Background="{x:Null}"/>
     </Grid>
 </Window>
