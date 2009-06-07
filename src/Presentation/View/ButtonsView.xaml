@@ -11,18 +11,18 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="1" Margin="10"
+        <Button Grid.Column="0" Grid.Row="1" Margin="4"
             Content="Previous"
             Command="{Binding Path=PreviousCommand}"
             IsEnabled="{Binding Path=HasPrevious}"
         />
 
-        <Button Grid.Column="1" Grid.Row="1" Margin="10"
+        <Button Grid.Column="1" Grid.Row="1" Margin="4"
             Content="New"
             Command="{Binding Path=NewCommand}"
         />
 
-        <Button Grid.Column="2" Grid.Row="1" Margin="10"
+        <Button Grid.Column="2" Grid.Row="1" Margin="4"
             Content="Next"
             Command="{Binding Path=NextCommand}"
             IsEnabled="{Binding Path=HasNext}"
