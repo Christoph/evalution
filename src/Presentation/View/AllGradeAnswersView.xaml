@@ -14,7 +14,7 @@
         <Presentation:NumberToStringConverter x:Key="converter"/>
         
         <DataTemplate x:Key="QuestionTemplate">
-            <TextBlock Text="{Binding Path=Question}" Width="200" HorizontalAlignment="Left"/>
+            <TextBlock Text="{Binding Path=Question}" HorizontalAlignment="Stretch"/>
         </DataTemplate>
 
         <DataTemplate x:Key="GradeTemplate">
@@ -44,10 +44,10 @@
         <Label Content="{Binding Path=Header}"/>
         <ListView ItemsSource="{Binding Source={StaticResource GradeAnswerViewModels}}" Background="Transparent">
             <ListView.View>
-                <GridView> 
+                <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
-                        <GridViewColumn Header="Answer" CellTemplate="{StaticResource GradeTemplate}"/>
+						<GridViewColumn Header="Answer" CellTemplate="{StaticResource GradeTemplate}"/>											
+                        <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>                        
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

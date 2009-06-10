@@ -25,8 +25,8 @@ Height="Auto" Width="Auto">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>
-                        <GridViewColumn Header="Answer" CellTemplate="{StaticResource BinaryTemplate}"/>
+						<GridViewColumn Header="Answer" CellTemplate="{StaticResource BinaryTemplate}"/>
+                        <GridViewColumn Header="Question" CellTemplate="{StaticResource QuestionTemplate}"/>                        
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
