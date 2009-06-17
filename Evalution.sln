@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Domain", "src\Test.Domain\Test.Domain.csproj", "{474A344D-5EBD-4C31-AD27-C803BF929985}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EvalutionSetup", "src\EvalutionSetup\EvalutionSetup.vdproj", "{DC04805B-A80A-411E-BA32-E2871043316F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,8 @@ Global
 		{474A344D-5EBD-4C31-AD27-C803BF929985}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{474A344D-5EBD-4C31-AD27-C803BF929985}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{474A344D-5EBD-4C31-AD27-C803BF929985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC04805B-A80A-411E-BA32-E2871043316F}.Debug|Any CPU.ActiveCfg = Debug
+		{DC04805B-A80A-411E-BA32-E2871043316F}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

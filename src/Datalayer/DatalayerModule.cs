@@ -14,7 +14,7 @@ namespace TheNewEngine.Datalayer
             bool newDb = !File.Exists(dbName);
             if (newDb)
             {
-                File.Copy(@"..\EmptyDb.sdf", dbName);
+                File.Copy(@"EmptyDb.sdf", dbName);
                 DbAccess.GetSessionForEmptyDatabase(dbName);
             }
             var sessionFactory = DbAccess.CreateSessionFactory(dbName);
