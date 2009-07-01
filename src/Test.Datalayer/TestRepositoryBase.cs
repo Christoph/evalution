@@ -8,11 +8,11 @@ namespace TheNewEngine.Datalayer
 {
     public class TestRepositoryBase
     {
-        private string mDbName;
+        protected string mDbName;
 
         protected ISession mSession;
 
-        public TestRepositoryBase(string dbName)
+        protected TestRepositoryBase(string dbName)
         {
             mDbName = dbName;
         }

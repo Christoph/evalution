@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Redist\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Redist\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Redist\Ninject.dll</HintPath>
@@ -68,11 +72,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCurrentFormHolder.cs" />
     <Compile Include="TestDependencyResolver.cs" />
+    <Compile Include="TestFormFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Datalayer\Datalayer.csproj">
+      <Project>{2883FE9C-D6F3-43BC-BD10-E9903B74D43C}</Project>
+      <Name>Datalayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{2AED8586-21F9-42DC-B12D-72C2DC06864E}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test.Datalayer\Test.Datalayer.csproj">
+      <Project>{DFDC8A02-187C-42BC-8165-AEF8788D7BE1}</Project>
+      <Name>Test.Datalayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
