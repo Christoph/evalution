@@ -36,7 +36,7 @@ namespace Domain
 
         public void ResetWithNewForm()
         {
-            mForm = mFormFactory.CreateNew();
+            Form = mFormFactory.CreateNew();
         }
     }
 }
