@@ -22,14 +22,15 @@ namespace Presentation
 
             Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Pre));
             Pre.Children.Add(GetAllSongsAnswersView("Songs", Stage.Pre));
-            Pre.Children.Add(GetAllGradeAnswersView("Grade", Stage.Pre));
-            Pre.Children.Add(GetAllBinaryAnswersView("YesNo",Stage.PreYesNo));
+            Pre.Children.Add(GetAllGradeAnswersView("Grade the questions", Stage.Pre));
+            Pre.Children.Add(GetAllBinaryAnswersView("Questions",Stage.PreYesNo));
             Pre.Children.Add(GetAllTextAnswersView("Text", Stage.Pre));
 
             During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.During));
             During.Children.Add(GetAllSongsAnswersView("Songs", Stage.During));
-            During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.DuringWithHelp));
-            During.Children.Add(GetAllSongsAnswersView("Songs", Stage.DuringWithHelp));
+            During.Children.Add(GetAllBinaryAnswersView("Vocabulary with help", Stage.DuringWithHelp));
+            During.Children.Add(GetAllSongsAnswersView("Songs with help", Stage.DuringWithHelp));
+            During.Children.Add(GetAllBinaryAnswersView("Questions", Stage.DuringYesNo));
 
             Past.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
             Past.Children.Add(GetAllSongsAnswersView("Songs", Stage.Post));

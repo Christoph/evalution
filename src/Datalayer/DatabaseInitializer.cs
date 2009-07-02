@@ -120,7 +120,7 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Binary,
-                    QuestionStages = CreateStages(Stage.During)
+                    QuestionStages = CreateStages(Stage.DuringYesNo)
                 });
             SaveList(entities);
             mSession.Flush();
