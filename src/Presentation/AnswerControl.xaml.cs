@@ -21,19 +21,19 @@ namespace Presentation
             mCurrentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
 
             Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Pre));
-            Pre.Children.Add(GetAllSongsAnswersView("Songs", Stage.Pre));
+            Pre.Children.Add(GetAllSongsAnswersView("Songs", Stage.PreSong));
             Pre.Children.Add(GetAllGradeAnswersView("Grade the questions", Stage.Pre));
             Pre.Children.Add(GetAllBinaryAnswersView("Questions",Stage.PreYesNo));
             Pre.Children.Add(GetAllTextAnswersView("Text", Stage.Pre));
 
             During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.During));
-            During.Children.Add(GetAllSongsAnswersView("Songs", Stage.During));
+            During.Children.Add(GetAllSongsAnswersView("Songs", Stage.DuringSong));
             During.Children.Add(GetAllBinaryAnswersView("Vocabulary with help", Stage.DuringWithHelp));
-            During.Children.Add(GetAllSongsAnswersView("Songs with help", Stage.DuringWithHelp));
+            During.Children.Add(GetAllSongsAnswersView("Songs with help", Stage.DuringWithHelpSong));
             During.Children.Add(GetAllBinaryAnswersView("Questions", Stage.DuringYesNo));
 
             Past.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
-            Past.Children.Add(GetAllSongsAnswersView("Songs", Stage.Post));
+            Past.Children.Add(GetAllSongsAnswersView("Songs", Stage.PostSong));
         }
 
         private AllTextAnswersView GetAllTextAnswersView(string name, Stage stage)

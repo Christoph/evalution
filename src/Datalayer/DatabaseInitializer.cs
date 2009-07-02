@@ -55,7 +55,7 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int)(AnswerType.Song),
-                    QuestionStages = CreateStages(Stage.Pre, Stage.Post, Stage.DuringWithHelp, Stage.During)
+                    QuestionStages = CreateStages(Stage.PreSong, Stage.PostSong, Stage.DuringWithHelpSong, Stage.DuringSong)
                 });
             SaveList(songs);
             mSession.Flush();
