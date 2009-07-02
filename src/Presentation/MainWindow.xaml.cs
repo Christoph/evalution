@@ -1,3 +1,4 @@
+using System;
 using System.Windows;
 using Domain;
 
@@ -8,6 +9,8 @@ namespace Presentation
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ButtonsViewModel mButtonsViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -15,10 +18,17 @@ namespace Presentation
             var formViewModel = DependencyResolver.Resolve<QuestionFormViewModel>();
             FormView.DataContext = formViewModel;
 
-            var buttonsViewModel = DependencyResolver.Resolve <ButtonsViewModel>();
-            ButtonsView.DataContext = buttonsViewModel;
+            mButtonsViewModel = DependencyResolver.Resolve <ButtonsViewModel>();
+            ButtonsView.DataContext = mButtonsViewModel;
 
             AnswerView.CreateChildViews();
+
+            Closing += MainWindow_Closing;
         }
+
+        void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mButtonsViewModel.Save();
+        } 
     }
 }

@@ -25,8 +25,8 @@ namespace Presentation
             get { return mCurrentFormHolder.Form; }
             set { mCurrentFormHolder.Form = value; }
         }
-        
-        private void Save()
+
+        public void Save()
         {
             mFormRepository.Insert(Form);
         }
