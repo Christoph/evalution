@@ -22,7 +22,7 @@ namespace Presentation
         {
             mCurrentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
             mConfigurationProvider = DependencyResolver.Resolve<IConfigurationProvider>();
-
+            
             switch (mConfigurationProvider.Configuration)
             {
                 case Configurations.TwoStepsSheet:
@@ -33,6 +33,8 @@ namespace Presentation
                     InitializeFourStepsSheet();
                     break;
             }
+
+            mCurrentFormHolder.OnChanged += x => Stack.SelectedIndex = 0;
         }
 
         public void InitialzeTwoStepsSheet()
@@ -119,6 +121,11 @@ namespace Presentation
             {
                 ScrollViewer.LineUp();
             }
+        }
+        
+        public void SetFirstTab()
+        {
+            FirstTab.IsSelected = true;
         }
     }
 }
