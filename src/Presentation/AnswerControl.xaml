@@ -18,11 +18,11 @@
  
                     </StackPanel>
                 </TabItem>
-                <!--<TabItem Header="Third Question Set" FontSize="12" FontWeight="Bold">
+                <TabItem Header="Third Question Set" FontSize="12" FontWeight="Bold" x:Name="ThirdTab">
                     <StackPanel x:Name="Past">
                         
                     </StackPanel>
-                </TabItem>-->
+                </TabItem>
             </TabControl>
         </ScrollViewer>
 	</GroupBox>

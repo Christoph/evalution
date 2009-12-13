@@ -20,12 +20,18 @@ namespace Presentation
         {
             mCurrentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
 
+            ThirdTab.IsEnabled = false;
+            ThirdTab.Opacity = 0;
+
             Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Pre));
 
             During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
             During.Children.Add(GetAllGradeAnswersView("Grade the question", Stage.Post));
 
             /*Four steps sheet
+            ThirdTab.IsEnabled = true;
+            ThirdTab.Opacity = 1;
+            
             Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Pre));
             Pre.Children.Add(GetAllSongsAnswersView("Songs", Stage.PreSong));
             Pre.Children.Add(GetAllGradeAnswersView("Grade the questions", Stage.Pre));
