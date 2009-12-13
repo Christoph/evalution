@@ -19,11 +19,12 @@ namespace TheNewEngine.Datalayer
         {
             InsertFillInQuestions();
             InsertFirstYES_NOQuestions();
-            InsertGradeQuestions();
+            InsertGradeQuestions4Steps();
             InsertQuestionSetOne();
             InsertSecondYES_NOQuestions();
         }
 
+        //Four steps sheet, words
         internal void InsertQuestionSetOne()
         {
             var questions = new[]
@@ -61,7 +62,71 @@ namespace TheNewEngine.Datalayer
             mSession.Flush();
         }
 
-        internal void InsertGradeQuestions()
+
+        //Two steps sheet, word set 2
+        internal void InsertQuestionSetThree()
+        {
+            var questions = new[]
+            {
+                "trilby",
+                "vacant",
+                "brittle",
+                "lepper",
+                "to take a toll on something/somebody",
+                "to stray",
+                "hesitate",
+                "trace",
+                "hush",
+                "waste time",
+                "ledge",
+                "dice"
+            };
+
+            var translations = questions.Select(
+                text => new Question
+                {
+                    Text = text,
+                    AnswerType = (int)AnswerType.Binary,
+                    QuestionStages = CreateStages(Stage.Post)
+                });
+            SaveList(translations);
+
+            mSession.Flush();
+        }
+
+        //Two steps sheet, words set 1
+        internal void InsertQuestionSetTwo()
+        {
+            var questions = new[]
+            {
+                "deserve",
+                "numb",
+                "confession",
+                "vicious",
+                "cherish",
+                "deceive",
+                "hush",
+                "to leap",
+                "to take a toll on somebody",
+                "brittle",
+                "vacant",
+                "dice",
+                "ledge"
+            };
+
+            var translations = questions.Select(
+                text => new Question
+                {
+                    Text = text,
+                    AnswerType = (int)AnswerType.Binary,
+                    QuestionStages = CreateStages(Stage.Pre)
+                });
+            SaveList(translations);
+
+            mSession.Flush();
+        }
+   
+        internal void InsertGradeQuestions4Steps()
         {
             var questions = new[]
             {
@@ -80,6 +145,30 @@ namespace TheNewEngine.Datalayer
                     Text = text,
                     AnswerType = (int)AnswerType.Grade,
                     QuestionStages = CreateStages(Stage.Pre)
+                });
+            SaveList(entities);
+            mSession.Flush();
+        }
+
+        internal void InsertGradeQuestions2Steps()
+        {
+            var questions = new[]
+            {
+                "How did you like the project today?",
+                "How did you like your teacher?",
+                "Do you like acquiring new languages with the help of music?",
+                "Do you like music?",
+                "Is music a part of your everyday life?",
+                "Do your teachers use a lot of music in order to teach you specific things?",
+                "Would you appreciate more music in school"
+            };
+
+            var entities = questions.Select(
+                text => new Question
+                {
+                    Text = text,
+                    AnswerType = (int)AnswerType.Grade,
+                    QuestionStages = CreateStages(Stage.Post)
                 });
             SaveList(entities);
             mSession.Flush();

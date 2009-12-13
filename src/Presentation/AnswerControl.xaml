@@ -7,17 +7,23 @@
 			<Label FontSize="16" FontWeight="Bold">Answers</Label>
 		</GroupBox.Header>
 		<ScrollViewer x:Name="ScrollViewer" >
-			<StackPanel Background="Transparent" x:Name="Stack" PreviewMouseWheel="Stack_PreviewMouseWheel">
-				<StackPanel x:Name="Pre">
-					<Label Content="First Question Set" FontSize="12" FontWeight="Bold"/>
-				</StackPanel>
-				<StackPanel x:Name="During">
-					<Label Content="Second Question Set" FontSize="12" FontWeight="Bold"/>
-				</StackPanel>
-				<StackPanel x:Name="Past">
-					<Label Content="Third Question Set" FontSize="12" FontWeight="Bold"/>
-				</StackPanel>
-			</StackPanel>
-		</ScrollViewer>
+            <TabControl Background="Transparent" x:Name="Stack" PreviewMouseWheel="Stack_PreviewMouseWheel">
+                <TabItem Header="First Question Set" FontSize="12" FontWeight="Bold">
+                    <StackPanel x:Name="Pre">
+                        
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Second Question Set" FontSize="12" FontWeight="Bold">
+                    <StackPanel x:Name="During">
+ 
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Third Question Set" FontSize="12" FontWeight="Bold">
+                    <StackPanel x:Name="Past">
+                        
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </ScrollViewer>
 	</GroupBox>
 </UserControl>

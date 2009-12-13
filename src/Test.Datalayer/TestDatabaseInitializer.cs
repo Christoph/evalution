@@ -58,7 +58,7 @@ namespace TheNewEngine.Datalayer
         {
             mExpectedCount = 7;
             mExpectedStageCount = 1;
-            mDatabaseInitializer.InsertGradeQuestions();
+            mDatabaseInitializer.InsertGradeQuestions4Steps();
         }
 
         [Test]
