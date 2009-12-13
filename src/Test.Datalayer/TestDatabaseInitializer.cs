@@ -24,7 +24,7 @@ namespace TheNewEngine.Datalayer
             mDbName = "TestDatabaseInitializer.sdf";
             File.Copy(@"..\EmptyDb.sdf", mDbName);
             mSession = DbAccess.GetSessionForEmptyDatabase(mDbName);
-            mDatabaseInitializer = new DatabaseInitializer(mSession);
+            mDatabaseInitializer = new DatabaseInitializer(mSession, null);
         }
 
         [TearDown]

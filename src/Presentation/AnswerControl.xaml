@@ -8,7 +8,7 @@
 		</GroupBox.Header>
 		<ScrollViewer x:Name="ScrollViewer" >
             <TabControl Background="Transparent" x:Name="Stack" PreviewMouseWheel="Stack_PreviewMouseWheel">
-                <TabItem Header="First Question Set" FontSize="12" FontWeight="Bold" Width="auto">
+                <TabItem Header="First Question Set" FontSize="12" FontWeight="Bold" x:Name="FirstTab" Width="auto">
                     <StackPanel x:Name="Pre">
                         
                     </StackPanel>

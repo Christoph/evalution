@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Domain.Repositories;
 using NHibernate;
 using Ninject;
 using Ninject.Modules;
@@ -22,7 +23,7 @@ namespace TheNewEngine.Datalayer
 
             if (newDb)
             {
-                new DatabaseInitializer(session).InitDb();
+                new DatabaseInitializer(session, kernel.Get<IConfigurationProvider>()).InitDb();
             }
 
             kernel.Bind<ISession>().ToConstant(session);

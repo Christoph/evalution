@@ -12,14 +12,15 @@ namespace TheNewEngine.Datalayer
         private readonly ISession mSession;
         private IConfigurationProvider mConfigurationProvider;
 
-        public DatabaseInitializer(ISession session)
+        public DatabaseInitializer(ISession session, IConfigurationProvider configurationProvider)
         {
             mSession = session;
+            mConfigurationProvider = configurationProvider;
         }
 
         public void InitDb()
         {
-            switch (Configurations.ThreeStepsSheet)
+            switch (mConfigurationProvider.Configuration)
             {
                 case Configurations.TwoStepsSheet:
                     InitialzeTwoStepsSheet();

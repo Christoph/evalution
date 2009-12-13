@@ -23,10 +23,10 @@ namespace Presentation
             InitializeDependencies();
         }
 
-        private void InitializeDependencies()
+        private static void InitializeDependencies()
         {
-            IKernel kernel = new StandardKernel(new DatalayerModule(), new DomainModule());
-
+            IKernel kernel = new StandardKernel(new DomainModule(), new DatalayerModule());
+            
             DependencyResolver.InitializeWith(kernel);
 
             var session = DependencyResolver.Resolve<ISession>();
@@ -37,8 +37,6 @@ namespace Presentation
             var gradeAnswerRepository = new GradeAnswerRepository(session);
             var formRepository = new FormRepository(session);
             kernel.Bind<IQuestionFormRepository>().ToConstant(formRepository);
-            var evaluationSheetSelector = new EvaluationSheetSelector();
-            kernel.Bind<IConfigurationProvider>().ToConstant(evaluationSheetSelector);
 
             var formFactory = new FormFactory(formRepository, gradeAnswerRepository, textAnswerRepository, binaryAnswerRepository, songAnswerRepository);
             var currentFormHolder = new CurrentFormHolder(formRepository.GetLast(), formFactory);

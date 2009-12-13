@@ -27,7 +27,7 @@ namespace TheNewEngine.Datalayer
             var sessionFactory = DbAccess.CreateSessionFactory(mDbName);
             mSession = sessionFactory.OpenSession();
 
-            new DatabaseInitializer(mSession).InitDb();
+            new DatabaseInitializer(mSession, null).InitDb();
         }
 
         [TearDown]
