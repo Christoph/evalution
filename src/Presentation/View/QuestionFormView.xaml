@@ -96,7 +96,7 @@
 				<!--Gender-->
 				<Label 
 					Grid.Row="2" Grid.Column="4" 
-					Content="_IsMale:" 
+					Content="Male?:" 
 					HorizontalAlignment="Right"
 					Target="{Binding ElementName=GenderCb}"
               />

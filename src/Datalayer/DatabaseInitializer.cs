@@ -17,11 +17,17 @@ namespace TheNewEngine.Datalayer
 
         public void InitDb()
         {
+            InsertGradeQuestions2Steps();
+            InsertQuestionSetTwo();
+            InsertQuestionSetThree();
+
+            /* Init or the 4 Step sheet
             InsertFillInQuestions();
             InsertFirstYES_NOQuestions();
             InsertGradeQuestions4Steps();
             InsertQuestionSetOne();
             InsertSecondYES_NOQuestions();
+            */
         }
 
         //Four steps sheet, words

@@ -21,6 +21,12 @@ namespace Presentation
             mCurrentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
 
             Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Pre));
+
+            During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
+            During.Children.Add(GetAllGradeAnswersView("Grade the question", Stage.Post));
+
+            /*Four steps sheet
+            Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Pre));
             Pre.Children.Add(GetAllSongsAnswersView("Songs", Stage.PreSong));
             Pre.Children.Add(GetAllGradeAnswersView("Grade the questions", Stage.Pre));
             Pre.Children.Add(GetAllBinaryAnswersView("Questions",Stage.PreYesNo));
@@ -34,6 +40,7 @@ namespace Presentation
 
             Past.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
             Past.Children.Add(GetAllSongsAnswersView("Songs", Stage.PostSong));
+            */
         }
 
         private AllTextAnswersView GetAllTextAnswersView(string name, Stage stage)
