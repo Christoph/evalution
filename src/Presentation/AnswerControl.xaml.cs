@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using Domain;
+using Domain.Repositories;
 using Presentation.View;
 
 namespace Presentation
@@ -10,6 +11,7 @@ namespace Presentation
     public partial class AnswerControl : UserControl
     {
         private ICurrentFormHolder mCurrentFormHolder;
+        private IConfigurationProvider mConfigurationProvider;
 
         public AnswerControl()
         {
@@ -19,7 +21,22 @@ namespace Presentation
         public void CreateChildViews()
         {
             mCurrentFormHolder = DependencyResolver.Resolve<ICurrentFormHolder>();
+            mConfigurationProvider = DependencyResolver.Resolve<IConfigurationProvider>();
 
+            switch (mConfigurationProvider.Configuration)
+            {
+                case Configurations.TwoStepsSheet:
+                    InitialzeTwoStepsSheet();
+                    break;
+
+                case Configurations.ThreeStepsSheet:
+                    InitializeFourStepsSheet();
+                    break;
+            }
+        }
+
+        public void InitialzeTwoStepsSheet()
+        {
             ThirdTab.IsEnabled = false;
             ThirdTab.Opacity = 0;
 
@@ -27,8 +44,10 @@ namespace Presentation
 
             During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
             During.Children.Add(GetAllGradeAnswersView("Grade the question", Stage.Post));
-
-            /*Four steps sheet
+        }
+        
+        public void InitializeFourStepsSheet()
+        {
             ThirdTab.IsEnabled = true;
             ThirdTab.Opacity = 1;
             
@@ -46,8 +65,8 @@ namespace Presentation
 
             Past.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
             Past.Children.Add(GetAllSongsAnswersView("Songs", Stage.PostSong));
-            */
         }
+        
 
         private AllTextAnswersView GetAllTextAnswersView(string name, Stage stage)
         {

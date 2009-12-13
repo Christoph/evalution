@@ -8,17 +8,17 @@
 		</GroupBox.Header>
 		<ScrollViewer x:Name="ScrollViewer" >
             <TabControl Background="Transparent" x:Name="Stack" PreviewMouseWheel="Stack_PreviewMouseWheel">
-                <TabItem Header="First Question Set" FontSize="12" FontWeight="Bold">
+                <TabItem Header="First Question Set" FontSize="12" FontWeight="Bold" Width="auto">
                     <StackPanel x:Name="Pre">
                         
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Second Question Set" FontSize="12" FontWeight="Bold">
+                <TabItem Header="Second Question Set" FontSize="12" FontWeight="Bold" Width="auto">
                     <StackPanel x:Name="During">
  
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Third Question Set" FontSize="12" FontWeight="Bold" x:Name="ThirdTab">
+                <TabItem Header="Third Question Set" FontSize="12" FontWeight="Bold" x:Name="ThirdTab" Width="auto">
                     <StackPanel x:Name="Past">
                         
                     </StackPanel>

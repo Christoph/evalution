@@ -52,9 +52,11 @@
     <Compile Include="AnswerBase.cs" />
     <Compile Include="AnswerType.cs" />
     <Compile Include="BinaryAnswer.cs" />
+    <Compile Include="Configurations.cs" />
     <Compile Include="CurrentFormHolder.cs" />
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="DomainModule.cs" />
+    <Compile Include="EvaluationSheetSelector.cs" />
     <Compile Include="Form.cs" />
     <Compile Include="FormFactory.cs" />
     <Compile Include="GradeAnswer.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Question.cs" />
     <Compile Include="QuestionStage.cs" />
     <Compile Include="Repositories\IAnswerRepository.cs" />
+    <Compile Include="Repositories\IConfigurationProvider.cs" />
     <Compile Include="Repositories\IQuestionFormRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Stage.cs" />

@@ -37,6 +37,8 @@ namespace Presentation
             var gradeAnswerRepository = new GradeAnswerRepository(session);
             var formRepository = new FormRepository(session);
             kernel.Bind<IQuestionFormRepository>().ToConstant(formRepository);
+            var evaluationSheetSelector = new EvaluationSheetSelector();
+            kernel.Bind<IConfigurationProvider>().ToConstant(evaluationSheetSelector);
 
             var formFactory = new FormFactory(formRepository, gradeAnswerRepository, textAnswerRepository, binaryAnswerRepository, songAnswerRepository);
             var currentFormHolder = new CurrentFormHolder(formRepository.GetLast(), formFactory);

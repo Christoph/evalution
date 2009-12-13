@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using Domain;
+using Domain.Repositories;
 using NHibernate;
 
 namespace TheNewEngine.Datalayer
@@ -9,6 +10,7 @@ namespace TheNewEngine.Datalayer
     public class DatabaseInitializer : IDisposable
     {
         private readonly ISession mSession;
+        private IConfigurationProvider mConfigurationProvider;
 
         public DatabaseInitializer(ISession session)
         {
@@ -17,17 +19,32 @@ namespace TheNewEngine.Datalayer
 
         public void InitDb()
         {
+            switch (Configurations.ThreeStepsSheet)
+            {
+                case Configurations.TwoStepsSheet:
+                    InitialzeTwoStepsSheet();
+                    break;
+
+                case Configurations.ThreeStepsSheet:
+                    InitializeThreeStepsSheet();
+                    break;
+            }
+        }
+
+        public void InitialzeTwoStepsSheet()
+        {
             InsertGradeQuestions2Steps();
             InsertQuestionSetTwo();
             InsertQuestionSetThree();
+        }
 
-            /* Init or the 4 Step sheet
+        public void InitializeThreeStepsSheet()
+        {
             InsertFillInQuestions();
             InsertFirstYES_NOQuestions();
             InsertGradeQuestions4Steps();
             InsertQuestionSetOne();
             InsertSecondYES_NOQuestions();
-            */
         }
 
         //Four steps sheet, words
