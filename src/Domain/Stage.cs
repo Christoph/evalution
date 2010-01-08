@@ -3,6 +3,9 @@ namespace Domain
     public enum Stage
     {
         Pre,
+        PreTwo,
+        PreThree,
+        PreFour,
         PreSong,
         PreYesNo,
         During,
@@ -11,6 +14,9 @@ namespace Domain
         DuringWithHelpSong,
         DuringYesNo,
         Post,
-        PostSong
+        PostSong,
+        PostTwo,
+        PostThree,
+        PostFour
     }
 }

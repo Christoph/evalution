@@ -29,14 +29,23 @@ namespace TheNewEngine.Datalayer
                 case Configurations.ThreeStepsSheet:
                     InitializeThreeStepsSheet();
                     break;
-            }
+
+                case Configurations.TwoStepsSheetTwo:
+                    InitializeTwoStepsSheetTwo();
+                    break;
+
+                case Configurations.TwoStepsSheetThree:
+                    InitialzeTwoStepsSheetThree();
+                    break;
+             }
         }
 
         public void InitialzeTwoStepsSheet()
         {
             InsertGradeQuestions2Steps();
             InsertQuestionSetTwo();
-            InsertQuestionSetThree();
+            InsertFirstYES_NOQuestions();
+            InsertFillInQuestions();
         }
 
         public void InitializeThreeStepsSheet()
@@ -46,6 +55,23 @@ namespace TheNewEngine.Datalayer
             InsertGradeQuestions4Steps();
             InsertQuestionSetOne();
             InsertSecondYES_NOQuestions();
+        }
+
+        public void InitialzeTwoStepsSheetThree()
+        {
+            InsertGradeQuestions2Steps();
+            InsertQuestionSetFour();
+            InsertFirstYES_NOQuestions();
+            InsertFillInQuestions();
+            
+        }
+
+        public void InitializeTwoStepsSheetTwo()
+        {
+            InsertQuestionSetThree();
+            InsertFillInQuestions();
+            InsertGradeQuestions2Steps();
+            InsertFirstYES_NOQuestions();
         }
 
         //Four steps sheet, words
@@ -111,7 +137,37 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Binary,
-                    QuestionStages = CreateStages(Stage.Post)
+                    QuestionStages = CreateStages(Stage.PreThree, Stage.PostThree)
+                });
+            SaveList(translations);
+
+            mSession.Flush();
+        }
+
+        //Two steps sheet, word set 3
+        internal void InsertQuestionSetFour()
+        {
+            var questions = new[]
+            {
+                "vacant",
+                "brittle",
+                "precious",
+                "to take a toll on something/somebody",
+                "merciless",
+                "hesitate",
+                "trace",
+                "fade",
+                "obvious",
+                "ledge",
+                "dice"
+             };
+
+            var translations = questions.Select(
+                text => new Question
+                {
+                    Text = text,
+                    AnswerType = (int)AnswerType.Binary,
+                    QuestionStages = CreateStages(Stage.PreFour, Stage.PostFour)
                 });
             SaveList(translations);
 
@@ -143,11 +199,13 @@ namespace TheNewEngine.Datalayer
                 {
                     Text = text,
                     AnswerType = (int)AnswerType.Binary,
-                    QuestionStages = CreateStages(Stage.Pre)
+                    QuestionStages = CreateStages(Stage.PreTwo, Stage.PostTwo)
                 });
             SaveList(translations);
 
             mSession.Flush();
+
+
         }
    
         internal void InsertGradeQuestions4Steps()

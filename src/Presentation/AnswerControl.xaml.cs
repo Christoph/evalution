@@ -26,29 +26,65 @@ namespace Presentation
             switch (mConfigurationProvider.Configuration)
             {
                 case Configurations.TwoStepsSheet:
-                    InitialzeTwoStepsSheet();
+                    InitialzeTwoStepsSheetWordSet2();
                     break;
 
                 case Configurations.ThreeStepsSheet:
-                    InitializeFourStepsSheet();
+                    InitializeFourStepsSheetWordSet1();
+                    break;
+
+                case Configurations.TwoStepsSheetTwo:
+                    InitialzeTwoStepsSheetWordSet3();
+                    break;
+
+                case Configurations.TwoStepsSheetThree:
+                    InitialzeTwoStepsSheetWordSet4();
                     break;
             }
 
             mCurrentFormHolder.OnChanged += x => Stack.SelectedIndex = 0;
         }
 
-        public void InitialzeTwoStepsSheet()
+        public void InitialzeTwoStepsSheetWordSet2()
         {
             ThirdTab.IsEnabled = false;
             ThirdTab.Opacity = 0;
 
-            Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Pre));
+            Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.PreTwo));
 
-            During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.Post));
+            During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.PostTwo));
             During.Children.Add(GetAllGradeAnswersView("Grade the question", Stage.Post));
+            During.Children.Add(GetAllBinaryAnswersView("Questions", Stage.PreYesNo));
+            During.Children.Add(GetAllTextAnswersView("Please fill in:", Stage.Pre));
+        }
+
+        public void InitialzeTwoStepsSheetWordSet3()
+        {
+            ThirdTab.IsEnabled = false;
+            ThirdTab.Opacity = 0;
+
+            Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.PreThree));
+
+            During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.PostThree));
+            During.Children.Add(GetAllGradeAnswersView("Grade the question", Stage.Post));
+            During.Children.Add(GetAllBinaryAnswersView("Questions", Stage.PreYesNo));
+            During.Children.Add(GetAllTextAnswersView("Please fill in:", Stage.Pre));
+        }
+
+        public void InitialzeTwoStepsSheetWordSet4()
+        {
+            ThirdTab.IsEnabled = false;
+            ThirdTab.Opacity = 0;
+
+            Pre.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.PreFour));
+
+            During.Children.Add(GetAllBinaryAnswersView("Vocabulary", Stage.PostFour));
+            During.Children.Add(GetAllGradeAnswersView("Grade the question", Stage.Post));
+            During.Children.Add(GetAllBinaryAnswersView("Questions", Stage.PreYesNo));
+            During.Children.Add(GetAllTextAnswersView("Please fill in:", Stage.Pre));
         }
         
-        public void InitializeFourStepsSheet()
+        public void InitializeFourStepsSheetWordSet1()
         {
             ThirdTab.IsEnabled = true;
             ThirdTab.Opacity = 1;
